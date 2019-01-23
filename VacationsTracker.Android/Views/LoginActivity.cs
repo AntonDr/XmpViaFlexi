@@ -6,7 +6,7 @@ using VacationsTracker.Core.Presentation.ViewModels.Login;
 
 namespace VacationsTracker.Android.Views
 {
-    [Activity(Label = "LoginActivity", Theme = "@style/AppTheme")]
+    [Activity(Label = "LoginActivity", Theme = "@style/SplashTheme")]
     public class LoginActivity : FlxAppCompatActivity<LoginViewModel>
     {
         protected override void OnCreate(Bundle savedInstanceState)
