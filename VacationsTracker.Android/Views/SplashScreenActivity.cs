@@ -12,7 +12,8 @@ namespace VacationsTracker.Android.Views
 {
     [Activity(
         MainLauncher = true,
-        NoHistory = true)]
+        NoHistory = true,
+        Theme = "@style/SplashTheme")]
     public class SplashScreenActivity : FlxAppCompatActivity<EntryViewModel>
     {
         protected override void OnCreate(Bundle savedInstanceState)
