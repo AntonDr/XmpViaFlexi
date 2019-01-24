@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <dimen name="Inset1x">8dp</dimen>
+  <dimen name="Inset2x">16dp</dimen>
+  <dimen name="Inset3x">24dp</dimen>
+  <dimen name="Inset4x">32dp</dimen>
+  <dimen name="Inset5x">40dp</dimen>
+  <dimen name="Inset6x">48dp</dimen>
+  <dimen name="Inset7x">56dp</dimen>
+  <dimen name="Inset8x">64dp</dimen>
+  <dimen name="ButtonDefaultHeight">32dp</dimen>
+  <dimen name="EditTextDefaultHeight">32dp</dimen>
+  <dimen name="Radius">3dp</dimen>
+</resources>
