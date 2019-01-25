@@ -1,12 +1,15 @@
-﻿using Android.App;
+﻿using System;
+using Android;
+using Android.App;
 using Android.OS;
+using Android.Views;
+using Android.Widget;
 using FlexiMvvm.Views.V7;
-using VacationsTracker.Core.Presentation.ViewModels;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
 
-namespace VacationsTracker.Android.Views
+namespace VacationsTracker.Droid.Views.Login
 {
-    [Activity(Label = "LoginActivity")]
+    [Activity(Label = "LoginActivity", Theme = "@style/AppTheme")]
     public class LoginActivity : FlxAppCompatActivity<LoginViewModel>
     {
         private LoginActivityViewHolder ViewHolder { get; set; }
@@ -18,7 +21,14 @@ namespace VacationsTracker.Android.Views
             SetContentView(Resource.Layout.activity_login);
 
             ViewHolder = new LoginActivityViewHolder(this);
-            ViewHolder.EditTextEmail.Text = "abc";
+
+            ViewHolder.LoginButton.Click += LoginButton_Click;
         }
+
+        private void LoginButton_Click(object sender, EventArgs args)
+        {
+            ViewHolder.InvalidCredentialsText.Visibility = ViewStates.Visible;
+        }
+
     }
 }

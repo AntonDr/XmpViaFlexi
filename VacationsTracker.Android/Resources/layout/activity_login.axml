@@ -1,24 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	style="@style/LoginGeneralStyle">
+<android.support.constraint.ConstraintLayout 
+			      xmlns:android="http://schemas.android.com/apk/res/android"
+		          xmlns:app="http://schemas.android.com/apk/res-auto"  
+				  style="@style/LoginLayoutStyle">
+    
+	<TextView
+		android:id="@+id/invalidCredentialsText"
+	    android:text="Please, retry your login and password pair"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		style="@style/InvalidCredentialsTextViewStyle"/>
 
-	<EditText		
-			android:id="@+id/edit_text_email"
-			android:hint="Login"
-			android:inputType="textCapWords"
-		    style="@style/LoginStyle"/>
-		
 	<EditText
-			android:id="@+id/edit_text_password"
-			android:hint="Password"
-			android:inputType="textPassword"
-			style="@style/LoginStyle"/>
-			
-	<Button
-		android:text="SIGN IN"
-		android:layout_below="@+id/login_input_password"
-		android:id="@+id/button_sign_in"
-		style="@style/ButtonLoginStyle"/>
+         android:id="@+id/loginEntry"
+		 android:hint="Login"
+		 style="@style/LoginEntryStyle" 
+		 app:layout_constraintLeft_toLeftOf="parent"
+		 app:layout_constraintRight_toRightOf="parent"
+		 app:layout_constraintTop_toBottomOf="@id/invalidCredentialsText"/>
 
-</LinearLayout>
+	<EditText
+		 android:id="@+id/passwordEntry"
+		 android:hint="Password"
+		 style="@style/LoginEntryStyle"
+		 app:layout_constraintLeft_toLeftOf="parent"
+		 app:layout_constraintRight_toRightOf="parent"
+		 app:layout_constraintTop_toBottomOf="@id/loginEntry"/>
+
+	<Button
+		 android:id="@+id/loginButton"
+		 android:text="Sign In"
+		 style="@style/LoginButtonStyle" 
+		 app:layout_constraintLeft_toLeftOf="parent"
+		 app:layout_constraintRight_toRightOf="parent"
+		 app:layout_constraintTop_toBottomOf="@id/passwordEntry"/>
+
+</android.support.constraint.ConstraintLayout>

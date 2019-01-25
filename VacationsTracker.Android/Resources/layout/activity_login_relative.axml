@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		        style="@style/LoginLayoutStyle">
+
+	<TextView
+		android:id="@+id/invalidCredentialsText"
+	    android:text="Please, retry your login and password pair"
+		style="@style/InvalidCredentialsTextViewStyle"/>
+
+	<EditText
+         android:id="@+id/loginEntry"
+		 android:hint="Login"
+		 style="@style/LoginEntryStyle"
+		 android:layout_below="@id/invalidCredentialsText"/>
+
+	<EditText
+		 android:id="@+id/passwordEntry"
+		 android:hint="Password"
+		 style="@style/LoginEntryStyle" 
+		 android:layout_below="@id/loginEntry"/>
+
+	<Button
+		 android:id="@+id/loginButton"
+		 android:text="Sign In"
+		 style="@style/LoginButtonStyle" 
+		 android:layout_below="@id/passwordEntry"
+		 android:layout_centerHorizontal="true"/>
+		
+</RelativeLayout>

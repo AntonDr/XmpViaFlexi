@@ -1,48 +1,85 @@
 <resources>
-  <!-- Base application theme. -->
-  <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <!-- Customize your theme here. -->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="android:windowTranslucentStatus">true</item>
-    <item name="colorAccent">@color/colorAccent</item>
-  </style>
 
-  <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:windowBackground">@drawable/splash_screen</item>
-    <item name="android:windowNoTitle">true</item>
-    <item name="android:windowFullscreen">true</item>
-  </style>
+  <!--
+    Можно ли сделать отступ сверху без marginTop (потому что это костыльно)?
+  -->
 
-  <style name="LoginStyle" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:maxLines">1</item>
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_height">@dimen/EditTextDefaultHeight</item>
-    <item name="android:layout_marginRight">@dimen/Inset6x</item>
-    <item name="android:layout_marginLeft">@dimen/Inset6x</item>
-    <item name="android:background">@color/login_edit_text_background</item>
-    <item name="android:layout_marginTop">@dimen/Inset1x</item>
-    <item name="android:layout_marginBottom">@dimen/Inset1x</item>
-  </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
 
-  <style name="ButtonLoginStyle" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:background">@drawable/button_sing_in</item>
-    <item name="android:layout_height">@dimen/ButtonDefaultHeight</item>
-    <item name="android:textColor">@color/login_edit_text_background</item>
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_marginRight">@dimen/Inset8x</item>
-    <item name="android:layout_marginLeft">@dimen/Inset8x</item>
-    <item name="android:layout_marginTop">@dimen/Inset1x</item>
-    
-  </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+      <item name="android:windowBackground">@drawable/splash_screen</item>
+      <item name="android:windowNoTitle">true</item>
+      <item name="android:windowFullscreen">true</item>
+    </style>
 
-  <style name="LoginGeneralStyle" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:orientation">vertical</item>
-    <item name="android:layout_width">match_parent</item>
+    <style name="LoginLayoutStyle">
+      <item name="android:layout_width">match_parent</item>
+      <item name="android:layout_height">match_parent</item>
+      <item name="android:background">@drawable/splash</item>
+      <item name="android:paddingTop">@dimen/LoginScreenTopMargin</item>
+      <item name="android:paddingHorizontal">@dimen/Inset1x</item>
+    </style>
+
+    <style name="InvalidCredentialsTextViewStyle">
+      <item name="android:layout_width">@dimen/TextViewDefaultWidth</item>
+      <item name="android:layout_height">wrap_content</item>
+      <item name="android:padding">@dimen/Inset1x</item>
+      <item name="android:visibility">invisible</item>
+      <item name="android:background">@drawable/RoundTextView</item>
+      <item name="android:textColor">@color/colorErrorText</item>
+      <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="LoginEntryStyle">
+      <item name="android:background">@android:color/white</item>
+      <item name="android:layout_width">@dimen/TextEditDefaultWidth</item>
+      <item name="android:layout_height">@dimen/TextEditDefaultHeight</item>
+      <item name="android:layout_marginVertical">@dimen/Inset1x</item>
+      <item name="android:singleLine">true</item>
+      <item name="android:paddingHorizontal">@dimen/Inset1x</item>
+    </style>
+
+    <style name="LoginButtonStyle">
+      <item name="android:background">@drawable/RoundLoginButton</item>
+      <item name="android:layout_width">@dimen/ButtonDefaultWidth</item>
+      <item name="android:layout_height">@dimen/ButtonDefaultHeight</item>
+      <item name="android:layout_marginVertical">@dimen/Inset1x</item>
+      <item name="android:textColor">@android:color/white</item>
+    </style>
+
+  <style name="VacationImageStyle">
+    <item name="android:layout_width">wrap_content</item>
     <item name="android:layout_height">match_parent</item>
-    <item name="android:gravity">center</item>
-    <item name="android:paddingBottom">40dp</item>
-    <item name="android:background">@drawable/Login_bg</item>
+  </style>
+
+  <style name="VacationDurationStyle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+    <item name="android:textColor">@color/colorLightBlue</item>
+  </style>
+
+  <style name="VacationTypeStyle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">@android:color/darker_gray</item>
+  </style>
+
+  <style name="VacationStatusStyle">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">@android:color/darker_gray</item>
+  </style>
+
+  <style name="SeparatorStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">1dp</item>
+    <item name="android:background">@android:color/darker_gray</item>
   </style>
 
 </resources>

@@ -3,7 +3,7 @@
     <color name="colorPrimary">#2c3e50</color>
     <color name="colorPrimaryDark">#1B3147</color>
     <color name="colorAccent">#3498db</color>
-    <color name="splash_background">#ffffff</color>
-    <color name="login_edit_text_background">#ffffffff</color>
-    <color name="button_background">#35a3ce</color>
+    <color name="colorSplashBackground">#ffffff</color>
+    <color name="colorLightBlue">#41C0DA</color>
+    <color name="colorErrorText">#800000</color>
 </resources>

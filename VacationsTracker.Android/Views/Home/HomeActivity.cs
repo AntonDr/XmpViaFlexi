@@ -1,21 +1,26 @@
 ﻿using Android.App;
 using Android.OS;
 using FlexiMvvm.Bootstrappers;
+using FlexiMvvm.Collections;
 using FlexiMvvm.Ioc;
 using FlexiMvvm.Views.V7;
 using Plugin.CurrentActivity;
 using VacationsTracker.Core.Bootstrappers;
-using VacationsTracker.Core.Presentation.ViewModels;
+using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.Droid.Bootstrappers;
 
-namespace VacationsTracker.Droid.Views
+namespace VacationsTracker.Droid.Views.Home
 {
     [Activity(
-        //MainLauncher = true,
-        NoHistory = true,
-        Theme = "@style/SplashTheme")]
-    public class SplashScreenActivity : FlxAppCompatActivity<EntryViewModel>
+        MainLauncher = true,
+        Label = "HomeActivity")]
+    public class HomeActivity : FlxAppCompatActivity<HomeViewModel>
     {
+        private HomeActivityViewHolder ViewHolder { get; set; }
+
+        private RecyclerViewObservablePlainAdapterBase VacationsAdapter { get; set; }
+
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
@@ -30,6 +35,12 @@ namespace VacationsTracker.Droid.Views
             compositeBootstrapper.Execute(config);
 
             base.OnCreate(savedInstanceState);
+
+            SetContentView(Resource.Layout.activity_home);
+
+            ViewHolder = new HomeActivityViewHolder(this);
+
+            VacationsAdapter = new VacationsAdapter(ViewHolder.RecyclerView) {Items = ViewModel.Vacations};
         }
     }
 }
