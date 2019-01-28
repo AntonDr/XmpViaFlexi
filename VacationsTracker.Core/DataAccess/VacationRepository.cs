@@ -50,13 +50,22 @@ namespace VacationsTracker.Core.DataAccess
         public int Count => _vacations.Length;
 
         public Vacation this[int i] => _vacations[i];
+
         public Task<IEnumerable<VacationCellViewModel>> GetVacationsAsync()
         {
             return Task.FromResult<IEnumerable<VacationCellViewModel>>(new List<VacationCellViewModel>
             {
                 new VacationCellViewModel
                 {
-                    VacationType = "Type"
+                    VacationType = "Type 1"
+                },
+                new VacationCellViewModel
+                {
+                    VacationType = "Type 2"
+                },
+                new VacationCellViewModel
+                {
+                    VacationType = "Type 3"
                 }
             });
         }

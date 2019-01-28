@@ -1,16 +1,15 @@
-﻿using System;
-using Android;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
-using Android.Views;
-using Android.Widget;
+using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
 
 namespace VacationsTracker.Droid.Views.Login
 {
-    [Activity(Label = "LoginActivity", Theme = "@style/AppTheme")]
-    public class LoginActivity : FlxAppCompatActivity<LoginViewModel>
+    [Activity(
+        Label = "LoginActivity",
+        Theme = "@style/AppTheme")]
+    public class LoginActivity : FlxBindableAppCompatActivity<LoginViewModel>
     {
         private LoginActivityViewHolder ViewHolder { get; set; }
 
@@ -21,14 +20,15 @@ namespace VacationsTracker.Droid.Views.Login
             SetContentView(Resource.Layout.activity_login);
 
             ViewHolder = new LoginActivityViewHolder(this);
-
-            ViewHolder.LoginButton.Click += LoginButton_Click;
         }
 
-        private void LoginButton_Click(object sender, EventArgs args)
+        public override void Bind(BindingSet<LoginViewModel> bindingSet)
         {
-            ViewHolder.InvalidCredentialsText.Visibility = ViewStates.Visible;
-        }
+            base.Bind(bindingSet);
 
+            bindingSet.Bind(ViewHolder.LoginButton)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.LoginCommand);
+        }
     }
 }

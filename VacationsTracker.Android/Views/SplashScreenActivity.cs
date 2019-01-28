@@ -11,7 +11,7 @@ using VacationsTracker.Droid.Bootstrappers;
 namespace VacationsTracker.Droid.Views
 {
     [Activity(
-        //MainLauncher = true,
+        MainLauncher = true,
         NoHistory = true,
         Theme = "@style/SplashTheme")]
     public class SplashScreenActivity : FlxAppCompatActivity<EntryViewModel>
