@@ -57,15 +57,73 @@ namespace VacationsTracker.Core.DataAccess
             {
                 new VacationCellViewModel
                 {
-                    VacationType = "Type 1"
+                    StartDate = new DateTime(2019, 3, 20),
+                    EndDate = new DateTime(2019, 3, 31),
+                    Status = VacationStatus.Approved,
+                    VacationType = VacationType.Regular
                 },
                 new VacationCellViewModel
                 {
-                    VacationType = "Type 2"
+                    StartDate = new DateTime(2018, 12, 26),
+                    EndDate = new DateTime(2018, 12, 30),
+                    Status = VacationStatus.Closed,
+                    VacationType = VacationType.ExceptionalLeave
                 },
                 new VacationCellViewModel
                 {
-                    VacationType = "Type 3"
+                    StartDate = new DateTime(2018, 11, 2),
+                    EndDate = new DateTime(2018, 11, 4),
+                    Status = VacationStatus.Closed,
+                    VacationType = VacationType.SickDays
+                },
+                new VacationCellViewModel
+                {
+                    StartDate = new DateTime(2018, 07, 11),
+                    EndDate = new DateTime(2018, 07, 13),
+                    Status = VacationStatus.Closed,
+                    VacationType = VacationType.ExceptionalLeave
+                },
+                new VacationCellViewModel
+                {
+                    StartDate = new DateTime(2018, 02, 6),
+                    EndDate = new DateTime(2018, 02, 8),
+                    Status = VacationStatus.Closed,
+                    VacationType = VacationType.Overtime
+                },
+                new VacationCellViewModel
+                {
+                    StartDate = new DateTime(2018, 10, 2),
+                    EndDate = new DateTime(2018, 10, 4),
+                    Status = VacationStatus.Closed,
+                    VacationType = VacationType.SickDays
+                },
+                new VacationCellViewModel
+                {
+                    StartDate = new DateTime(2018, 11, 16),
+                    EndDate = new DateTime(2018, 11, 19),
+                    Status = VacationStatus.Closed,
+                    VacationType = VacationType.Overtime
+                },
+                new VacationCellViewModel
+                {
+                    StartDate = new DateTime(2018, 12, 22),
+                    EndDate = new DateTime(2018, 12, 24),
+                    Status = VacationStatus.Closed,
+                    VacationType = VacationType.SickDays
+                },
+                new VacationCellViewModel
+                {
+                    StartDate = new DateTime(2018, 12, 22),
+                    EndDate = new DateTime(2018, 12, 23),
+                    Status = VacationStatus.Approved,
+                    VacationType = VacationType.SickDays
+                },
+                new VacationCellViewModel
+                {
+                    StartDate = new DateTime(2019, 3, 21),
+                    EndDate = new DateTime(2019, 3, 25),
+                    Status = VacationStatus.Closed,
+                    VacationType = VacationType.ExceptionalLeave
                 }
             });
         }
