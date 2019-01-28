@@ -1,14 +1,29 @@
-﻿using FlexiMvvm;
+﻿using System.Threading.Tasks;
+using FlexiMvvm;
+using FlexiMvvm.Commands;
+using VacationsTracker.Core.Navigation;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Login
 {
     public class LoginViewModel : ViewModelBase
     {
-        protected override void Initialize()
-        {
-            base.Initialize();
+        private readonly INavigationService _navigationService;
 
-            //TODO login view initialization
+        public LoginViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
+        public ICommand LoginCommand => CommandProvider.GetForAsync(Login);
+
+
+        private async Task Login()
+        {
+            // TODO login operation
+
+            await Task.Delay(500);
+
+            _navigationService.NavigateToHome(this);
         }
     }
 }
