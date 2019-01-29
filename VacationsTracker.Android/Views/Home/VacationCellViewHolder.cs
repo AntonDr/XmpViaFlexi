@@ -20,7 +20,7 @@ namespace VacationsTracker.Droid.Views
 
             bindingSet.Bind(VacationType)
                 .For(v => v.Text)
-                .To(vm => vm.VacationType)
+                .To(vm => vm.Type)
                 .WithConvertion<VacationTypeValueConverter>();
 
             bindingSet.Bind(VacationStatus)
@@ -28,15 +28,20 @@ namespace VacationsTracker.Droid.Views
                 .To(vm => vm.Status)
                 .WithConvertion<VacationStatusValueConverter>();
 
-            bindingSet.Bind(VacationImage)
-                .For(v => v.SetImageResourceBinding())
-                .To(vm => vm.VacationType)
-                .WithConvertion<VacationTypeToImageIdConverter>();
-
             bindingSet.Bind(VacationDuration)
                 .For(v => v.Text)
-                .To(vm => vm.Duration);
-                //.WithConvertion<ShortDateTimeValueConverter>();
+                .To(vm => vm.Duration)
+                .WithConvertion<DurationValueConverter>();
+
+            bindingSet.Bind(VacationImage)
+                .For(v => v.SetImageResourceBinding())
+                .To(vm => vm.Type)
+                .WithConvertion<ImageValueConverter>();
+
+            bindingSet.Bind(SeparatorView)
+                .For(v => v.Visibility)
+                .To(vm => vm.SeparatorVisible)
+                .WithConvertion<SeparatorVisibilityValueConverter>();
         }
     }
 }

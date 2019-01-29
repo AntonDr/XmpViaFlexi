@@ -1,6 +1,4 @@
-﻿using Cirrious.FluentLayouts.Touch;
-using FlexiMvvm.Views;
-using UIKit;
+﻿using UIKit;
 
 namespace VacationsTracker.iOS.Views.Login
 {

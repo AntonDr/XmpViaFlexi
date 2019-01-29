@@ -4,8 +4,6 @@ namespace VacationsTracker.Core.Domain
 {
     public class Vacation
     {
-        public int ImageId { get; set; }
-
         public DateTime Start { get; set; }
 
         public DateTime End { get; set; }

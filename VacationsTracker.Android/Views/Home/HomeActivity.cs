@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Support.V7.Widget;
+using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 
@@ -30,5 +31,13 @@ namespace VacationsTracker.Droid.Views.Home
             ViewHolder.RecyclerView.SetLayoutManager(new LinearLayoutManager(this, 1, false));
         }
 
+        public override void Bind(BindingSet<HomeViewModel> bindingSet)
+        {
+            base.Bind(bindingSet);
+
+            bindingSet.Bind(VacationsAdapter)
+                .For(v => v.ItemClickedBinding())
+                .To(vm => vm.VacationSelectedCommand);
+        }
     }
 }

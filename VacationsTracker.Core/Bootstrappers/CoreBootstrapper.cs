@@ -1,5 +1,4 @@
-﻿using System;
-using FlexiMvvm;
+﻿using FlexiMvvm;
 using FlexiMvvm.Bootstrappers;
 using FlexiMvvm.Ioc;
 using VacationsTracker.Core.Application.Connectivity;

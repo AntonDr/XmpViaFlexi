@@ -5,5 +5,9 @@
     <color name="colorAccent">#3498db</color>
     <color name="colorSplashBackground">#ffffff</color>
     <color name="colorLightBlue">#41C0DA</color>
+    <color name="colorLightGreen">#008000</color>
     <color name="colorErrorText">#800000</color>
+    <color name="colorPrimary">#008000</color>
+    <color name="colorPrimaryDark">#800000</color>
+    <color name="colorAccent">#800080</color>
 </resources>

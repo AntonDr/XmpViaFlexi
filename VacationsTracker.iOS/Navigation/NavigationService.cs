@@ -1,6 +1,4 @@
-﻿using FlexiMvvm;
-using FlexiMvvm.Navigation;
-using VacationsTracker.Core.Navigation;
+﻿using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels;
 using VacationsTracker.iOS.Views;
 using VacationsTracker.iOS.Views.Login;

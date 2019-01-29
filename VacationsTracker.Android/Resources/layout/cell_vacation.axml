@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout 
 	xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/Inset6x"
-	android:background="@android:color/white">
+    style="@style/VacationCellStyle">
 
 	<ImageView
 		android:id="@+id/vacationImage"
 		style="@style/VacationImageStyle"
-		android:adjustViewBounds="true"
-		android:layout_alignParentLeft="true" />
+		android:layout_alignParentLeft="true"
+		android:adjustViewBounds="true"/>
 
 	<TextView
 		android:id="@+id/vacationDuration"
 		style="@style/VacationDurationStyle"
 		android:layout_toRightOf="@id/vacationImage"
-		android:layout_alignParentTop="true"/>
+        android:layout_alignTop="@id/vacationImage"/>
 
 	<TextView
 		android:id="@+id/vacationType"
 		style="@style/VacationTypeStyle"
-		android:layout_below="@id/vacationDuration"
-		android:layout_toRightOf="@id/vacationImage"/>
+		android:layout_toRightOf="@id/vacationImage"
+        android:layout_alignBottom="@id/vacationImage"/>
 
 	<TextView
 		android:id="@+id/vacationStatus"
@@ -29,7 +27,8 @@
 		android:layout_alignParentRight="true"/>
 
 	<View
-		style="@style/SeparatorStyle"
+		android:id="@+id/separator_view"
+		style="@style/GraySeparatorStyle"
 		android:layout_toRightOf="@id/vacationImage"
 		android:layout_alignParentBottom="true"/>
 

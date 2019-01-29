@@ -11,7 +11,10 @@ namespace VacationsTracker.Droid.Views
         {
             return new TargetItemOneWayCustomBinding<ImageView, int>(
                 imageViewReference,
-                (imageView, resId) => { imageView.SetImageResource(resId); },
+                (imageView, resId) =>
+                {
+                    imageView.SetImageResource(resId);
+                },
                 () => "SetImageResource");
         }
     }

@@ -1,5 +1,4 @@
-﻿using FlexiMvvm.Views;
-using VacationsTracker.Core.Presentation.ViewModels;
+﻿using VacationsTracker.Core.Presentation.ViewModels;
 
 namespace VacationsTracker.iOS.Views
 {

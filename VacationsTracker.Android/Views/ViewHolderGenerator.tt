@@ -1,4 +1,4 @@
-﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+﻿﻿<#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ output extension=".cs" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Xml" #>
@@ -11,7 +11,7 @@
 <#@ import namespace="System.Xml.Linq" #>
 <#
 // *********************** View Holders Generation Configuration **********************************
-    LayoutDefinitionOptions.Namespace = "VacationsTracker.Android.Views";
+    LayoutDefinitionOptions.Namespace = "VacationsTracker.Droid.Views";
     LayoutDefinitionOptions.ViewTypeNameCustomFormat = new Dictionary<string, string>
     {
         { "ffimageloading.cross.MvxCachedImageView", "FFImageLoading.Cross.MvxCachedImageView" },

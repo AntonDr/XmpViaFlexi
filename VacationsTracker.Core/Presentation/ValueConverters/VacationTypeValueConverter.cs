@@ -1,20 +1,15 @@
-﻿using FlexiMvvm.ValueConverters;
-using System;
+﻿using System;
 using System.Globalization;
+using FlexiMvvm.ValueConverters;
 using VacationsTracker.Core.Domain;
 
 namespace VacationsTracker.Core.Presentation.ValueConverters
 {
-    public class VacationTypeValueConverter : ValueConverter<object, string>
+    public class VacationTypeValueConverter : ValueConverter<VacationType, string>
     {
-        protected override ConversionResult<string> Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override ConversionResult<string> Convert(VacationType value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is VacationType vacationType)
-            {
-                return ConversionResult<string>.SetValue(vacationType.ToFriendlyString());
-            }
-
-            return ConversionResult<string>.UnsetValue();
+            return ConversionResult<string>.SetValue(value.ToFriendlyString());
         }
     }
 }

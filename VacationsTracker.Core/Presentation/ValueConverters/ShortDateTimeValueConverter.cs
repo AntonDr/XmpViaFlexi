@@ -6,16 +6,16 @@ using FlexiMvvm.ValueConverters;
 
 namespace VacationsTracker.Core.Presentation.ValueConverters
 {
-    public class ShortDateTimeValueConverter : ValueConverter<object, string>
+    public class ShortDateTimeValueConverter : ValueConverter<ValueTuple<DateTime,DateTime>, string>
     {
-        protected override ConversionResult<string> Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        protected override ConversionResult<string> Convert(ValueTuple<DateTime,DateTime> value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is DateTime dateTime)
-            {
-                return ConversionResult<string>.SetValue(dateTime.ToString("MMM dd", CultureInfo.CurrentCulture).ToUpper());
-            }
+            string result = string.Empty;
 
-            return ConversionResult<string>.UnsetValue();
+            result =
+                $"{value.Item1.ToString("MMM dd", CultureInfo.CurrentCulture).ToUpper()} - {value.Item1.ToString("MMM dd", CultureInfo.CurrentCulture).ToUpper()}";
+
+            return ConversionResult<string>.SetValue(result);
         }
     }
 }

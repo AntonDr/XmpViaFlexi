@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+	android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+	<android.support.v7.widget.Toolbar
+        android:id="@+id/details_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ToolbarTheme">
+
+		<TextView
+            android:maxLines="1"
+			android:text="Request"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/white"
+			android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+		<Button
+			android:id="@+id/save_request_button"
+			android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+			android:layout_gravity="center|right"
+			android:text="Save" />
+
+	</android.support.v7.widget.Toolbar>
+
+	<android.support.v4.view.ViewPager
+            android:id="@+id/vacation_type_pager"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+	<View 
+		style="@style/LightBlueSeparatorStyle" />
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/Inset2x">
+
+		<TextView
+			android:id="@+id/vacation_start_day"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="60dp"
+			android:textColor="@color/colorLightBlue"
+			android:text="20"
+			android:layout_alignParentLeft="true"/>
+
+		<TextView
+			android:id="@+id/vacation_start_month"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="25dp"
+			android:textColor="@color/colorLightBlue"
+			android:text="APR"
+			android:layout_alignTop="@id/vacation_start_day"
+			android:layout_toRightOf="@id/vacation_start_day"/>
+
+		<TextView
+			android:id="@+id/vacation_start_year"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15dp"
+			android:text="2017"
+			android:textColor="@color/colorLightBlue"
+			android:layout_alignBottom="@id/vacation_start_day"
+			android:layout_toRightOf="@id/vacation_start_day"/>
+
+		<TextView
+			android:id="@+id/vacation_end_day"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="60dp"
+			android:text="20"
+			android:textColor="@color/colorLightGreen"
+			android:layout_toLeftOf="@+id/vacation_end_month"
+			android:layout_alignTop="@id/vacation_start_day"/>
+
+		<TextView
+			android:id="@+id/vacation_end_month"
+			android:layout_width="wrap_content"
+			android:text="MAY"
+			android:layout_height="wrap_content"
+			android:textSize="25dp"
+			android:textColor="@color/colorLightGreen"
+			android:layout_alignTop="@id/vacation_end_day"
+			android:layout_alignParentRight="true"/>
+
+		<TextView
+			android:id="@+id/vacation_end_year"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="2017"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:textColor="@color/colorLightGreen"
+			android:layout_alignBottom="@id/vacation_end_day"
+			android:layout_toRightOf="@id/vacation_end_day"
+			android:layout_alignParentRight="true"/>
+
+	</RelativeLayout>
+
+	<View 
+		style="@style/LightBlueSeparatorStyle" />
+
+	<RadioGroup
+		  android:layout_width="match_parent"
+		  android:layout_height="wrap_content"
+		  android:orientation="horizontal"
+		  android:gravity="center">
+
+		  <RadioButton android:id="@+id/approved_radio"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:text="Approved" />
+
+		  <RadioButton android:id="@+id/closed_radio"
+			  android:layout_width="wrap_content"
+			  android:layout_height="wrap_content"
+			  android:text="Closed" />
+
+	</RadioGroup>
+
+	<View 
+		style="@style/LightBlueSeparatorStyle" />
+
+</LinearLayout>

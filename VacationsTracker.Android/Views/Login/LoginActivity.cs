@@ -17,7 +17,7 @@ namespace VacationsTracker.Droid.Views.Login
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.activity_login);
+            SetContentView(Resource.Layout.activity_vacation_details);
 
             ViewHolder = new LoginActivityViewHolder(this);
         }
