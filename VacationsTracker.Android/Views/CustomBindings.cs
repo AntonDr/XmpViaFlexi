@@ -1,6 +1,7 @@
 ﻿using Android.Widget;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Bindings.Custom;
+using VacationsTracker.Core.Domain;
 
 namespace VacationsTracker.Droid.Views
 {
@@ -16,6 +17,19 @@ namespace VacationsTracker.Droid.Views
                     imageView.SetImageResource(resId);
                 },
                 () => "SetImageResource");
+        }
+
+        public static TargetItemBinding<RadioButton, VacationStatus> SetVacationStatusBinding(
+            this  IItemReference<RadioButton> radioButtonReference)
+        {
+            return new TargetItemTwoWayCustomBinding<RadioButton, VacationStatus>(
+                radioButtonReference,
+                (radioButton, status) =>
+                {
+                    radioButton.Checked = true;
+
+                },
+                );
         }
     }
 }
