@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
+  <dimen name="InsetHalf">4dp</dimen>
   <dimen name="Inset1x">8dp</dimen>
   <dimen name="Inset2x">16dp</dimen>
   <dimen name="Inset3x">24dp</dimen>
@@ -16,4 +17,8 @@
   <dimen name="LoginScreenTopMargin">96dp</dimen>
   <dimen name="VacationImageDefaultHeight">40dp</dimen>
   <dimen name="SeparatorDefaultThickness">1dp</dimen>
+  <dimen name="ToolbarDefaultHeight">40dp</dimen>
+  <dimen name="VacationDayDefaultHeight">48dp</dimen>
+  <dimen name="VacationMonthDefaultHeight">24dp</dimen>
+  <dimen name="VacationYearDefaultHeight">16dp</dimen>
 </resources>

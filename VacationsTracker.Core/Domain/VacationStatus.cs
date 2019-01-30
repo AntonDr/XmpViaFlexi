@@ -2,9 +2,7 @@
 {
     public enum VacationStatus
     {
-        Pending,
         Approved,
-        Rejected,
         Closed
     }
 }

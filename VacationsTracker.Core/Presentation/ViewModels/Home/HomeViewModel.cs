@@ -1,13 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using FlexiMvvm;
+﻿using FlexiMvvm;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
+using VacationsTracker.Core.Presentation.ViewModels.VacationDetails;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Home
 {
@@ -33,11 +32,11 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             set => Set(ref _refreshedDateTime, value);
         }
 
-        public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(vacationSelected);
+        public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(VacationSelected);
 
-        private void vacationSelected(VacationCellViewModel vacationCellViewModel)
+        private void VacationSelected(VacationCellViewModel vacationCellViewModel)
         {
-            Debug.WriteLine(vacationCellViewModel.Duration);
+            _navigationService.NavigateToVacationDetails(this, new VacationDetailsParameters { VacationId = vacationCellViewModel.VacationId });
         }
 
         protected override async Task InitializeAsync()
@@ -47,9 +46,10 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             var vacations = await _vacationsRepository.GetVacationsAsync();
 
             var list = vacations.ToList();
+
             if (list.Count != 0)
             {
-                list[list.Count - 1].SeparatorVisible = false;
+                list.LastOrDefault().SeparatorVisible = false;
             }
 
             Vacations.AddRange(list);

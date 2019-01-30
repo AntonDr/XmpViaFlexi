@@ -8,12 +8,8 @@ namespace VacationsTracker.Core.Domain
         {
             switch (status)
             {
-                case VacationStatus.Pending:
-                    return "Pending";
                 case VacationStatus.Approved:
                     return "Approved";
-                case VacationStatus.Rejected:
-                    return "Rejected";
                 case VacationStatus.Closed:
                     return "Closed";
                 default:

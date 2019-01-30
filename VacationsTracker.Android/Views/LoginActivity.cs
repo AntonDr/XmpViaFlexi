@@ -18,7 +18,6 @@ namespace VacationsTracker.Android.Views
             SetContentView(Resource.Layout.activity_login);
 
             ViewHolder = new LoginActivityViewHolder(this);
-            ViewHolder.EditTextEmail.Text = "abc";
         }
     }
 }
