@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FlexiMvvm;
+﻿using FlexiMvvm;
 
-namespace VacationsTracker.Core.Presentation.ViewModels.VacationDetails
+namespace VacationsTracker.Core.Presentation.ViewModels.Details
 {
     public class VacationDetailsParameters : ViewModelBundleBase
     {
+        public VacationDetailsParameters(string vacationId)
+        {
+            this.VacationId = vacationId;
+        }
+
         public string VacationId
         {
             get => Bundle.GetString();

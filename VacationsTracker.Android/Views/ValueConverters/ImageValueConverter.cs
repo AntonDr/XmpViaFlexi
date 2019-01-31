@@ -1,6 +1,6 @@
-﻿using System;
+﻿using FlexiMvvm.ValueConverters;
+using System;
 using System.Globalization;
-using FlexiMvvm.ValueConverters;
 using VacationsTracker.Core.Domain;
 
 namespace VacationsTracker.Droid.Views.ValueConverters
@@ -9,7 +9,7 @@ namespace VacationsTracker.Droid.Views.ValueConverters
     {
         protected override ConversionResult<int> Convert(VacationType value, Type targetType, object parameter, CultureInfo culture)
         {
-            int imageId = 0;
+            int imageId;
             switch (value)
             {
                 case VacationType.Regular:
@@ -37,6 +37,38 @@ namespace VacationsTracker.Droid.Views.ValueConverters
             }
 
             return ConversionResult<int>.SetValue(imageId);
+        }
+
+        protected override ConversionResult<VacationType> ConvertBack(int value, Type targetType, object parameter, CultureInfo culture)
+        {
+            VacationType vacationType;
+            switch (value)
+            {
+                case Resource.Drawable.Icon_Request_Green:
+                    vacationType = VacationType.Regular;
+                    break;
+
+                case Resource.Drawable.Icon_Request_Plum:
+                    vacationType = VacationType.SickDays;
+                    break;
+
+                case Resource.Drawable.Icon_Request_Gray:
+                    vacationType = VacationType.ExceptionalLeave;
+                    break;
+
+                case Resource.Drawable.Icon_Request_Blue:
+                    vacationType = VacationType.Overtime;
+                    break;
+
+                case Resource.Drawable.Icon_Request_Dark:
+                    vacationType = VacationType.LeaveWithoutPay;
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
+            }
+
+            return ConversionResult<VacationType>.SetValue(vacationType);
         }
     }
 }

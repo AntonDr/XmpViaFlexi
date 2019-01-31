@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
 	android:fitsSystemWindows="true"
     android:layout_width="match_parent"
+	android:background="@android:color/white"
     android:layout_height="match_parent">
 
 	<android.support.v7.widget.Toolbar
@@ -24,10 +26,19 @@
 	<android.support.v4.view.ViewPager
             android:id="@+id/vacation_type_pager"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
-
-	<View 
-		style="@style/LightBlueSeparatorStyle" />
+            android:layout_height="120dp" />
+    
+    <android.support.design.widget.TabLayout
+            android:id="@+id/tab_dots"
+           android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabGravity="center"
+            app:tabIndicatorHeight="0dp"/>
+	
+    <View 
+	    	style="@style/LightBlueSeparatorStyle" />
 
 	<RelativeLayout
 		android:id="@+id/date_start"
@@ -47,7 +58,6 @@
 
 			<TextView
 				android:id="@+id/vacation_start_month"
-				android:text="APR"
 				android:layout_marginTop="@dimen/Inset1x"
 				android:layout_alignTop="@id/vacation_start_day"
 				android:layout_toRightOf="@id/vacation_start_day"
@@ -55,7 +65,6 @@
 
 			<TextView
 				android:id="@+id/vacation_start_year"
-				android:text="2017"
 				android:layout_toRightOf="@id/vacation_start_day"
 				android:layout_alignBaseline="@id/vacation_start_day"
 				style="@style/VacationStartYearStyle"/>
@@ -72,21 +81,18 @@
 			<TextView
 				android:id="@+id/vacation_end_day"
 				android:gravity="center|top"
-				android:text="20"
 				android:layout_alignParentLeft="true"
 				style="@style/VacationEndDayStyle"/>
 
 			<TextView
 				android:id="@+id/vacation_end_month"
 				android:layout_marginTop="8dp"
-				android:text="APR"
 				android:layout_alignTop="@id/vacation_end_day"
 				android:layout_toRightOf="@id/vacation_end_day"
 				style="@style/VacationEndMonthStyle"/>
 
 			<TextView
 				android:id="@+id/vacation_end_year"
-				android:text="2017"
 				android:layout_alignBaseline="@id/vacation_end_day"				
 				android:layout_toRightOf="@id/vacation_end_day"
 				style="@style/VacationEndYearStyle"/>

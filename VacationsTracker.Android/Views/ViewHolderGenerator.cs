@@ -26,6 +26,7 @@ namespace VacationsTracker.Droid.Views
     {
          private readonly Activity activity;
 
+         private Android.Support.V4.Widget.SwipeRefreshLayout refresher;
          private Android.Support.V7.Widget.Toolbar homeToolbar;
          private Android.Support.V7.Widget.RecyclerView recyclerView;
 
@@ -35,6 +36,10 @@ namespace VacationsTracker.Droid.Views
 
             this.activity = activity;
         }
+
+        
+        public Android.Support.V4.Widget.SwipeRefreshLayout Refresher =>
+            refresher ?? (refresher = activity.FindViewById<Android.Support.V4.Widget.SwipeRefreshLayout>(Resource.Id.refresher));
 
         
         public Android.Support.V7.Widget.Toolbar HomeToolbar =>
@@ -121,6 +126,7 @@ namespace VacationsTracker.Droid.Views
          private Android.Support.V7.Widget.Toolbar detailsToolbar;
          private Button saveRequestButton;
          private Android.Support.V4.View.ViewPager vacationTypePager;
+         private Android.Support.Design.Widget.TabLayout tabDots;
          private RelativeLayout dateStart;
          private TextView vacationStartDay;
          private TextView vacationStartMonth;
@@ -151,6 +157,10 @@ namespace VacationsTracker.Droid.Views
         
         public Android.Support.V4.View.ViewPager VacationTypePager =>
             vacationTypePager ?? (vacationTypePager = activity.FindViewById<Android.Support.V4.View.ViewPager>(Resource.Id.vacation_type_pager));
+
+        
+        public Android.Support.Design.Widget.TabLayout TabDots =>
+            tabDots ?? (tabDots = activity.FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.tab_dots));
 
         
         public RelativeLayout DateStart =>
@@ -247,6 +257,30 @@ namespace VacationsTracker.Droid.Views
         
         public TextView LastUpdatedTime =>
             lastUpdatedTime ?? (lastUpdatedTime = ItemView.FindViewById<TextView>(Resource.Id.lastUpdatedTime));
+    }
+
+
+    public partial class VacationTypeFragmentViewHolder
+    {
+         private readonly View rootView;
+
+         private ImageView imageVacationType;
+         private TextView textViewVacationName;
+
+        public VacationTypeFragmentViewHolder( View rootView)
+        {
+            if (rootView == null) throw new ArgumentNullException(nameof(rootView));
+
+            this.rootView = rootView;
+        }
+
+        
+        public ImageView ImageVacationType =>
+            imageVacationType ?? (imageVacationType = rootView.FindViewById<ImageView>(Resource.Id.image_vacation_type));
+
+        
+        public TextView TextViewVacationName =>
+            textViewVacationName ?? (textViewVacationName = rootView.FindViewById<TextView>(Resource.Id.text_view_vacation_name));
     }
 
 

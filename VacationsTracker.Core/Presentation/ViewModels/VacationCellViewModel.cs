@@ -12,7 +12,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels
         private DateTime _start;
         private DateTime _end;
 
-        public string VacationId { get; set; }
+        public string Id { get; set; }
 
         public VacationType Type
         {

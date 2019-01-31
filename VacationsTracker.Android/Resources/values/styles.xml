@@ -102,7 +102,7 @@
     <item name="android:layout_height">@dimen/ToolbarDefaultHeight</item>
     <item name="colorPrimary">@color/colorLightBlue</item>
     <item name="colorAccent">@color/colorAccent</item>
-    <item name="android:background">?attr/colorPrimary</item>
+    <item name="android:background">@color/colorLightBlue</item>
   </style>
 
   <style name="ToolbarTitleStyle">

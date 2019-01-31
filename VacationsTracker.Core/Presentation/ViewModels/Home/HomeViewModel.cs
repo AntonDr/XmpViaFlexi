@@ -1,12 +1,14 @@
-﻿using FlexiMvvm;
-using FlexiMvvm.Collections;
-using FlexiMvvm.Commands;
-using System;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using FlexiMvvm;
+using FlexiMvvm.Collections;
+using FlexiMvvm.Commands;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
-using VacationsTracker.Core.Presentation.ViewModels.VacationDetails;
+using VacationsTracker.Core.Presentation.ViewModels.Details;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Home
 {
@@ -36,23 +38,41 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         private void VacationSelected(VacationCellViewModel vacationCellViewModel)
         {
-            _navigationService.NavigateToVacationDetails(this, new VacationDetailsParameters { VacationId = vacationCellViewModel.VacationId });
+            var parameters = new VacationDetailsParameters(vacationCellViewModel.Id);
+            _navigationService.NavigateToVacationDetails(this, parameters);
+        }
+
+        public async Task Refresh()
+        {
+            await ReloadVacations();
         }
 
         protected override async Task InitializeAsync()
         {
             await base.InitializeAsync();
 
+            await LoadVacations();
+        }
+
+        private async Task ReloadVacations()
+        {
+            Vacations.Clear();
+
+            await LoadVacations();
+        }
+
+        private async Task LoadVacations()
+        {
             var vacations = await _vacationsRepository.GetVacationsAsync();
 
             var list = vacations.ToList();
-
             if (list.Count != 0)
             {
-                list.LastOrDefault().SeparatorVisible = false;
+                list[list.Count - 1].SeparatorVisible = false;
             }
 
             Vacations.AddRange(list);
         }
+
     }
 }

@@ -18,18 +18,16 @@ namespace VacationsTracker.Droid.Views
                 },
                 () => "SetImageResource");
         }
+        //public static TargetItemBinding<RadioButton, VacationType> SetStatusBinding(
+        //    this IItemReference<RadioButton> buttonReference)
+        //{
+        //    return new TargetItemTwoWayCustomBinding<RadioButton, VacationType>(
+        //        buttonReference,() => 
+                
+                
+        //        );
+        //}
 
-        public static TargetItemBinding<RadioButton, VacationStatus> SetVacationStatusBinding(
-            this  IItemReference<RadioButton> radioButtonReference)
-        {
-            return new TargetItemTwoWayCustomBinding<RadioButton, VacationStatus>(
-                radioButtonReference,
-                (radioButton, status) =>
-                {
-                    radioButton.Checked = true;
 
-                },
-                );
-        }
     }
 }

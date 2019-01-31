@@ -1,4 +1,7 @@
-﻿using Android.App;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Android.App;
 using Android.OS;
 using Android.Support.V7.Widget;
 using FlexiMvvm.Bindings;
@@ -29,6 +32,15 @@ namespace VacationsTracker.Droid.Views.Home
             };
             ViewHolder.RecyclerView.SetAdapter(VacationsAdapter);
             ViewHolder.RecyclerView.SetLayoutManager(new LinearLayoutManager(this, 1, false));
+
+            ViewHolder.Refresher.Refresh += OnRefresh;
+        }
+
+        protected override async void OnResume()
+        {
+            base.OnResume();
+
+            await ViewModel.Refresh();
         }
 
         public override void Bind(BindingSet<HomeViewModel> bindingSet)
@@ -38,6 +50,13 @@ namespace VacationsTracker.Droid.Views.Home
             bindingSet.Bind(VacationsAdapter)
                 .For(v => v.ItemClickedBinding())
                 .To(vm => vm.VacationSelectedCommand);
+        }
+
+        private async void OnRefresh(object sender, EventArgs args)
+        {
+            await Task.Delay(1000);
+            ViewHolder.Refresher.Refreshing = false;
+            ViewModel.RefreshedDateTime = DateTime.Now;
         }
     }
 }

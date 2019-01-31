@@ -3,9 +3,9 @@ using FlexiMvvm.Ioc;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels;
+using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
-using VacationsTracker.Core.Presentation.ViewModels.VacationDetails;
 
 namespace VacationsTracker.Core.Presentation
 {
@@ -21,16 +21,19 @@ namespace VacationsTracker.Core.Presentation
         protected override void SetupFactory(ViewModelFactory factory)
         {
             factory.Register(() => new EntryViewModel(_dependencyProvider.Get<INavigationService>()));
-
             factory.Register(() => new LoginViewModel(_dependencyProvider.Get<INavigationService>()));
-
             factory.Register(() => new HomeViewModel(
                 _dependencyProvider.Get<INavigationService>(),
                 _dependencyProvider.Get<IVacationsRepository>()));
 
-            factory.Register(() => new VacationDetailsViewModel(
-                _dependencyProvider.Get<INavigationService>(),
-                _dependencyProvider.Get<IVacationsRepository>()));
+            factory.Register(() =>
+            {
+                return new VacationDetailsViewModel(
+                    _dependencyProvider.Get<INavigationService>(),
+                    _dependencyProvider.Get<IVacationsRepository>());
+            });
+
+            factory.Register(() => new VacationTypePagerViewModel(_dependencyProvider.Get<INavigationService>()));
         }
     }
 }
