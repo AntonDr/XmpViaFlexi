@@ -1,14 +1,13 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Widget;
-using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
 using FlexiMvvm.Views.V7;
-using FlexiMvvm.Views.V4;
-using VacationsTracker.Core.Domain;
+using System;
+using Android.Views;
+using FlexiMvvm.Weak.Subscriptions;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Droid.Views.ValueConverters;
@@ -16,7 +15,7 @@ using VacationsTracker.Droid.Views.ValueConverters;
 namespace VacationsTracker.Droid.Views.Details
 {
     [Activity(Label = "VacationDetailsActivity")]
-    public class VacationDetailsActivity 
+    public class VacationDetailsActivity
         : FlxBindableAppCompatActivity<VacationDetailsViewModel, VacationDetailsParameters>
     {
         private VacationDetailsActivityViewHolder ViewHolder { get; set; }
@@ -40,10 +39,15 @@ namespace VacationsTracker.Droid.Views.Details
 
             var pager = ViewHolder.VacationTypePager;
 
-            
+
 
             var tabLayout = ViewHolder.TabDots;
             tabLayout.SetupWithViewPager(pager);
+
+
+            ViewHolder.DateStart.ClickWeakSubscribe(OnVacationStartDayClick);
+            ViewHolder.DateEnd.ClickWeakSubscribe(OnVacationEndDayClick);
+
         }
 
 
@@ -98,6 +102,7 @@ namespace VacationsTracker.Droid.Views.Details
                 .WithConvertion<VacationTypeToImageNumberValueConverter>();
         }
 
+       
         private Android.Support.V4.App.Fragment FragmentsFactory(object parameters)
         {
             if (parameters is VacationTypePagerParameters vacationTypePagerParameters)
@@ -115,6 +120,18 @@ namespace VacationsTracker.Droid.Views.Details
 
             throw new NotSupportedException(nameof(parameters));
 
+        }
+
+        private void OnVacationStartDayClick(object sender, EventArgs args)
+        {
+            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.Vacation.Start, selectedTime => ViewModel.Vacation.Start = selectedTime);
+            datePickerFragment.Show(FragmentManager, string.Empty);
+        }
+
+        private void OnVacationEndDayClick(object sender, EventArgs args)
+        {
+            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.Vacation.End, selectedTime => ViewModel.Vacation.End = selectedTime);
+            datePickerFragment.Show(FragmentManager, string.Empty);
         }
     }
 }
