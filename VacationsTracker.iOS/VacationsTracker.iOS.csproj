@@ -85,8 +85,8 @@
     <Reference Include="FlexiMvvm.Collections, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FlexiMvvm.Collections.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="FlexiMvvm.Common, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FlexiMvvm.Common.PreRelease.0.9.6-prerelease\lib\netstandard2.0\FlexiMvvm.Common.dll</HintPath>
+    <Reference Include="FlexiMvvm.Common, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FlexiMvvm.Common.PreRelease.0.9.7-prerelease\lib\netstandard2.0\FlexiMvvm.Common.dll</HintPath>
     </Reference>
     <Reference Include="FlexiMvvm.Essentials, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FlexiMvvm.Essentials.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Essentials.dll</HintPath>

@@ -34,6 +34,8 @@ namespace VacationsTracker.Droid.Views.Home
             ViewHolder.RecyclerView.SetLayoutManager(new LinearLayoutManager(this, 1, false));
 
             ViewHolder.Refresher.Refresh += OnRefresh;
+
+            ViewHolder.RecyclerView.AddOnScrollListener(new OnScrollListenerFab(ViewHolder.RecyclerView, ViewHolder.Fab));
         }
 
         protected override async void OnResume()
@@ -50,6 +52,10 @@ namespace VacationsTracker.Droid.Views.Home
             bindingSet.Bind(VacationsAdapter)
                 .For(v => v.ItemClickedBinding())
                 .To(vm => vm.VacationSelectedCommand);
+
+            bindingSet.Bind(ViewHolder.Fab)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.VacationCreatedCommand);
         }
 
         private async void OnRefresh(object sender, EventArgs args)
