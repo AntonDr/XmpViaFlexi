@@ -7,6 +7,7 @@
   <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="android:listDivider">@color/colorNavigationViewBackground</item>
     <item name="colorAccent">@color/colorAccent</item>
     <item name="android:windowTranslucentStatus">true</item>
   </style>
@@ -171,5 +172,8 @@
     <item name="android:buttonTint">@color/colorLightGreen</item>
     <item name="android:paddingLeft">@dimen/InsetHalf</item>
   </style>
+
+
+
 
 </resources>

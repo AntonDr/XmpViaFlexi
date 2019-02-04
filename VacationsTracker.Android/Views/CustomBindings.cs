@@ -1,4 +1,5 @@
-﻿using Android.Widget;
+﻿using Android.Support.Design.Widget;
+using Android.Widget;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Bindings.Custom;
 using VacationsTracker.Core.Domain;
@@ -18,15 +19,17 @@ namespace VacationsTracker.Droid.Views
                 },
                 () => "SetImageResource");
         }
-        //public static TargetItemBinding<RadioButton, VacationType> SetStatusBinding(
-        //    this IItemReference<RadioButton> buttonReference)
-        //{
-        //    return new TargetItemTwoWayCustomBinding<RadioButton, VacationType>(
-        //        buttonReference,() => 
-                
-                
-        //        );
-        //}
+        public static TargetItemBinding<NavigationView, int> NavigationItemSelectedBinding(
+            this IItemReference<NavigationView> imageViewReference)
+        {
+            return new TargetItemOneWayToSourceCustomBinding<NavigationView, int, NavigationView.NavigationItemSelectedEventArgs>(
+                imageViewReference,
+                (view, handler) => view.NavigationItemSelected += handler,
+                (view, handler) => view.NavigationItemSelected -= handler,
+                (view, trackCanExecute) => { },
+                (view, args) => args.MenuItem.ItemId,
+                () => "SetImageResource");
+        }
 
 
     }

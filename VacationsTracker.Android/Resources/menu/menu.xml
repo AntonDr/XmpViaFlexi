@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group
+    android:id="@+id/group_nav_main">
+    <item
+    android:id="@+id/nav_main"
+    android:title="All">
+    </item>
+  </group>
+  
+  <group
+    android:id="@+id/group_nav_open">
+    <item
+      android:id="@+id/nav_open"
+      android:title="Open">
+    </item>
+  </group>
+  
+  <group
+    android:id="@+id/group_nav_close">
+    <item
+      android:id="@+id/nav_close"
+      android:title="Close">
+    </item>
+  </group>
+  
+</menu>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using FlexiMvvm;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
 using VacationsTracker.Core.DataAccess;
+using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using ICommand = FlexiMvvm.Commands.ICommand;
@@ -38,6 +40,34 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
         public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(VacationSelected);
 
         public ICommand VacationCreatedCommand => CommandProvider.Get(CreateVacation);
+
+        public ICommand<NavigationItems> FilterNavigationCommand => CommandProvider.Get<NavigationItems>(FilterNavigation);
+
+        private async void FilterNavigation(NavigationItems item)
+        {
+            var vacation = await _vacationsRepository.GetVacationsAsync();
+
+            switch (item)
+            {
+                case NavigationItems.All:
+                    break;
+                case NavigationItems.Approved:
+                    vacation = vacation.Where(x => x.Status == VacationStatus.Approved);
+                    break;
+                case NavigationItems.Closed:
+                    vacation = vacation.Where(x => x.Status == VacationStatus.Closed);
+                    break;
+            }
+
+
+            Vacations.Clear();
+
+            var list = SeparatorVisibility(vacation);
+
+            Vacations.AddRange(list);
+            
+        }
+
 
         private void CreateVacation()
         {
@@ -73,24 +103,23 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
         {
             var vacations = await _vacationsRepository.GetVacationsAsync();
 
-            var list = vacations.ToList();
-
-            for (var i = list.Count - 2; i >= 0; i--)
-            {
-                if (list[i].SeparatorVisible)
-                {
-                    break;
-                }
-
-                list[i].SeparatorVisible = true;
-            }
-
-            if (list.Count != 0)
-            {
-                list.Last().SeparatorVisible = false;
-            }
+            var list = SeparatorVisibility(vacations);
 
             Vacations.AddRange(list);
+        }
+
+        public IEnumerable<VacationCellViewModel> SeparatorVisibility(
+            IEnumerable<VacationCellViewModel> vacationCellViewModels)
+        {
+            var list = vacationCellViewModels.Select(x =>
+            {
+                x.SeparatorVisible = true;
+                return x;
+            }).ToList();
+
+            list.Last().SeparatorVisible = false;
+
+            return list;
         }
 
     }

@@ -76,6 +76,7 @@
     <Compile Include="Views\Home\VacationCellViewHolder.cs" />
     <Compile Include="Views\Login\LoginActivity.cs" />
     <Compile Include="Views\SplashScreenActivity.cs" />
+    <Compile Include="Views\ValueConverters\NavigationMenuItemValueConverter.cs" />
     <Compile Include="Views\ValueConverters\ImageValueConverter.cs" />
     <Compile Include="Views\ValueConverters\SeparatorVisibilityValueConverter.cs" />
     <Compile Include="Views\ValueConverters\VacationStatusToApprovedRadioValueConverter.cs" />
@@ -197,6 +198,11 @@
     <AndroidResource Include="Resources\layout\activity_vacation_details.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\menu\menu.xml" />
+    <AndroidResource Include="Resources\layout\navigation_header.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\Avatar_Ark.png" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>
