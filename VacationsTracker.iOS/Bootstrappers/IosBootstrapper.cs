@@ -1,4 +1,7 @@
-﻿using VacationsTracker.Core.Navigation;
+﻿using FlexiMvvm.Bootstrappers;
+using FlexiMvvm.Ioc;
+using VacationsTracker.Core.Bootstrappers;
+using VacationsTracker.Core.Navigation;
 using VacationsTracker.iOS.Navigation;
 
 namespace VacationsTracker.iOS.Bootstrappers

@@ -1,4 +1,6 @@
-﻿using Foundation;
+﻿using FlexiMvvm.Bootstrappers;
+using FlexiMvvm.Ioc;
+using Foundation;
 using UIKit;
 using VacationsTracker.Core.Bootstrappers;
 using VacationsTracker.iOS.Bootstrappers;

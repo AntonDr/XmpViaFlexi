@@ -1,8 +1,11 @@
-﻿using VacationsTracker.Core.Presentation.ViewModels.Login;
+﻿using FlexiMvvm;
+using FlexiMvvm.Bindings;
+using FlexiMvvm.Views;
+using VacationsTracker.Core.Presentation.ViewModels.Login;
 
 namespace VacationsTracker.iOS.Views.Login
 {
-    public class LoginViewController : FlxViewController<LoginViewModel>
+    public class LoginViewController : FlxBindableViewController<LoginViewModel>
     {
         public new LoginView View
         {
@@ -13,6 +16,16 @@ namespace VacationsTracker.iOS.Views.Login
         public override void LoadView()
         {
             View = new LoginView();
+        }
+
+
+        public override void Bind(BindingSet<LoginViewModel> bindingSet)
+        {
+            base.Bind(bindingSet);
+
+            bindingSet.Bind(View.LoginButton)
+                .For(v => v.TouchUpInsideBinding())
+                .To(vm => vm.LoginCommand);
         }
     }
 }
