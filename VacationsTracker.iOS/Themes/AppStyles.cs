@@ -7,10 +7,6 @@ namespace VacationsTracker.iOS.Themes
 {
     public static class AppStyles
     {
-        private static readonly UIColor LightBlueColor = GetColorFromHex(0x41C0DA);
-
-        private static readonly UIColor ErrorTextColor = GetColorFromHex(0x800000);
-
         public static UIButton SetPrimaryButtonStyle(this UIButton button, string text = null)
         {
             if (text != null)
@@ -18,21 +14,28 @@ namespace VacationsTracker.iOS.Themes
                 button.SetTitle(text, UIControlState.Normal);
             }
 
-            button.BackgroundColor = LightBlueColor;
+            button.BackgroundColor = AppColors.LightBlueColor;
 
             return button;
         }
 
         public static UILabel SetErrorLabelStyle(this UILabel label, string text)
         {
-            label.BackgroundColor = UIColor.White;
+            label.BackgroundColor = AppColors.White;
             label.Text = text;
-            label.TextColor = ErrorTextColor;
+            label.TextColor = AppColors.ErrorTextColor;
             label.TextAlignment = UITextAlignment.Center;
 
             label.WrapText();
 
             label.SetCornerRadiusTo(5);
+
+            return label;
+        }
+
+        public static UILabel SetLabelViewStyle(this UILabel label)
+        {
+            label.TextColor = AppColors.TextColor;
 
             return label;
         }
@@ -48,6 +51,13 @@ namespace VacationsTracker.iOS.Themes
             SetLeftPadding(textField, 5);
 
             return textField;
+        }
+
+        public static UIView SetSeparatorStyle(this UIView separator)
+        {
+            separator.BackgroundColor = UIColor.LightGray;
+
+            return separator;
         }
 
         public static UIImageView SetDefaultBackgroundImage(this UIImageView imageView)
@@ -75,13 +85,6 @@ namespace VacationsTracker.iOS.Themes
             label.Layer.CornerRadius = cornerRadius;
         }
 
-        private static UIColor GetColorFromHex(int hexValue)
-        {
-            return UIColor.FromRGB(
-                ((hexValue & 0xFF0000) >> 16) / 255.0f,
-                ((hexValue & 0xFF00) >> 8) / 255.0f,
-                (hexValue & 0xFF) / 255.0f
-            );
-        }
+        
     }
 }

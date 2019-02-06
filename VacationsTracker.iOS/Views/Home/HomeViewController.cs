@@ -2,6 +2,7 @@
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
+using UIKit;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.iOS.Views.Home.VacationsTable;
 
@@ -33,7 +34,9 @@ namespace VacationsTracker.iOS.Views.Home
                 Items = ViewModel.Vacations
             };
 
+            View.VacationsTableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
             View.VacationsTableView.Source = VacationsSource;
+
         }
 
         public override void Bind(BindingSet<HomeViewModel> bindingSet)
@@ -43,6 +46,7 @@ namespace VacationsTracker.iOS.Views.Home
             bindingSet.Bind(VacationsSource)
                 .For(v => v.RowSelectedBinding())
                 .To(vm => vm.VacationSelectedCommand);
+
         }
     }
 }

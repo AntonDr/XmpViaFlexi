@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Globalization;
 using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
+using FlexiMvvm.ValueConverters;
+using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
+using VacationsTracker.iOS.Views.ValueConverters;
 
 namespace VacationsTracker.iOS.Views.Home.VacationsTable
 {
@@ -28,12 +32,37 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
             ContentView.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
             ContentView.AddConstraints(View.FullSizeOf(ContentView));
         }
+       
 
         public override void Bind(BindingSet<VacationCellViewModel> bindingSet)
         {
             base.Bind(bindingSet);
 
-            //TODO define bindings
+            bindingSet.Bind(View.StatusView)
+                .For(v => v.Text)
+                .To(vm => vm.Status)
+                .WithConvertion<VacationStatusValueConverter>();
+
+            bindingSet.Bind(View.DurationVacationTextView)
+                .For(v => v.Text)
+                .To(vm => vm.Duration)
+                .WithConvertion<DurationValueConverter>();
+
+            bindingSet.Bind(View.TypeView)
+                .For(v => v.Text)
+                .To(vm => vm.Type)
+                .WithConvertion<VacationTypeValueConverter>();
+
+            bindingSet.Bind(View.ImageView)
+                .For(v => v.Image)
+                .To(vm => vm.Type)
+                .WithConvertion<ImageValueConverter>();
+
+            bindingSet.Bind(View.Separator)
+                .For(v => v.Hidden)
+                .To(vm => vm.SeparatorVisible)
+                .WithConvertion<VisibilityValueConverter>();
         }
     }
+
 }

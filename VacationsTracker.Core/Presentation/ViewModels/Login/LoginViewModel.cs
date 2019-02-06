@@ -9,6 +9,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
     {
         private readonly INavigationService _navigationService;
 
+        public bool ValidCredentials { get; set; } = true;
+
         public LoginViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;

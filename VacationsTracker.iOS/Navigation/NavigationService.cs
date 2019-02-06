@@ -3,10 +3,10 @@ using FlexiMvvm.Navigation;
 using UIKit;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels;
+using VacationsTracker.Core.Presentation.ViewModels.Create;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
-using VacationsTracker.Core.Presentation.ViewModels.New;
 using VacationsTracker.iOS.Views;
 using VacationsTracker.iOS.Views.Home;
 using VacationsTracker.iOS.Views.Login;
@@ -25,13 +25,15 @@ namespace VacationsTracker.iOS.Navigation
         {
             var loginViewController = GetViewController<LoginViewModel, LoginViewController>(fromViewModel);
             loginViewController.NotNull().NavigationController.SetViewControllers(
-                new UIViewController[] {new HomeViewController()},
+                new UIViewController[] { new HomeViewController() },
                 true);
         }
 
         public void NavigateToVacationDetails(HomeViewModel fromViewModel, VacationDetailsParameters parameters)
         {
-            throw new System.NotImplementedException();
+            //var homeViewController = GetViewController<HomeViewModel, HomeViewController>(fromViewModel);
+            //homeViewController.NotNull().NavigationController..SetViewControllers(
+            //    new UIViewController[]{ new VacationDetailsViewController()} );
         }
 
         public void NavigateBackToHome(VacationDetailsViewModel fromViewModel)
@@ -39,14 +41,15 @@ namespace VacationsTracker.iOS.Navigation
             throw new System.NotImplementedException();
         }
 
-        public void NavigateToNewVacation(HomeViewModel fromViewModel)
+        public void NavigateToCreateVacation(HomeViewModel fromViewModel)
         {
             throw new System.NotImplementedException();
         }
 
-        public void NavigateBackToHome(NewVacationViewModel fromViewModel)
+        public void NavigateCreateBackToHome(VacationCreateViewModel fromViewModel)
         {
             throw new System.NotImplementedException();
         }
+
     }
 }

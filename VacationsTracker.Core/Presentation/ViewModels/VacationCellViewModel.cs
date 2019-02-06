@@ -11,6 +11,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels
         private VacationStatus _status;
         private DateTime _start;
         private DateTime _end;
+        private bool _separator = true;
 
         public string Id { get; set; }
 
@@ -24,6 +25,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels
         {
             get => _status;
             set => Set(ref _status, value);
+        }
+
+        public bool SeparatorVisible
+        {
+            get => _separator;
+            set => Set(ref _separator, value);
         }
 
         public (DateTime, DateTime) Duration => (_start, _end);
@@ -40,6 +47,6 @@ namespace VacationsTracker.Core.Presentation.ViewModels
             set => Set(ref _end, value);
         }
 
-        public bool SeparatorVisible { get; set; } = true;
+        //public bool SeparatorVisible { get; set; } = true;
     }
 }
