@@ -66,10 +66,10 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Themes\AppDimens.cs" />
     <Compile Include="Themes\AppStyles.cs" />
-    <Compile Include="Themes\UIColorExtensions.cs" />
     <Compile Include="Views\Home\HomeView.cs" />
     <Compile Include="Views\Home\HomeViewController.cs" />
-    <Compile Include="Views\Login\LoginNavigationController.cs" />
+    <Compile Include="Views\Home\VacationsTable\VacationItemView.cs" />
+    <Compile Include="Views\Home\VacationsTable\VacationItemViewCell.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
     <Compile Include="Views\Login\LoginViewController.cs" />
     <Compile Include="Views\RootNavigationController.cs" />
@@ -154,19 +154,16 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\BgImage.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\BgImage.imageset\Login_bg.jpg">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Color.colorset\Contents.json">
+    <ImageAsset Include="Assets.xcassets\LoginBackground.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.imageset\splash.jpg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LoginBackground.imageset\Login_bg.jpg">
       <Visible>false</Visible>
     </ImageAsset>
   </ItemGroup>

@@ -1,11 +1,12 @@
 ﻿using FlexiMvvm;
 using FlexiMvvm.Navigation;
+using UIKit;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels;
-using VacationsTracker.Core.Presentation.ViewModels.Create;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
+using VacationsTracker.Core.Presentation.ViewModels.New;
 using VacationsTracker.iOS.Views;
 using VacationsTracker.iOS.Views.Home;
 using VacationsTracker.iOS.Views.Login;
@@ -22,8 +23,10 @@ namespace VacationsTracker.iOS.Navigation
 
         public void NavigateToHome(LoginViewModel fromViewModel)
         {
-            var loginViewController = GetViewController<LoginViewModel, LoginNavigationController>(fromViewModel);
-            loginViewController.NotNull().PushViewController(new HomeViewController(),true);
+            var loginViewController = GetViewController<LoginViewModel, LoginViewController>(fromViewModel);
+            loginViewController.NotNull().NavigationController.SetViewControllers(
+                new UIViewController[] {new HomeViewController()},
+                true);
         }
 
         public void NavigateToVacationDetails(HomeViewModel fromViewModel, VacationDetailsParameters parameters)
@@ -36,12 +39,12 @@ namespace VacationsTracker.iOS.Navigation
             throw new System.NotImplementedException();
         }
 
-        public void NavigateToCreateVacation(HomeViewModel fromViewModel)
+        public void NavigateToNewVacation(HomeViewModel fromViewModel)
         {
             throw new System.NotImplementedException();
         }
 
-        public void NavigateCreateBackToHome(VacationCreateViewModel fromViewModel)
+        public void NavigateBackToHome(NewVacationViewModel fromViewModel)
         {
             throw new System.NotImplementedException();
         }
