@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using Cirrious.FluentLayouts.Touch;
+using CoreGraphics;
 using FlexiMvvm.Views;
 using UIKit;
 using VacationsTracker.iOS.Themes;
@@ -10,8 +11,6 @@ namespace VacationsTracker.iOS.Views.Home
     internal class HomeView : LayoutView
     {
         public UITableView VacationsTableView { get; private set; }
-
-        public UIView Separator { get; private set; }
 
         protected override void SetupSubviews()
         {
@@ -25,15 +24,12 @@ namespace VacationsTracker.iOS.Views.Home
                 typeof(VacationItemViewCell),
                 VacationItemViewCell.CellId);
 
+            VacationsTableView.RegisterClassForHeaderFooterViewReuse(
+                typeof(VacationTableFooterViewCell),
+                VacationTableFooterViewCell.CellId);
+
             VacationsTableView.AllowsSelection = true;
 
-            Separator = new UIView().SetSeparatorStyle();
-
-            Separator.Hidden = false;
-
-            //var footerView = new UIView(new RectangleF(0, 0, 375, 66));
-
-            VacationsTableView.TableFooterView = Separator;
         }
 
        
@@ -41,8 +37,7 @@ namespace VacationsTracker.iOS.Views.Home
         {
             base.SetupLayout();
 
-            this.AddLayoutSubview(VacationsTableView)
-                .AddLayoutSubview(Separator);
+            this.AddLayoutSubview(VacationsTableView);
         }
 
         protected override void SetupLayoutConstraints()
@@ -53,14 +48,18 @@ namespace VacationsTracker.iOS.Views.Home
 
             this.AddConstraints(VacationsTableView.FullSizeOf(this));
 
-            this.AddConstraints(Separator.Height().EqualTo(1));
+            //this.AddConstraints(VacationsTableView.TableFooterView.Below(VacationsTableView),
+            //    VacationsTableView.TableFooterView.Height().EqualTo(2));
+
+                    
+
+            //this.AddConstraints(Separator.Height().EqualTo(1));
 
             //this.AddConstraints(
             //    Separator.Below(VacationsTableView),
             //    Separator.Height().EqualTo(1),
-            //    S
-
-            //    );
+            //    Separator.AtLeftOf(this),
+            //    Separator.AtRightOf(this));
         }
     }
 }

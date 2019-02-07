@@ -29,5 +29,6 @@ namespace VacationsTracker.iOS.Themes
         public static int DefaultTextFieldHeight => 48;
 
         public static int DefaultButtonHeight => 48;
+        public static int DefaultSeparatorHeight => 1;
     }
 }

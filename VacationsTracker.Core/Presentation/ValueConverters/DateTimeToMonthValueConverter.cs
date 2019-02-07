@@ -8,7 +8,7 @@ namespace VacationsTracker.Core.Presentation.ValueConverters
     {
         protected override ConversionResult<string> Convert(DateTime value, Type targetType, object parameter, CultureInfo culture)
         {
-            var month = value.ToString("MMM", CultureInfo.CurrentCulture);
+            var month = value.ToString("MMM", CultureInfo.CurrentCulture).ToUpper();
             return ConversionResult<string>.SetValue(month);
         }
     }

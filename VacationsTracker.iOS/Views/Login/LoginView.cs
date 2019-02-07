@@ -68,6 +68,7 @@ namespace VacationsTracker.iOS.Views.Login
                 LoginTextField.Height().EqualTo(AppDimens.DefaultTextFieldHeight),
                 LoginTextField.Above(PasswordTextField, AppDimens.Inset2X));
 
+
             this.AddConstraints(
                 PasswordTextField.WithSameLeft(LoginTextField),
                 PasswordTextField.WithSameCenterY(this),

@@ -67,6 +67,27 @@ namespace VacationsTracker.iOS.Themes
             return imageView;
         }
 
+        public static UILabel SetDateStyle(this UILabel label,UIColor color = null,UIFont font = null)
+        {
+            if (color == null)
+            {
+                color = AppColors.LightBlueColor;
+            }
+
+            if (font == null)
+            {
+                font = UIFont.PreferredTitle1;
+            }
+
+            label.TextColor =color;
+            label.Font = font;
+
+            return label;
+        }
+
+
+
+
         private static void SetLeftPadding(UITextField textField, int paddingWidth)
         {
             var paddingView = new UIView(new CGRect(0, 0, paddingWidth, AppDimens.DefaultTextFieldHeight));

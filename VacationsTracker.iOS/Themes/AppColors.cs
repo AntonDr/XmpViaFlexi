@@ -15,6 +15,9 @@ namespace VacationsTracker.iOS.Themes
         public static UIColor ErrorTextColor => GetColorFromHex(0x800000);
 
         public static UIColor White => UIColor.White;
+        public static UIColor LightGreenColor => GetColorFromHex(0xA0CC4B);
+
+
 
         public static UIColor TextColor => UIColor.DarkGray;
 

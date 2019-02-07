@@ -29,7 +29,9 @@ namespace VacationsTracker.iOS.Views.Home
 
             VacationsSource = new UITableViewObservablePlainSource(
                 View.VacationsTableView,
-                _ => VacationItemViewCell.CellId)
+                _ => VacationItemViewCell.CellId,
+                null,
+                () => VacationTableFooterViewCell.CellId)
             {
                 Items = ViewModel.Vacations
             };

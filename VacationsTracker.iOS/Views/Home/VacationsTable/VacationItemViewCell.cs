@@ -61,7 +61,8 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
             bindingSet.Bind(View.Separator)
                 .For(v => v.Hidden)
                 .To(vm => vm.SeparatorVisible)
-                .WithConvertion<VisibilityValueConverter>();
+                .WithConvertion<InvertValueConverter>();
+
         }
     }
 

@@ -67,8 +67,12 @@
     <Compile Include="Themes\AppColors.cs" />
     <Compile Include="Themes\AppDimens.cs" />
     <Compile Include="Themes\AppStyles.cs" />
+    <Compile Include="Views\Details\VacationDetailsView.cs" />
+    <Compile Include="Views\Details\VacationDetailsViewController.cs" />
     <Compile Include="Views\Home\HomeView.cs" />
     <Compile Include="Views\Home\HomeViewController.cs" />
+    <Compile Include="Views\Home\VacationsTable\VacationTableFooterView.cs" />
+    <Compile Include="Views\Home\VacationsTable\VacationTableFooterViewCell.cs" />
     <Compile Include="Views\Home\VacationsTable\VacationItemView.cs" />
     <Compile Include="Views\Home\VacationsTable\VacationItemViewCell.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
@@ -76,7 +80,8 @@
     <Compile Include="Views\RootNavigationController.cs" />
     <BundleResource Include="splash.jpg" />
     <Compile Include="Views\ValueConverters\ImageValueConverter.cs" />
-    <Compile Include="Views\ValueConverters\VisibilityValueConverter.cs" />
+    <Compile Include="Views\ValueConverters\StatusToSegmentValueConverter.cs" />
+    <Compile Include="Views\ValueConverters\SwitchButtonValueConverter.cs" />
     <None Include="Info.plist" />
     <Compile Include="Navigation\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
