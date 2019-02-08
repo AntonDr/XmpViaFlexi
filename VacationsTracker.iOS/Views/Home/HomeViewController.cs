@@ -30,14 +30,17 @@ namespace VacationsTracker.iOS.Views.Home
             VacationsSource = new UITableViewObservablePlainSource(
                 View.VacationsTableView,
                 _ => VacationItemViewCell.CellId,
-                null,
+                () => VacationTableHeaderViewCell.CellId,
                 () => VacationTableFooterViewCell.CellId)
             {
-                Items = ViewModel.Vacations
+                Items = ViewModel.Vacations,
+                ItemsContext = ViewModel
             };
 
             View.VacationsTableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
             View.VacationsTableView.Source = VacationsSource;
+
+            NavigationItem.Title = "All Request";
 
         }
 
@@ -49,6 +52,17 @@ namespace VacationsTracker.iOS.Views.Home
                 .For(v => v.RowSelectedBinding())
                 .To(vm => vm.VacationSelectedCommand);
 
+            bindingSet.Bind(View.VacationsTableView.RefreshControl)
+                .For(v => v.BeginRefreshingBinding())
+                .To(vm => vm.IsRefreshing);
+
+            bindingSet.Bind(View.VacationsTableView.RefreshControl)
+                .For(v => v.EndRefreshingBinding())
+                .To(vm => vm.IsRefreshing);
+
+            bindingSet.Bind(View.VacationsTableView.RefreshControl)
+                .For(v => v.ValueChangedBinding())
+                .To(vm => vm.RefreshCommand);
         }
     }
 }

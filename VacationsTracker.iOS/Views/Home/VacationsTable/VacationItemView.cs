@@ -22,18 +22,18 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
 
             ImageView = new UIImageView();
 
-            DurationVacationTextView = new UILabel().SetLabelViewStyle();
+            DurationVacationTextView = new UILabel().SetLabelStyle();
 
             DurationVacationTextView.TextColor = AppColors.LightBlueColor;
             DurationVacationTextView.Font = UIFont.SystemFontOfSize(AppDimens.Inset3X);
 
-            TypeView = new UILabel().SetLabelViewStyle();
+            TypeView = new UILabel().SetLabelStyle();
 
             TypeView.Font = UIFont.SystemFontOfSize(AppDimens.Inset2X);
 
             Separator = new UIView().SetSeparatorStyle();
 
-            StatusView = new UILabel().SetLabelViewStyle();
+            StatusView = new UILabel().SetLabelStyle();
 
             //BackgroundColor = AppColors.White;
         }

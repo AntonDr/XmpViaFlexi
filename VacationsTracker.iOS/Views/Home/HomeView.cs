@@ -28,6 +28,12 @@ namespace VacationsTracker.iOS.Views.Home
                 typeof(VacationTableFooterViewCell),
                 VacationTableFooterViewCell.CellId);
 
+            VacationsTableView.RegisterClassForHeaderFooterViewReuse(
+                typeof(VacationTableHeaderViewCell),
+                VacationTableHeaderViewCell.CellId);
+
+            VacationsTableView.RefreshControl = new UIRefreshControl();
+
             VacationsTableView.AllowsSelection = true;
 
         }

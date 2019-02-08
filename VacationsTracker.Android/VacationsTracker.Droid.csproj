@@ -82,7 +82,6 @@
     <Compile Include="Views\ValueConverters\VacationStatusToApprovedRadioValueConverter.cs" />
     <Compile Include="Views\ValueConverters\VacationStatusToClosedRadioValueConverter.cs" />
     <Compile Include="Views\ValueConverters\RadioGroupValueConverter.cs" />
-    <Compile Include="Views\ValueConverters\VacationTypeToImageNumberValueConverter.cs" />
     <Compile Include="Views\ViewHolderGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -11,6 +11,8 @@ using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
+using VacationsTracker.iOS.Themes;
+using VacationsTracker.iOS.Views.Details.VacationsPager;
 using VacationsTracker.iOS.Views.Home;
 using VacationsTracker.iOS.Views.Home.VacationsTable;
 using VacationsTracker.iOS.Views.ValueConverters;
@@ -23,6 +25,12 @@ namespace VacationsTracker.iOS.Views.Details
         {
         }
 
+        private UIPageViewController VacationsPageViewController { get; set; }
+
+        private UIPageViewControllerObservableDataSource VacationsDataSource { get; set; }
+
+        private UIBarButtonItem DoneBarButton { get; } = BarButtonFactory.GetDoneButton();
+
         //private VacationDetailsView VacationsDetailsView { get; set; }
 
         public new VacationDetailsView View
@@ -34,18 +42,49 @@ namespace VacationsTracker.iOS.Views.Details
         public override void LoadView()
         {
             View = new VacationDetailsView();
+
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-                
+            NavigationItem.Title = "Request";
+
+            VacationsPageViewController = new UIPageViewController(
+                UIPageViewControllerTransitionStyle.Scroll,
+                UIPageViewControllerNavigationOrientation.Horizontal);
+
+            VacationsDataSource = new UIPageViewControllerObservableDataSource(
+                VacationsPageViewController,
+                PagerFactory)
+            {
+                Items = ViewModel.VacationTypes
+            };
+
+            this.AddChildViewControllerAndView(VacationsPageViewController, View.VacationsPager);
+
+            VacationsPageViewController.DataSource = VacationsDataSource;
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            NavigationItem.RightBarButtonItem = DoneBarButton;
+            
+
         }
 
         public override void Bind(BindingSet<VacationDetailsViewModel> bindingSet)
         {
             base.Bind(bindingSet);
+
+            bindingSet.Bind(VacationsDataSource)
+                .For(v => v.Items)
+                .To(vm => vm.VacationTypes);
+            //.WithConvertion<VacationTypeToImageNumberValueConverter>();
+
 
             bindingSet.Bind(View.VacationStartDay)
                 .For(v => v.Text)
@@ -83,10 +122,29 @@ namespace VacationsTracker.iOS.Views.Details
             //    .WithConvertion<SwitchButtonValueConverter>();
 
             bindingSet.Bind(View.VacationStatusControl)
-                .For(v => v.SelectedSegment)
+                .For(v => v.SelectedSegmentAndValueChangedBinding())
                 .To(vm => vm.Vacation.Status)
                 .WithConvertion<StatusToSegmentValueConverter>();
 
+            bindingSet.Bind(DoneBarButton)
+                .For(v => v.NotNull().ClickedBinding())
+                .To(vm => vm.SaveCommand);
+
+            bindingSet.Bind(VacationsDataSource)
+                .For(v => v.CurrentItemIndexAndCurrentItemIndexChangedBinding())
+                .To(vm => vm.Vacation.Type)
+                .WithConvertion<VacationTypeToImageNumberValueConverter>();
+        }
+
+
+        private UIViewController PagerFactory(object parameters)
+        {
+            if (parameters is VacationTypePagerParameters pagerParameters)
+            {
+                return new VacationTypePagerViewController(pagerParameters);
+            }
+
+            throw new ArgumentException(nameof(parameters));
         }
     }
 }

@@ -5,6 +5,7 @@ using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.ValueConverters;
+using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
@@ -31,8 +32,10 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
             ContentView.NotNull().AddSubview(View);
             ContentView.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
             ContentView.AddConstraints(View.FullSizeOf(ContentView));
+
+            this.SelectionStyle = UITableViewCellSelectionStyle.None;
         }
-       
+
 
         public override void Bind(BindingSet<VacationCellViewModel> bindingSet)
         {

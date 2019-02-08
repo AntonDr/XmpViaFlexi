@@ -28,5 +28,22 @@ namespace VacationsTracker.iOS.Views.ValueConverters
 
             return ConversionResult<nint>.SetValue(result);
         }
+
+        protected override ConversionResult<VacationStatus> ConvertBack(nint value, Type targetType, object parameter, CultureInfo culture)
+        {
+            VacationStatus status = VacationStatus.Approved;
+
+            switch (value)
+            {
+                case 0:
+                    status = VacationStatus.Approved;
+                    break;
+                case 1:
+                    status = VacationStatus.Closed;
+                    break;
+            }
+
+            return ConversionResult<VacationStatus>.SetValue(status);
+        }
     }
 }

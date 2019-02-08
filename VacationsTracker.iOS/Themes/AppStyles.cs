@@ -33,7 +33,7 @@ namespace VacationsTracker.iOS.Themes
             return label;
         }
 
-        public static UILabel SetLabelViewStyle(this UILabel label)
+        public static UILabel SetLabelStyle(this UILabel label)
         {
             label.TextColor = AppColors.TextColor;
 
