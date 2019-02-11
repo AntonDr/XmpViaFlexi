@@ -46,12 +46,17 @@ namespace VacationsTracker.iOS.Navigation
 
         public void NavigateToCreateVacation(HomeViewModel fromViewModel)
         {
-            throw new System.NotImplementedException();
+            var homeViewController = GetViewController<HomeViewModel, HomeViewController>(fromViewModel);
+
+            homeViewController.NotNull().NavigationController.PushViewController(new NewVacationViewController(), true);
         }
 
         public void NavigateCreateBackToHome(VacationCreateViewModel fromViewModel)
         {
-            throw new System.NotImplementedException();
+            var newVacationViewController =
+                GetViewController<VacationCreateViewModel, NewVacationViewController>(fromViewModel);
+
+            newVacationViewController.NotNull().NavigationController.PopViewController(true);
         }
 
     }

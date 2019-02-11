@@ -1,4 +1,5 @@
-﻿using FlexiMvvm;
+﻿using System.Threading.Tasks;
+using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
@@ -11,6 +12,8 @@ namespace VacationsTracker.iOS.Views.Home
     internal class HomeViewController : FlxBindableViewController<HomeViewModel>
     {
         private UITableViewObservablePlainSource VacationsSource { get; set; }
+
+        private UIBarButtonItem NewButton { get; } = BarButtonFactory.GetCreateButton();
 
         public new HomeView View
         {
@@ -42,6 +45,16 @@ namespace VacationsTracker.iOS.Views.Home
 
             NavigationItem.Title = "All Request";
 
+            View.VacationsTableView.ReloadData();
+
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            NavigationItem.RightBarButtonItem = NewButton;
+
         }
 
         public override void Bind(BindingSet<HomeViewModel> bindingSet)
@@ -63,6 +76,10 @@ namespace VacationsTracker.iOS.Views.Home
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.ValueChangedBinding())
                 .To(vm => vm.RefreshCommand);
+
+            bindingSet.Bind(NewButton)
+                .For(v => v.NotNull().ClickedBinding())
+                .To(vm => vm.VacationCreatedCommand);
         }
     }
 }

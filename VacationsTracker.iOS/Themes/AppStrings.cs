@@ -13,6 +13,6 @@ namespace VacationsTracker.iOS.Themes
         public static string Apply => "Save";
         public static string Select => "Select";
         public static string Cancel => "All Requests";
-
+        public static string Create => "New+";
     }
 }

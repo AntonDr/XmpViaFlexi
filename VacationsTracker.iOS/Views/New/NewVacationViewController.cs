@@ -9,6 +9,7 @@ using FlexiMvvm.Views;
 using Foundation;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
+using VacationsTracker.Core.Presentation.ViewModels.Create;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 using VacationsTracker.iOS.Extension;
@@ -16,16 +17,13 @@ using VacationsTracker.iOS.Themes;
 using VacationsTracker.iOS.Views.Details.VacationsPager;
 using VacationsTracker.iOS.Views.Home;
 using VacationsTracker.iOS.Views.Home.VacationsTable;
+using VacationsTracker.iOS.Views.New;
 using VacationsTracker.iOS.Views.ValueConverters;
 
 namespace VacationsTracker.iOS.Views.Details
 {
-    public class VacationDetailsViewController : FlxBindableViewController<VacationDetailsViewModel, VacationDetailsParameters>
+    public class NewVacationViewController : FlxBindableViewController<VacationCreateViewModel>
     {
-        public VacationDetailsViewController(VacationDetailsParameters parameters) : base(parameters)
-        {
-        }
-
         private UIPageViewController VacationsPageViewController { get; set; }
 
         private UIPageViewControllerObservableDataSource VacationsDataSource { get; set; }
@@ -34,15 +32,15 @@ namespace VacationsTracker.iOS.Views.Details
 
         //private VacationDetailsView VacationsDetailsView { get; set; }
 
-        public new VacationDetailsView View
+        public new NewVacationView View
         {
-            get => (VacationDetailsView)base.View.NotNull();
+            get => (NewVacationView) base.View.NotNull();
             set => base.View = value;
         }
 
         public override void LoadView()
         {
-            View = new VacationDetailsView();
+            View = new NewVacationView();
 
         }
 
@@ -50,7 +48,7 @@ namespace VacationsTracker.iOS.Views.Details
         {
             base.ViewDidLoad();
 
-            NavigationItem.Title = "Request";
+            NavigationItem.Title = "Create";
 
             VacationsPageViewController = new UIPageViewController(
                 UIPageViewControllerTransitionStyle.Scroll,
@@ -80,7 +78,7 @@ namespace VacationsTracker.iOS.Views.Details
 
         }
 
-       
+
 
         public override void ViewWillAppear(bool animated)
         {
@@ -89,7 +87,7 @@ namespace VacationsTracker.iOS.Views.Details
             NavigationItem.RightBarButtonItem = DoneBarButton;
         }
 
-        public override void Bind(BindingSet<VacationDetailsViewModel> bindingSet)
+        public override void Bind(BindingSet<VacationCreateViewModel> bindingSet)
         {
             base.Bind(bindingSet);
 
@@ -134,7 +132,7 @@ namespace VacationsTracker.iOS.Views.Details
 
             bindingSet.Bind(DoneBarButton)
                 .For(v => v.NotNull().ClickedBinding())
-                .To(vm => vm.SaveCommand);
+                .To(vm => vm.CreateCommand);
 
             bindingSet.Bind(VacationsDataSource)
                 .For(v => v.CurrentItemIndexAndCurrentItemIndexChangedBinding())

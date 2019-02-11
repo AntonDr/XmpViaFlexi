@@ -1,20 +1,15 @@
-﻿using System;
-using Cirrious.FluentLayouts.Touch;
+﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
-using Foundation;
+using System;
 using UIKit;
 using VacationsTracker.iOS.Themes;
 
-namespace VacationsTracker.iOS.Views.Details
+namespace VacationsTracker.iOS.Views.New
 {
-    public class VacationDetailsView : LayoutView
+    public class NewVacationView : LayoutView
     {
-        //public UIScrollView ScrollView { get; private set; }
-        //
         public UIView VacationsPager { get; private set; }
-
         public UIPageControl VacationPageControl { get; set; }
-
         public UITextView StartTextView { get; private set; }
         public UIView UpSeparatorView { get; private set; }
         public UIView VacationStartView { get; private set; }
@@ -64,7 +59,7 @@ namespace VacationsTracker.iOS.Views.Details
             DownSeparatorView.BackgroundColor = AppColors.LightBlueColor;
 
 
-            VacationStatusControl = new UISegmentedControl("Approved","Closed");
+            VacationStatusControl = new UISegmentedControl("Approved", "Closed");
 
             VacationStatusControl.TintColor = AppColors.LightGreenColor;
 
@@ -113,13 +108,13 @@ namespace VacationsTracker.iOS.Views.Details
 
             this.AddConstraints(
                 VacationsPager.AtLeftOf(this),
-                VacationsPager.AtTopOf(this,AppDimens.Inset4X),
+                VacationsPager.AtTopOf(this, AppDimens.Inset4X),
                 VacationsPager.AtRightOf(this),
-                VacationsPager.WithRelativeHeight(this,(nfloat?)0.35)
+                VacationsPager.WithRelativeHeight(this, (nfloat?)0.35)
                 );
 
             this.AddConstraints(
-                VacationPageControl.AtBottomOf(VacationsPager,AppDimens.Inset1X),
+                VacationPageControl.AtBottomOf(VacationsPager, AppDimens.Inset1X),
                 VacationPageControl.WithSameCenterX(this)
                 );
 
@@ -133,7 +128,7 @@ namespace VacationsTracker.iOS.Views.Details
             this.AddConstraints(
                 VacationStartView.Below(UpSeparatorView, AppDimens.Inset1X),
                 VacationStartView.AtLeftOf(this),
-                VacationStartView.WithRelativeWidth(this,(nfloat?)0.5));
+                VacationStartView.WithRelativeWidth(this, (nfloat?)0.5));
 
             this.AddConstraints(
                 VacationStartDay.AtLeftOf(VacationStartView, AppDimens.Inset2X),
@@ -181,12 +176,10 @@ namespace VacationsTracker.iOS.Views.Details
 
             this.AddConstraints(
                 VacationStartDatePicker.WithRelativeHeight(this, (nfloat)0.30),
-                VacationStartDatePicker.WithSameCenterX(this),
                 VacationStartDatePicker.AtBottomOf(this));
 
             this.AddConstraints(
                 VacationEndDatePicker.WithRelativeHeight(this, (nfloat)0.30),
-                VacationEndDatePicker.WithSameCenterX(this),
                 VacationEndDatePicker.AtBottomOf(this));
 
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Cirrious.FluentLayouts.Touch;
 using CoreGraphics;
+using Foundation;
 using UIKit;
 
 namespace VacationsTracker.iOS.Themes
@@ -31,6 +32,13 @@ namespace VacationsTracker.iOS.Themes
             label.SetCornerRadiusTo(5);
 
             return label;
+        }
+
+        public static UIDatePicker SetTextColor(this UIDatePicker picker, UIColor textColor)
+        {
+            picker.SetValueForKey(textColor, new NSString("textColor"));
+
+            return picker;
         }
 
         public static UILabel SetLabelStyle(this UILabel label)

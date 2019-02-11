@@ -137,34 +137,33 @@ namespace VacationsTracker.Core.DataAccess
             return Task.FromResult(vacation);
         }
 
-        public Task UpdateVacationAsync(VacationCellViewModel updatedVacation)
+        public async Task UpdateVacationAsync(VacationCellViewModel updatedVacation)
         {
-            //var vacation = await GetVacationAsync(updatedVacation.Id);
+            var vacation = await GetVacationAsync(updatedVacation.Id);
 
 
 
-            //vacation.Start = updatedVacation.Start;
-            //vacation.End = updatedVacation.End;
-            //vacation.Status = updatedVacation.Status;
-            //vacation.Type = updatedVacation.Type;
+            vacation.Start = updatedVacation.Start;
+            vacation.End = updatedVacation.End;
+            vacation.Status = updatedVacation.Status;
+            vacation.Type = updatedVacation.Type;
 
 
-            int index = -1;
-            for (var i = 0; i < _vacations.Count; i++)
-            {
-                if (_vacations[i].Id == updatedVacation.Id)
-                {
-                    index = i;
-                    break;
-                }
-            }
+            //int index = -1;
+            //for (var i = 0; i < _vacations.Count; i++)
+            //{
+            //    if (_vacations[i].Id == updatedVacation.Id)
+            //    {
+            //        index = i;
+            //        break;
+            //    }
+            //}
 
-            if (index != -1)
-            {
-                _vacations[index] = updatedVacation;
-            }
+            //if (index != -1)
+            //{
+            //    _vacations[index] = updatedVacation;
+            //}
 
-            return Task.CompletedTask;
         }
 
         public Task CreateVacationAsync(VacationCellViewModel vacation)

@@ -62,6 +62,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bootstrappers\IosBootstrapper.cs" />
+    <Compile Include="Extension\HelperExtension.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Themes\AppColors.cs" />
@@ -83,6 +84,8 @@
     <Compile Include="Views\Home\VacationsTable\VacationTableHeaderViewCell.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
     <Compile Include="Views\Login\LoginViewController.cs" />
+    <Compile Include="Views\New\NewVacationView.cs" />
+    <Compile Include="Views\New\NewVacationViewController.cs" />
     <Compile Include="Views\RootNavigationController.cs" />
     <BundleResource Include="splash.jpg" />
     <Compile Include="Views\ValueConverters\ImageValueConverter.cs" />

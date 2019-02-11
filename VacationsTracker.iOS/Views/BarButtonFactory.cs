@@ -25,5 +25,10 @@ namespace VacationsTracker.iOS.Views
         {
             return new UIBarButtonItem(AppStrings.Apply, UIBarButtonItemStyle.Plain, null);
         }
+
+        public static UIBarButtonItem GetCreateButton()
+        {
+            return new UIBarButtonItem(AppStrings.Create,UIBarButtonItemStyle.Plain,null);
+        }
     }
 }
