@@ -65,6 +65,10 @@ namespace VacationsTracker.iOS.Views.Details
             this.AddChildViewControllerAndView(VacationsPageViewController, View.VacationsPager);
 
             VacationsPageViewController.DataSource = VacationsDataSource;
+
+            VacationsDataSource.CurrentItemIndexChanged +=
+                (sender, args) => View.VacationPageControl.CurrentPage = args.Index;
+
         }
 
         public override void ViewWillAppear(bool animated)
@@ -134,6 +138,7 @@ namespace VacationsTracker.iOS.Views.Details
                 .For(v => v.CurrentItemIndexAndCurrentItemIndexChangedBinding())
                 .To(vm => vm.Vacation.Type)
                 .WithConvertion<VacationTypeToImageNumberValueConverter>();
+
         }
 
 

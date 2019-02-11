@@ -10,8 +10,12 @@ namespace VacationsTracker.iOS.Views.Details
     public class VacationDetailsView : LayoutView
     {
         //public UIScrollView ScrollView { get; private set; }
-        //public UIPageControl PageControl { get; private set; }
+        //
         public UIView VacationsPager { get; private set; }
+
+        public UIPageControl VacationPageControl { get; set; }
+
+        public UITextView StartTextView { get; private set; }
         public UIView UpSeparatorView { get; private set; }
         public UIView VacationStartView { get; private set; }
         public UIView VacationEndView { get; private set; }
@@ -21,11 +25,9 @@ namespace VacationsTracker.iOS.Views.Details
         public UILabel VacationEndDay { get; private set; }
         public UILabel VacationEndMonth { get; private set; }
         public UILabel VacationEndYear { get; private set; }
-        //public UISwitch VacationStatusSwitch { get; private set; }
         public UIView DownSeparatorView { get; private set; }
         public UISegmentedControl VacationStatusControl { get; private set; }
-
-        //public UIDatePicker DatePicker { get; private set; }
+        public UIDatePicker DatePicker { get; private set; }
 
 
 
@@ -38,10 +40,9 @@ namespace VacationsTracker.iOS.Views.Details
 
             VacationsPager = new UIView();
 
-            //ScrollView = new UIScrollView();
-            //ScrollView.AlwaysBounceHorizontal = true;
-            //ScrollView.Add
+            StartTextView = new UITextView();
 
+            VacationPageControl = new UIPageControl { Pages = 5, PageIndicatorTintColor = AppColors.Gray, CurrentPageIndicatorTintColor = AppColors.LightBlueColor };
 
             UpSeparatorView = new UIView();
             UpSeparatorView.BackgroundColor = AppColors.LightBlueColor;
@@ -66,8 +67,11 @@ namespace VacationsTracker.iOS.Views.Details
 
             VacationStatusControl.TintColor = AppColors.LightGreenColor;
 
-            //DatePicker = new UIDatePicker();
-            //DatePicker.Mode = UIDatePickerMode.Date;
+            DatePicker = new UIDatePicker {Mode = UIDatePickerMode.Date,Hidden = true};
+
+            StartTextView.InputView = DatePicker;
+
+
 
         }
 
@@ -76,6 +80,7 @@ namespace VacationsTracker.iOS.Views.Details
             base.SetupLayout();
 
             this.AddLayoutSubview(VacationsPager)
+                .AddLayoutSubview(VacationPageControl)
                 .AddLayoutSubview(UpSeparatorView)
                 .AddLayoutSubview(VacationStartView)
                 .AddLayoutSubview(VacationStartDay)
@@ -86,7 +91,8 @@ namespace VacationsTracker.iOS.Views.Details
                 .AddLayoutSubview(VacationEndMonth)
                 .AddLayoutSubview(VacationEndYear)
                 .AddLayoutSubview(DownSeparatorView)
-                .AddLayoutSubview(VacationStatusControl);
+                .AddLayoutSubview(VacationStatusControl)
+                .AddLayoutSubview(DatePicker);
 
         }
 
@@ -101,6 +107,11 @@ namespace VacationsTracker.iOS.Views.Details
                 VacationsPager.AtTopOf(this,AppDimens.Inset4X),
                 VacationsPager.AtRightOf(this),
                 VacationsPager.WithRelativeHeight(this,(nfloat?)0.35)
+                );
+
+            this.AddConstraints(
+                VacationPageControl.AtBottomOf(VacationsPager,AppDimens.Inset1X),
+                VacationPageControl.WithSameCenterX(this)
                 );
 
             this.AddConstraints(
@@ -146,11 +157,6 @@ namespace VacationsTracker.iOS.Views.Details
                 VacationEndYear.WithSameLeft(VacationEndMonth),
                 VacationEndYear.AtBottomOf(VacationEndDay, AppDimens.Inset1X));
 
-            //this.AddConstraints(
-            //     VacationStatusSwitch.Below(VacationStartView),
-            //                      VacationStatusSwitch.WithSameCenterX(this)
-            //        );
-
             this.AddConstraints(
                 DownSeparatorView.AtLeftOf(this),
                 DownSeparatorView.Below(VacationEndView, AppDimens.Inset1X),
@@ -164,11 +170,10 @@ namespace VacationsTracker.iOS.Views.Details
                 VacationStatusControl.AtLeftOf(this, AppDimens.Inset8X),
                 VacationStatusControl.AtRightOf(this, AppDimens.Inset8X));
 
-            //this.AddConstraints(
-                
-            //    );
-            //this.AddConstraints(VacationsTableView.TableFooterView.Below(VacationsTableView),
-            //    VacationsTableView.TableFooterView.Height().EqualTo(2));
+            this.AddConstraints(
+                DatePicker.AtBottomOf(this),
+                DatePicker.WithSameCenterX(this)
+                );
 
         }
     }

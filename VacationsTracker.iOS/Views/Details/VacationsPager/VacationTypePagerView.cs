@@ -1,9 +1,7 @@
-﻿using System;
-using Cirrious.FluentLayouts.Touch;
+﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
 using UIKit;
 using VacationsTracker.iOS.Themes;
-using AdvancedFluentLayoutExtensions = Cirrious.FluentLayouts.Touch.AdvancedFluentLayoutExtensions;
 
 namespace VacationsTracker.iOS.Views.Details.VacationsPager
 {
@@ -13,6 +11,7 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
 
         public UILabel VacationTypeLabel { get; private set; }
 
+        //public UIPageControl VacationPageControl { get; private set; }
 
         protected override void SetupSubviews()
         {
@@ -20,7 +19,6 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
 
             VacationImageView = new UIImageView();
             VacationTypeLabel = new UILabel().SetLabelStyle();
-
         }
 
         protected override void SetupLayout()
@@ -29,6 +27,7 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
 
             this.AddLayoutSubview(VacationImageView)
                 .AddLayoutSubview(VacationTypeLabel);
+            //.AddLayoutSubview(VacationPageControl);
 
         }
 
@@ -39,17 +38,23 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
             this.AddConstraints(
-                VacationImageView.Width().EqualTo(128),
-                VacationImageView.Height().EqualTo(128),
+                VacationImageView.Width().EqualTo(96),
+                VacationImageView.Height().EqualTo(96),
                 VacationImageView.WithSameCenterY(this),
                 VacationImageView.WithSameCenterX(this)
                 );
 
             this.AddConstraints(
-                VacationTypeLabel.Below(VacationImageView,AppDimens.Inset1X),
+                VacationTypeLabel.Below(VacationImageView, AppDimens.Inset1X),
                 VacationTypeLabel.WithSameCenterX(this)
                 );
+
+            //this.AddConstraints(
+            //    VacationPageControl.Below(VacationTypeLabel),
+            //    VacationPageControl.WithSameCenterX(VacationTypeLabel),
+            //    VacationPageControl.WithSameHeight(VacationTypeLabel)
+            //    );
         }
-    
+
     }
 }
