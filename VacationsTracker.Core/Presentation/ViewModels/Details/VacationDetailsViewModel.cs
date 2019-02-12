@@ -15,6 +15,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
         private readonly IVacationsRepository _vacationsRepository;
         private DateTime _startDate;
         private DateTime _endDate;
+        private VacationType _type;
+        private VacationStatus _status;
 
         public VacationDetailsViewModel(
             INavigationService navigationService,
@@ -32,6 +34,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
         {
             Vacation.Start = StartDate;
             Vacation.End = EndDate;
+            Vacation.Status = Status;
+            Vacation.Type = Type;
 
             await _vacationsRepository.UpdateVacationAsync(Vacation);
             _navigationService.NavigateBackToHome(this);
@@ -59,15 +63,29 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             set => Set(ref _endDate, value);
         }
 
+        public VacationType Type
+        {
+            get => _type;
+            set => Set(ref _type, value);
+        }
+
+        public VacationStatus Status
+        {
+            get => _status;
+            set => Set(ref _status, value);
+        }
+
         protected override async Task InitializeAsync(VacationDetailsParameters parameters)
         {
             await base.InitializeAsync(parameters);
 
             Vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
 
+
+            Type = Vacation.Type;
+            Status = Vacation.Status;
             StartDate = Vacation.Start;
             EndDate = Vacation.End;
-          
         }
     }
 }

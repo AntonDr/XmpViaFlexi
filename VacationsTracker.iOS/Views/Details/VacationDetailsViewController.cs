@@ -116,7 +116,7 @@ namespace VacationsTracker.iOS.Views.Details
 
             bindingSet.Bind(View.VacationStatusControl)
                 .For(v => v.SelectedSegmentAndValueChangedBinding())
-                .To(vm => vm.Vacation.Status)
+                .To(vm => vm.Status)
                 .WithConvertion<StatusToSegmentValueConverter>();
 
             bindingSet.Bind(DoneBarButton)
@@ -125,7 +125,7 @@ namespace VacationsTracker.iOS.Views.Details
 
             bindingSet.Bind(VacationsDataSource)
                 .For(v => v.CurrentItemIndexAndCurrentItemIndexChangedBinding())
-                .To(vm => vm.Vacation.Type)
+                .To(vm => vm.Type)
                 .WithConvertion<VacationTypeToImageNumberValueConverter>();
 
             bindingSet.Bind(View.VacationStartDatePicker)

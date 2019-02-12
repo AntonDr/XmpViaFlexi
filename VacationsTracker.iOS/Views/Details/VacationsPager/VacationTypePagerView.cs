@@ -35,8 +35,8 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
             this.AddConstraints(
-                VacationImageView.Width().EqualTo(96),
-                VacationImageView.Height().EqualTo(96),
+                VacationImageView.Width().EqualTo(AppDimens.DetailsPictureSize),
+                VacationImageView.Height().EqualTo(AppDimens.DetailsPictureSize),
                 VacationImageView.WithSameCenterY(this),
                 VacationImageView.WithSameCenterX(this)
                 );

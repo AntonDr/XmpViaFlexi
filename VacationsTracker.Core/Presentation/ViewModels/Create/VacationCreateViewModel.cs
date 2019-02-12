@@ -15,10 +15,40 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Create
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
 
+        private string _vacationId;
+
+        private DateTime _startDate;
+        private DateTime _endDate;
+        private VacationType _type;
+        private VacationStatus _status;
         public VacationCreateViewModel(INavigationService navigationService, IVacationsRepository vacationsRepository)
         {
             _navigationService = navigationService;
             _vacationsRepository = vacationsRepository;
+        }
+
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set => Set(ref _startDate, value);
+        }
+
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set => Set(ref _endDate, value);
+        }
+
+        public VacationType Type
+        {
+            get => _type;
+            set => Set(ref _type, value);
+        }
+
+        public VacationStatus Status
+        {
+            get => _status;
+            set => Set(ref _status, value);
         }
 
         public VacationCellViewModel Vacation { get; set; }
@@ -27,7 +57,17 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Create
 
         private async void Create()
         {
-            await _vacationsRepository.CreateVacationAsync(Vacation);
+            var vacation = new VacationCellViewModel
+            {
+                Id = _vacationId,
+                Start = StartDate,
+                End = EndDate,
+                Status = Status,
+                Type = Type
+            };
+
+            await _vacationsRepository.CreateVacationAsync(vacation);
+
             _navigationService.NavigateCreateBackToHome(this);
         }
 

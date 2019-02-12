@@ -56,7 +56,7 @@ namespace VacationsTracker.iOS.Themes
             }
 
             textField.BackgroundColor = UIColor.White;
-            SetLeftPadding(textField, 5);
+            SetLeftPadding(textField, AppDimens.Inset1X);
 
             return textField;
         }
@@ -75,20 +75,47 @@ namespace VacationsTracker.iOS.Themes
             return imageView;
         }
 
-        public static UILabel SetDateStyle(this UILabel label,UIColor color = null,UIFont font = null)
+        public static UILabel SetStartDate1Style(this UILabel label)
         {
-            if (color == null)
-            {
-                color = AppColors.LightBlueColor;
-            }
+            label.TextColor = AppColors.LightBlueColor;;
+            label.Font = UIFont.SystemFontOfSize(60);
 
-            if (font == null)
-            {
-                font = UIFont.PreferredTitle1;
-            }
+            return label;
+        }
 
-            label.TextColor =color;
-            label.Font = font;
+        public static UILabel SetStartDate2Style(this UILabel label)
+        {
+            label.TextColor = AppColors.LightBlueColor;
+            label.Font = UIFont.SystemFontOfSize(30);
+
+            return label;
+        }
+        public static UILabel SetStartDate3Style(this UILabel label)
+        {
+            label.TextColor = AppColors.LightBlueColor;
+            label.Font = UIFont.SystemFontOfSize(25);
+
+            return label;
+        }
+        public static UILabel SetEndDate1Style(this UILabel label)
+        {
+            label.TextColor = AppColors.LightGreenColor;;
+            label.Font = UIFont.SystemFontOfSize(60);
+
+            return label;
+        }
+
+        public static UILabel SetEndDate2Style(this UILabel label)
+        {
+            label.TextColor = AppColors.LightGreenColor;
+            label.Font = UIFont.SystemFontOfSize(30);
+
+            return label;
+        }
+        public static UILabel SetEndDate3Style(this UILabel label)
+        {
+            label.TextColor = AppColors.LightGreenColor;
+            label.Font = UIFont.SystemFontOfSize(25);
 
             return label;
         }
