@@ -1,10 +1,8 @@
-﻿using System;
-using System.Globalization;
-using Cirrious.FluentLayouts.Touch;
+﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
-using FlexiMvvm.ValueConverters;
+using System;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
 
@@ -15,6 +13,9 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
         public static string CellId => nameof(VacationTableHeaderViewCell);
 
         private VacationTableHeaderView View { get; set; }
+        public VacationTableHeaderViewCell(IntPtr handle) : base(handle)
+        {
+        }
 
         public override void LoadView()
         {
@@ -23,10 +24,6 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
             ContentView.NotNull().AddSubview(View);
             ContentView.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
             ContentView.AddConstraints(View.FullSizeOf(ContentView));
-        }
-
-        public VacationTableHeaderViewCell(IntPtr handle) : base(handle)
-        {
         }
 
         public override void Bind(BindingSet<HomeViewModel> bindingSet)

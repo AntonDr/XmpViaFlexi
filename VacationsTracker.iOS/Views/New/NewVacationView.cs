@@ -2,6 +2,7 @@
 using FlexiMvvm.Views;
 using System;
 using UIKit;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 
 namespace VacationsTracker.iOS.Views.New
@@ -40,8 +41,7 @@ namespace VacationsTracker.iOS.Views.New
 
             VacationPageControl = new UIPageControl { Pages = 5, PageIndicatorTintColor = AppColors.Gray, CurrentPageIndicatorTintColor = AppColors.LightBlueColor };
 
-            UpSeparatorView = new UIView();
-            UpSeparatorView.BackgroundColor = AppColors.LightBlueColor;
+            UpSeparatorView = new UIView { BackgroundColor = AppColors.LightBlueColor };
 
 
             VacationStartView = new UIView();
@@ -55,13 +55,14 @@ namespace VacationsTracker.iOS.Views.New
             VacationEndYear = new UILabel().SetDateStyle(AppColors.LightGreenColor, UIFont.SystemFontOfSize(25));
 
 
-            DownSeparatorView = new UIView();
-            DownSeparatorView.BackgroundColor = AppColors.LightBlueColor;
+            DownSeparatorView = new UIView { BackgroundColor = AppColors.LightBlueColor };
 
 
-            VacationStatusControl = new UISegmentedControl("Approved", "Closed");
+            VacationStatusControl = new UISegmentedControl(Strings.VacationStatus_Approved, Strings.VacationStatus_Closed )
+            {
+                TintColor = AppColors.LightGreenColor
+            };
 
-            VacationStatusControl.TintColor = AppColors.LightGreenColor;
 
             VacationStartDatePicker = new UIDatePicker
             {

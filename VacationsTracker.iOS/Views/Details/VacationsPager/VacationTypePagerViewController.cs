@@ -1,8 +1,6 @@
-﻿using System;
-using FlexiMvvm;
+﻿using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views;
-using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.iOS.Views.ValueConverters;
@@ -25,10 +23,7 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
         public override void LoadView()
         {
             View = new VacationTypePagerView();
-
-
         }
-
 
         public override void Bind(BindingSet<VacationTypePagerViewModel> bindingSet)
         {

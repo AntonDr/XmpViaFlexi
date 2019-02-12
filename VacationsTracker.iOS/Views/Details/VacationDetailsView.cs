@@ -1,20 +1,16 @@
-﻿using System;
-using Cirrious.FluentLayouts.Touch;
+﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
-using Foundation;
+using System;
 using UIKit;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 
 namespace VacationsTracker.iOS.Views.Details
 {
     public class VacationDetailsView : LayoutView
     {
-        //public UIScrollView ScrollView { get; private set; }
-        //
         public UIView VacationsPager { get; private set; }
-
         public UIPageControl VacationPageControl { get; set; }
-
         public UITextView StartTextView { get; private set; }
         public UIView UpSeparatorView { get; private set; }
         public UIView VacationStartView { get; private set; }
@@ -31,8 +27,6 @@ namespace VacationsTracker.iOS.Views.Details
         public UIDatePicker VacationEndDatePicker { get; private set; }
 
 
-
-
         protected override void SetupSubviews()
         {
             base.SetupSubviews();
@@ -45,8 +39,7 @@ namespace VacationsTracker.iOS.Views.Details
 
             VacationPageControl = new UIPageControl { Pages = 5, PageIndicatorTintColor = AppColors.Gray, CurrentPageIndicatorTintColor = AppColors.LightBlueColor };
 
-            UpSeparatorView = new UIView();
-            UpSeparatorView.BackgroundColor = AppColors.LightBlueColor;
+            UpSeparatorView = new UIView { BackgroundColor = AppColors.LightBlueColor };
 
 
             VacationStartView = new UIView();
@@ -60,13 +53,14 @@ namespace VacationsTracker.iOS.Views.Details
             VacationEndYear = new UILabel().SetDateStyle(AppColors.LightGreenColor, UIFont.SystemFontOfSize(25));
 
 
-            DownSeparatorView = new UIView();
-            DownSeparatorView.BackgroundColor = AppColors.LightBlueColor;
+            DownSeparatorView = new UIView { BackgroundColor = AppColors.LightBlueColor };
 
 
-            VacationStatusControl = new UISegmentedControl("Approved","Closed");
+            VacationStatusControl = new UISegmentedControl(Strings.VacationStatus_Approved, Strings.VacationStatus_Closed)
+            {
+                TintColor = AppColors.LightGreenColor
+            };
 
-            VacationStatusControl.TintColor = AppColors.LightGreenColor;
 
             VacationStartDatePicker = new UIDatePicker
             {
@@ -113,13 +107,13 @@ namespace VacationsTracker.iOS.Views.Details
 
             this.AddConstraints(
                 VacationsPager.AtLeftOf(this),
-                VacationsPager.AtTopOf(this,AppDimens.Inset4X),
+                VacationsPager.AtTopOf(this, AppDimens.Inset4X),
                 VacationsPager.AtRightOf(this),
-                VacationsPager.WithRelativeHeight(this,(nfloat?)0.35)
+                VacationsPager.WithRelativeHeight(this, (nfloat?)0.35)
                 );
 
             this.AddConstraints(
-                VacationPageControl.AtBottomOf(VacationsPager,AppDimens.Inset1X),
+                VacationPageControl.AtBottomOf(VacationsPager, AppDimens.Inset1X),
                 VacationPageControl.WithSameCenterX(this)
                 );
 
@@ -133,7 +127,7 @@ namespace VacationsTracker.iOS.Views.Details
             this.AddConstraints(
                 VacationStartView.Below(UpSeparatorView, AppDimens.Inset1X),
                 VacationStartView.AtLeftOf(this),
-                VacationStartView.WithRelativeWidth(this,(nfloat?)0.5));
+                VacationStartView.WithRelativeWidth(this, (nfloat?)0.5));
 
             this.AddConstraints(
                 VacationStartDay.AtLeftOf(VacationStartView, AppDimens.Inset2X),

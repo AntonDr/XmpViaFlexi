@@ -1,4 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">VacationsTracker.Android</string>
-    <string name="action_settings">Settings</string>
+  <string name="create_new_vacation_button_text">New+</string>
+  <string name="home_page_title">All Requests</string>
+  <string name="login_page_error">Please, retry your login and password pair.</string>
+  <string name="login_page_login_placeholder">Login</string>
+  <string name="login_page_password_placeholder">Password</string>
+  <string name="login_page_sign_in">SIGN IN</string>
+  <string name="navigation_view_all">ALL</string>
+  <string name="navigation_view_closed">CLOSED</string>
+  <string name="navigation_view_open">OPEN</string>
+  <string name="new_vacation_page_title">New Request</string>
+  <string name="save_navigation_button_text">Save</string>
+  <string name="vacation_details_page_title">Request Details</string>
+  <string name="vacation_status_approved">Approved</string>
+  <string name="vacation_status_closed">Closed</string>
+  <string name="app_name">Vacation Tracker</string>
 </resources>

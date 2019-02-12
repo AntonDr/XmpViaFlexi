@@ -1,26 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
-using Foundation;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Create;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
-using VacationsTracker.Core.Presentation.ViewModels.Home;
-using VacationsTracker.iOS.Extension;
-using VacationsTracker.iOS.Themes;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Views.Details.VacationsPager;
-using VacationsTracker.iOS.Views.Home;
-using VacationsTracker.iOS.Views.Home.VacationsTable;
-using VacationsTracker.iOS.Views.New;
 using VacationsTracker.iOS.Views.ValueConverters;
 
-namespace VacationsTracker.iOS.Views.Details
+namespace VacationsTracker.iOS.Views.New
 {
     public class NewVacationViewController : FlxBindableViewController<VacationCreateViewModel>
     {
@@ -30,11 +21,9 @@ namespace VacationsTracker.iOS.Views.Details
 
         private UIBarButtonItem DoneBarButton { get; } = BarButtonFactory.GetDoneButton();
 
-        //private VacationDetailsView VacationsDetailsView { get; set; }
-
         public new NewVacationView View
         {
-            get => (NewVacationView) base.View.NotNull();
+            get => (NewVacationView)base.View.NotNull();
             set => base.View = value;
         }
 
@@ -48,7 +37,7 @@ namespace VacationsTracker.iOS.Views.Details
         {
             base.ViewDidLoad();
 
-            NavigationItem.Title = "Create";
+            NavigationItem.Title = Strings.NewVacationPage_Title;
 
             VacationsPageViewController = new UIPageViewController(
                 UIPageViewControllerTransitionStyle.Scroll,
@@ -70,15 +59,11 @@ namespace VacationsTracker.iOS.Views.Details
 
             var tapGesture = new UITapGestureRecognizer(OnStartDayViewTap);
             View.VacationStartView.AddGestureRecognizer(tapGesture);
-            View.VacationStartDatePicker.ValueChangedWeakSubscribe(StartDateValueChangedHandler);
 
             tapGesture = new UITapGestureRecognizer(OnEndDayViewTap);
             View.VacationEndView.AddGestureRecognizer(tapGesture);
-            View.VacationEndDatePicker.ValueChangedWeakSubscribe(StartEndValueChangedHandler);
 
         }
-
-
 
         public override void ViewWillAppear(bool animated)
         {
@@ -144,7 +129,6 @@ namespace VacationsTracker.iOS.Views.Details
         {
             View.VacationEndDatePicker.Hidden = true;
 
-            View.VacationStartDatePicker.Date = ViewModel.Vacation.Start.ToNSDate();
             View.VacationStartDatePicker.Hidden = false;
         }
 
@@ -152,25 +136,7 @@ namespace VacationsTracker.iOS.Views.Details
         {
             View.VacationStartDatePicker.Hidden = true;
 
-            View.VacationEndDatePicker.Date = ViewModel.Vacation.End.ToNSDate();
             View.VacationEndDatePicker.Hidden = false;
-        }
-
-        private void StartDateValueChangedHandler(object sender, EventArgs args)
-        {
-            if (sender is UIDatePicker picker)
-            {
-                var date = (DateTime)picker.Date;
-                ViewModel.Vacation.Start = date;
-            }
-        }
-        private void StartEndValueChangedHandler(object sender, EventArgs args)
-        {
-            if (sender is UIDatePicker picker)
-            {
-                var date = (DateTime)picker.Date;
-                ViewModel.Vacation.End = date;
-            }
         }
 
         private UIViewController PagerFactory(object parameters)

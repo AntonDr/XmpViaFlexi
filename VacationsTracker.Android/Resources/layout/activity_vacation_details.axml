@@ -12,12 +12,12 @@
         style="@style/ToolbarTheme">
 
 		<TextView
-			android:text="Request"
+			android:text="@string/vacation_details_page_title"
             style="@style/ToolbarTitleStyle" />
 
 		<Button
 			android:id="@+id/save_request_button"
-			android:text="Save"
+			android:text="@string/save_navigation_button_text"
 			android:layout_gravity="center|right"
 			style="@style/ToolbarButtonStyle"/>
 
@@ -115,11 +115,11 @@
 		  android:gravity="center">
 
 		  <RadioButton android:id="@+id/approved_radio"
-			  android:text="Approved" 
+			  android:text="@string/vacation_status_approved" 
 			  style="@style/RadioButtonStyle"/>
 
 		  <RadioButton android:id="@+id/closed_radio"
-			  android:text="Closed"  
+			  android:text="@string/vacation_status_closed"  
 			  style="@style/RadioButtonStyle"/>
 
 	</RadioGroup>

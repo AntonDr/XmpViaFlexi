@@ -1,10 +1,9 @@
-﻿using System;
-using System.Globalization;
-using Cirrious.FluentLayouts.Touch;
+﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.ValueConverters;
+using System;
 using UIKit;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels;
@@ -35,7 +34,6 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
 
             this.SelectionStyle = UITableViewCellSelectionStyle.None;
         }
-
 
         public override void Bind(BindingSet<VacationCellViewModel> bindingSet)
         {

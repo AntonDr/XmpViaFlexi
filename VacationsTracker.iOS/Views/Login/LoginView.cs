@@ -1,6 +1,7 @@
 ﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
 using UIKit;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
 
 namespace VacationsTracker.iOS.Views.Login
@@ -24,13 +25,13 @@ namespace VacationsTracker.iOS.Views.Login
             BackgroundImage = new UIImageView().SetDefaultBackgroundImage();
 
             InvalidCredentialsLabel = new UILabel()
-                .SetErrorLabelStyle("Please, retry your login and password pair.");
+                .SetErrorLabelStyle(Strings.LoginPage_Error);
 
-            LoginTextField = new UITextField().SetDefaultTextFieldStyle("Login");
+            LoginTextField = new UITextField().SetDefaultTextFieldStyle(Strings.LoginPage_LoginPlaceholder);
 
-            PasswordTextField = new UITextField().SetDefaultTextFieldStyle("Password");
+            PasswordTextField = new UITextField().SetDefaultTextFieldStyle(Strings.LoginPage_PasswordPlaceholder);
 
-            LoginButton = new UIButton().SetPrimaryButtonStyle("Login");
+            LoginButton = new UIButton().SetPrimaryButtonStyle(Strings.LoginPage_SignIn);
         }
 
         protected override void SetupLayout()
@@ -51,10 +52,6 @@ namespace VacationsTracker.iOS.Views.Login
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
             this.AddConstraints(BackgroundImage.FullSizeOf(this));
-                //BackgroundImage.WithSameLeft(this),
-                //BackgroundImage.WithSameTop(this),
-                //BackgroundImage.WithSameRight(this),
-                //BackgroundImage.WithSameBottom(this));
 
             this.AddConstraints(
                 InvalidCredentialsLabel.WithSameLeft(LoginTextField),

@@ -18,7 +18,6 @@ namespace VacationsTracker.iOS.Views.Home.VacationsTable
 
             RefreshTimeLabel = new UILabel();
         }
-
         protected override void SetupLayout()
         {
             base.SetupLayout();

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Cirrious.FluentLayouts.Touch;
+﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
-using Foundation;
 using UIKit;
 using VacationsTracker.iOS.Themes;
 

@@ -5,7 +5,7 @@
     android:id="@+id/group_nav_main">
     <item
     android:id="@+id/nav_main"
-    android:title="All">
+    android:title="@string/navigation_view_all">
     </item>
   </group>
   
@@ -13,7 +13,7 @@
     android:id="@+id/group_nav_open">
     <item
       android:id="@+id/nav_open"
-      android:title="Open">
+      android:title="@string/navigation_view_open">
     </item>
   </group>
   
@@ -21,7 +21,7 @@
     android:id="@+id/group_nav_close">
     <item
       android:id="@+id/nav_close"
-      android:title="Close">
+      android:title="@string/navigation_view_closed">
     </item>
   </group>
   

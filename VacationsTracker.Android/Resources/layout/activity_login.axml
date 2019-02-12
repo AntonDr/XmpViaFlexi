@@ -6,14 +6,14 @@
     
 	<TextView
 		android:id="@+id/invalidCredentialsText"
-	    android:text="Please, retry your login and password pair"
+	    android:text="@string/login_page_error"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		style="@style/InvalidCredentialsTextViewStyle"/>
 
 	<EditText
          android:id="@+id/loginEntry"
-		 android:hint="Login"
+		 android:hint="@string/login_page_login_placeholder"
 		 style="@style/LoginEntryStyle" 
 		 app:layout_constraintLeft_toLeftOf="parent"
 		 app:layout_constraintRight_toRightOf="parent"
@@ -21,7 +21,7 @@
 
 	<EditText
 		 android:id="@+id/passwordEntry"
-		 android:hint="Password"
+		 android:hint="@string/login_page_password_placeholder"
 		 style="@style/LoginEntryStyle"
 		 app:layout_constraintLeft_toLeftOf="parent"
 		 app:layout_constraintRight_toRightOf="parent"
@@ -29,7 +29,7 @@
 
 	<Button
 		 android:id="@+id/loginButton"
-		 android:text="Sign In"
+		 android:text="@string/login_page_sign_in"
 		 style="@style/LoginButtonStyle" 
 		 app:layout_constraintLeft_toLeftOf="parent"
 		 app:layout_constraintRight_toRightOf="parent"

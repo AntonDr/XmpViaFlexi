@@ -11,8 +11,6 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
 
         public UILabel VacationTypeLabel { get; private set; }
 
-        //public UIPageControl VacationPageControl { get; private set; }
-
         protected override void SetupSubviews()
         {
             base.SetupSubviews();
@@ -27,7 +25,6 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
 
             this.AddLayoutSubview(VacationImageView)
                 .AddLayoutSubview(VacationTypeLabel);
-            //.AddLayoutSubview(VacationPageControl);
 
         }
 
@@ -48,12 +45,6 @@ namespace VacationsTracker.iOS.Views.Details.VacationsPager
                 VacationTypeLabel.Below(VacationImageView, AppDimens.Inset1X),
                 VacationTypeLabel.WithSameCenterX(this)
                 );
-
-            //this.AddConstraints(
-            //    VacationPageControl.Below(VacationTypeLabel),
-            //    VacationPageControl.WithSameCenterX(VacationTypeLabel),
-            //    VacationPageControl.WithSameHeight(VacationTypeLabel)
-            //    );
         }
 
     }

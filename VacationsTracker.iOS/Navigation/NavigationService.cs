@@ -11,6 +11,7 @@ using VacationsTracker.iOS.Views;
 using VacationsTracker.iOS.Views.Details;
 using VacationsTracker.iOS.Views.Home;
 using VacationsTracker.iOS.Views.Login;
+using VacationsTracker.iOS.Views.New;
 
 namespace VacationsTracker.iOS.Navigation
 {

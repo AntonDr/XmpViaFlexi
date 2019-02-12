@@ -4,24 +4,24 @@
 
 	<TextView
 		android:id="@+id/invalidCredentialsText"
-	    android:text="Please, retry your login and password pair"
+	    android:text="@string/login_page_error"
 		style="@style/InvalidCredentialsTextViewStyle"/>
 
 	<EditText
          android:id="@+id/loginEntry"
-		 android:hint="Login"
+		 android:hint="@string/login_page_login_placeholder"
 		 style="@style/LoginEntryStyle"
 		 android:layout_below="@id/invalidCredentialsText"/>
 
 	<EditText
 		 android:id="@+id/passwordEntry"
-		 android:hint="Password"
+		 android:hint="@string/login_page_password_placeholder"
 		 style="@style/LoginEntryStyle" 
 		 android:layout_below="@id/loginEntry"/>
 
 	<Button
 		 android:id="@+id/loginButton"
-		 android:text="Sign In"
+		 android:text="@string/login_page_sign_in"
 		 style="@style/LoginButtonStyle" 
 		 android:layout_below="@id/passwordEntry"
 		 android:layout_centerHorizontal="true"/>

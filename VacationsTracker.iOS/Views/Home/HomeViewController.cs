@@ -5,6 +5,7 @@ using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
 using UIKit;
 using VacationsTracker.Core.Presentation.ViewModels.Home;
+using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Views.Home.VacationsTable;
 
 namespace VacationsTracker.iOS.Views.Home
@@ -43,18 +44,19 @@ namespace VacationsTracker.iOS.Views.Home
             View.VacationsTableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
             View.VacationsTableView.Source = VacationsSource;
 
-            NavigationItem.Title = "All Request";
+            NavigationItem.Title = Strings.HomePage_Title;
 
             View.VacationsTableView.ReloadData();
 
         }
 
-        public override void ViewWillAppear(bool animated)
+        public override async void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
 
             NavigationItem.RightBarButtonItem = NewButton;
 
+            await ViewModel.Refresh();
         }
 
         public override void Bind(BindingSet<HomeViewModel> bindingSet)

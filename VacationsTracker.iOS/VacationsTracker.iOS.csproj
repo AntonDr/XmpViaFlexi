@@ -62,12 +62,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Bootstrappers\IosBootstrapper.cs" />
-    <Compile Include="Extension\HelperExtension.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Themes\AppColors.cs" />
     <Compile Include="Themes\AppDimens.cs" />
-    <Compile Include="Themes\AppStrings.cs" />
     <Compile Include="Themes\AppStyles.cs" />
     <Compile Include="Views\BarButtonFactory.cs" />
     <Compile Include="Views\Details\VacationDetailsView.cs" />
@@ -171,7 +169,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\ExcepionalImage.imageset\Icon_Request_Dark.png">
+    <ImageAsset Include="Assets.xcassets\ExceptionalImage.imageset\Icon_Request_Dark.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LeaveWithoutPayImage.imageset\Icon_Request_Gray.png">
@@ -189,7 +187,7 @@
     <ImageAsset Include="Assets.xcassets\LeaveWithoutPayImage.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\ExcepionalImage.imageset\Contents.json">
+    <ImageAsset Include="Assets.xcassets\ExceptionalImage.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\OvertimeImage.imageset\Contents.json">

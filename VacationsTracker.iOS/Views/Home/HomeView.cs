@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using Cirrious.FluentLayouts.Touch;
-using CoreGraphics;
+﻿using Cirrious.FluentLayouts.Touch;
 using FlexiMvvm.Views;
 using UIKit;
 using VacationsTracker.iOS.Themes;
@@ -38,7 +36,6 @@ namespace VacationsTracker.iOS.Views.Home
 
         }
 
-       
         protected override void SetupLayout()
         {
             base.SetupLayout();
@@ -53,19 +50,6 @@ namespace VacationsTracker.iOS.Views.Home
             this.SubviewsDoNotTranslateAutoresizingMaskIntoConstraints();
 
             this.AddConstraints(VacationsTableView.FullSizeOf(this));
-
-            //this.AddConstraints(VacationsTableView.TableFooterView.Below(VacationsTableView),
-            //    VacationsTableView.TableFooterView.Height().EqualTo(2));
-
-                    
-
-            //this.AddConstraints(Separator.Height().EqualTo(1));
-
-            //this.AddConstraints(
-            //    Separator.Below(VacationsTableView),
-            //    Separator.Height().EqualTo(1),
-            //    Separator.AtLeftOf(this),
-            //    Separator.AtRightOf(this));
         }
     }
 }

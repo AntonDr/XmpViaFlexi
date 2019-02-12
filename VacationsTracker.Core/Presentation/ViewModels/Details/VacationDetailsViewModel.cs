@@ -13,6 +13,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
+        private DateTime _startDate;
+        private DateTime _endDate;
 
         public VacationDetailsViewModel(
             INavigationService navigationService,
@@ -28,6 +30,9 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
 
         private async void Save()
         {
+            Vacation.Start = StartDate;
+            Vacation.End = EndDate;
+
             await _vacationsRepository.UpdateVacationAsync(Vacation);
             _navigationService.NavigateBackToHome(this);
         }
@@ -42,13 +47,27 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
                 new VacationTypePagerParameters { VacationType = VacationType.LeaveWithoutPay },
             };
 
+        public DateTime StartDate
+        {
+            get => _startDate;
+            set => Set(ref _startDate, value);
+        }
+
+        public DateTime EndDate
+        {
+            get => _endDate;
+            set => Set(ref _endDate, value);
+        }
+
         protected override async Task InitializeAsync(VacationDetailsParameters parameters)
         {
             await base.InitializeAsync(parameters);
 
-            var vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
+            Vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
 
-            Vacation = vacation;
+            StartDate = Vacation.Start;
+            EndDate = Vacation.End;
+          
         }
     }
 }

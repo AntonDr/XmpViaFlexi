@@ -31,7 +31,7 @@ namespace VacationsTracker.iOS.Views.ValueConverters
                     image = UIImage.FromBundle("LeaveWithoutPayImage");
                     break;
                 case VacationType.ExceptionalLeave:
-                    image = UIImage.FromBundle("ExcepionalImage");
+                    image = UIImage.FromBundle("ExceptionalImage");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(value), value, null);
