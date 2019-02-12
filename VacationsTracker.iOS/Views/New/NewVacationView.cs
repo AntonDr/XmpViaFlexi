@@ -45,14 +45,16 @@ namespace VacationsTracker.iOS.Views.New
 
 
             VacationStartView = new UIView();
-            VacationStartDay = new UILabel().SetDateStyle(AppColors.LightBlueColor, UIFont.SystemFontOfSize(60));
-            VacationStartMonth = new UILabel().SetDateStyle(AppColors.LightBlueColor, UIFont.SystemFontOfSize(30));
-            VacationStartYear = new UILabel().SetDateStyle(AppColors.LightBlueColor, UIFont.SystemFontOfSize(25));
+
+            VacationStartDay = new UILabel().SetStartDate1Style();
+            VacationStartMonth = new UILabel().SetStartDate2Style();
+            VacationStartYear = new UILabel().SetStartDate3Style();
 
             VacationEndView = new UIView();
-            VacationEndDay = new UILabel().SetDateStyle(AppColors.LightGreenColor, UIFont.SystemFontOfSize(60));
-            VacationEndMonth = new UILabel().SetDateStyle(AppColors.LightGreenColor, UIFont.SystemFontOfSize(30));
-            VacationEndYear = new UILabel().SetDateStyle(AppColors.LightGreenColor, UIFont.SystemFontOfSize(25));
+
+            VacationEndDay = new UILabel().SetEndDate1Style();
+            VacationEndMonth = new UILabel().SetEndDate2Style();
+            VacationEndYear = new UILabel().SetEndDate3Style();
 
 
             DownSeparatorView = new UIView { BackgroundColor = AppColors.LightBlueColor };
