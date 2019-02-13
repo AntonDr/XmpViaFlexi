@@ -85,11 +85,9 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Create
         {
             await base.InitializeAsync();
 
-            Vacation = new VacationCellViewModel
-            {
-                End = DateTime.Now.AddDays(2),
-                Start = DateTime.Now
-            };
+            Vacation = VacationCellViewModel.GetNew;
+
+            (_vacationId, StartDate, EndDate, Status, Type) = Vacation;
         }
     }
 }

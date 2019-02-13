@@ -8,6 +8,7 @@ using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Create;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
 using VacationsTracker.Core.Resources;
+using VacationsTracker.iOS.Helpers;
 using VacationsTracker.iOS.Views.Details.VacationsPager;
 using VacationsTracker.iOS.Views.ValueConverters;
 
@@ -59,11 +60,16 @@ namespace VacationsTracker.iOS.Views.New
 
             var tapGesture = new UITapGestureRecognizer(OnStartDayViewTap);
             View.VacationStartView.AddGestureRecognizer(tapGesture);
+            View.VacationStartDatePicker.ValueChangedWeakSubscribe(StartDateValueChangedHandler);
+
 
             tapGesture = new UITapGestureRecognizer(OnEndDayViewTap);
             View.VacationEndView.AddGestureRecognizer(tapGesture);
+            View.VacationEndDatePicker.ValueChangedWeakSubscribe(StartEndValueChangedHandler);
 
         }
+
+        
 
         public override void ViewWillAppear(bool animated)
         {
@@ -123,19 +129,38 @@ namespace VacationsTracker.iOS.Views.New
                 .For(v => v.CurrentItemIndexAndCurrentItemIndexChangedBinding())
                 .To(vm => vm.Type)
                 .WithConvertion<VacationTypeToImageNumberValueConverter>();
+
+
+        }
+
+        private void StartDateValueChangedHandler(object sender, EventArgs args)
+        {
+            if (sender is UIDatePicker picker)
+            {
+                var date = (DateTime)picker.Date;
+                ViewModel.StartDate = date;
+            }
+        }
+        private void StartEndValueChangedHandler(object sender, EventArgs args)
+        {
+            if (sender is UIDatePicker picker)
+            {
+                var date = (DateTime)picker.Date;
+                ViewModel.EndDate = date;
+            }
         }
 
         private void OnStartDayViewTap()
         {
             View.VacationEndDatePicker.Hidden = true;
-
+            View.VacationStartDatePicker.Date = ViewModel.StartDate.ToNSDate();
             View.VacationStartDatePicker.Hidden = false;
         }
 
         private void OnEndDayViewTap()
         {
             View.VacationStartDatePicker.Hidden = true;
-
+            View.VacationEndDatePicker.Date = ViewModel.EndDate.ToNSDate();
             View.VacationEndDatePicker.Hidden = false;
         }
 

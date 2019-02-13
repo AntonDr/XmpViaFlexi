@@ -15,6 +15,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels
 
         public string Id { get; set; }
 
+
+        public static VacationCellViewModel GetNew => new VacationCellViewModel
+        {
+            Start = DateTime.Now,
+            End = DateTime.Now.AddDays(3)
+        };
         public VacationType Type
         {
             get => _type;
@@ -47,6 +53,13 @@ namespace VacationsTracker.Core.Presentation.ViewModels
             set => Set(ref _end, value);
         }
 
-        //public bool SeparatorVisible { get; set; } = true;
+        public void Deconstruct(out string id, out DateTime start, out DateTime end, out VacationStatus status, out VacationType type)
+        {
+            id = Id;
+            start = Start;
+            end = End;
+            status = Status;
+            type = Type;
+        }
     }
 }
