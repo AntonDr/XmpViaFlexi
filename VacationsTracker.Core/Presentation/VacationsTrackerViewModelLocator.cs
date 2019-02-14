@@ -1,5 +1,6 @@
 ﻿using FlexiMvvm;
 using FlexiMvvm.Ioc;
+using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels;
@@ -22,7 +23,13 @@ namespace VacationsTracker.Core.Presentation
         protected override void SetupFactory(ViewModelFactory factory)
         {
             factory.Register(() => new EntryViewModel(_dependencyProvider.Get<INavigationService>()));
-            factory.Register(() => new LoginViewModel(_dependencyProvider.Get<INavigationService>()));
+
+            factory.Register(() => new LoginViewModel(
+                _dependencyProvider.Get<INavigationService>(),
+                _dependencyProvider.Get<IUserRepository>(),
+                _dependencyProvider.Get<IOperationFactory>()));
+
+
             factory.Register(() => new HomeViewModel(
                 _dependencyProvider.Get<INavigationService>(),
                 _dependencyProvider.Get<IVacationsRepository>()));
