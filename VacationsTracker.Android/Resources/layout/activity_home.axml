@@ -29,11 +29,8 @@
 			android:theme="@style/ToolbarTheme">
 
 
-			<TextView
-			android:text="@string/home_page_title"
-            style="@style/ToolbarTitleStyle" />
-
-		</android.support.v7.widget.Toolbar>
+			
+			</android.support.v7.widget.Toolbar>
 
 		
 

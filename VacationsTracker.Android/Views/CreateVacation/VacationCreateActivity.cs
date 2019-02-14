@@ -57,37 +57,37 @@ namespace VacationsTracker.Droid.Views.CreateVacation
 
             bindingSet.Bind(ViewHolder.VacationStartDay)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToDayValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationStartMonth)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToMonthValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationStartYear)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToYearValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndDay)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToDayValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndMonth)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToMonthValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndYear)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToYearValueConverter>();
 
             bindingSet.Bind(ViewHolder.StatusRadioGroup)
                 .For(v => v.CheckAndCheckedChangeBinding())
-                .To(vm => vm.Vacation.Status)
+                .To(vm => vm.Status)
                 .WithConvertion<RadioGroupValueConverter>();
 
             bindingSet.Bind(ViewHolder.SaveRequestButton)
@@ -96,7 +96,7 @@ namespace VacationsTracker.Droid.Views.CreateVacation
 
             bindingSet.Bind(ViewHolder.VacationTypePager)
                 .For(v => v.SetCurrentItemAndPageSelectedBinding())
-                .To(vm => vm.Vacation.Type)
+                .To(vm => vm.Type)
                 .WithConvertion<VacationTypeToImageNumberValueConverter>();
         }
 
@@ -122,13 +122,13 @@ namespace VacationsTracker.Droid.Views.CreateVacation
 
         private void OnVacationStartDayClick(object sender, EventArgs args)
         {
-            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.Vacation.Start, selectedTime => ViewModel.Vacation.Start = selectedTime);
+            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.StartDate, selectedTime => ViewModel.StartDate = selectedTime);
             datePickerFragment.Show(FragmentManager, string.Empty);
         }
 
         private void OnVacationEndDayClick(object sender, EventArgs args)
         {
-            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.Vacation.End, selectedTime => ViewModel.Vacation.End = selectedTime);
+            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.EndDate, selectedTime => ViewModel.EndDate = selectedTime);
             datePickerFragment.Show(FragmentManager, string.Empty);
         }
     }

@@ -59,37 +59,37 @@ namespace VacationsTracker.Droid.Views.Details
 
             bindingSet.Bind(ViewHolder.VacationStartDay)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToDayValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationStartMonth)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToMonthValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationStartYear)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.Start)
+                .To(vm => vm.StartDate)
                 .WithConvertion<DateTimeToYearValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndDay)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToDayValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndMonth)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToMonthValueConverter>();
 
             bindingSet.Bind(ViewHolder.VacationEndYear)
                 .For(v => v.Text)
-                .To(vm => vm.Vacation.End)
+                .To(vm => vm.EndDate)
                 .WithConvertion<DateTimeToYearValueConverter>();
 
             bindingSet.Bind(ViewHolder.StatusRadioGroup)
                 .For(v => v.CheckAndCheckedChangeBinding())
-                .To(vm => vm.Vacation.Status)
+                .To(vm => vm.Status)
                 .WithConvertion<RadioGroupValueConverter>();
 
             bindingSet.Bind(ViewHolder.SaveRequestButton)
@@ -98,7 +98,7 @@ namespace VacationsTracker.Droid.Views.Details
 
             bindingSet.Bind(ViewHolder.VacationTypePager)
                 .For(v => v.SetCurrentItemAndPageSelectedBinding())
-                .To(vm => vm.Vacation.Type)
+                .To(vm => vm.Type)
                 .WithConvertion<VacationTypeToImageNumberValueConverter>();
         }
 

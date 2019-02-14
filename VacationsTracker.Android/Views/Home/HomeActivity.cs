@@ -45,6 +45,7 @@ namespace VacationsTracker.Droid.Views.Home
             SetSupportActionBar(ViewHolder.HomeToolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
+            SupportActionBar.Title = Resources.GetString(Resource.String.home_page_title);
             //SupportActionBar.SetHomeAsUpIndicator(Resource.Id.right_icon);
 
             ViewHolder.NavView.NavigationItemSelected += (s,e) => ViewHolder.DrawerLayout.CloseDrawers();

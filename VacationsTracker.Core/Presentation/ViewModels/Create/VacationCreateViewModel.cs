@@ -15,8 +15,6 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Create
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
 
-        private string _vacationId;
-
         private DateTime _startDate;
         private DateTime _endDate;
         private VacationType _type;
@@ -51,15 +49,12 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Create
             set => Set(ref _status, value);
         }
 
-        public VacationCellViewModel Vacation { get; set; }
-
         public ICommand CreateCommand => CommandProvider.Get(Create);
 
         private async void Create()
         {
             var vacation = new VacationCellViewModel
             {
-                Id = _vacationId,
                 Start = StartDate,
                 End = EndDate,
                 Status = Status,
@@ -85,9 +80,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Create
         {
             await base.InitializeAsync();
 
-            Vacation = VacationCellViewModel.GetNew;
-
-            (_vacationId, StartDate, EndDate, Status, Type) = Vacation;
+            StartDate = DateTime.Now;
+            EndDate = DateTime.Now.AddDays(3);
         }
     }
 }
