@@ -27,7 +27,7 @@ namespace VacationsTracker.Core.Bootstrappers
             simpleIoc.Register<IVacationsRepository>(() => new VacationRepository());
             simpleIoc.Register<IUserRepository>(() => new UserRepository());
             simpleIoc.Register<IErrorHandler>((() => new ErrorHandler()));
-            simpleIoc.Register<IOperationFactory>(() => new OperationFactory(null,simpleIoc.Get<IErrorHandler>()));
+            simpleIoc.Register<IOperationFactory>(() => new OperationFactory(simpleIoc,simpleIoc.Get<IErrorHandler>()));
         }
 
         private void SetupViewModelLocator(IDependencyProvider dependencyProvider)

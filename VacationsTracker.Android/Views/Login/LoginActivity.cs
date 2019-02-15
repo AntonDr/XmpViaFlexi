@@ -26,9 +26,19 @@ namespace VacationsTracker.Droid.Views.Login
         {
             base.Bind(bindingSet);
 
+            bindingSet.Bind(ViewHolder.LoginEntry)
+                .For(v => v.TextAndTextChangedBinding())
+                .To(vm => vm.UserLogin);
+
+            bindingSet.Bind(ViewHolder.PasswordEntry)
+                .For(vm => vm.TextAndTextChangedBinding())
+                .To(v => v.UserPassword);
+
             bindingSet.Bind(ViewHolder.LoginButton)
                 .For(v => v.ClickBinding())
                 .To(vm => vm.LoginCommand);
+
+
         }
     }
 }

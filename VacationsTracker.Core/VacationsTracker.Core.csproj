@@ -6,15 +6,18 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Mapping\CustomConverters\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="5.1.1" />
     <PackageReference Include="FlexiMvvm.Bindings.PreRelease" Version="0.9.7-prerelease" />
     <PackageReference Include="FlexiMvvm.Common.PreRelease" Version="0.9.7-prerelease" />
     <PackageReference Include="FlexiMvvm.Essentials.PreRelease" Version="0.9.7-prerelease" />
     <PackageReference Include="FlexiMvvm.Lifecycle.PreRelease" Version="0.9.7-prerelease" />
     <PackageReference Include="FlexiMvvm.Validation.PreRelease" Version="0.9.7-prerelease" />
     <PackageReference Include="JetBrains.Annotations" Version="2018.3.0" />
+    <PackageReference Include="Newtonsoft.Json.Schema" Version="2.0.7" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
   </ItemGroup>
