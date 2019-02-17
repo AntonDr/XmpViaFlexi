@@ -61,7 +61,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Create
                 Type = Type
             };
 
-            await _vacationsRepository.CreateVacationAsync(vacation);
+            await _vacationsRepository.UpsertVacationAsync(vacation);
 
             _navigationService.NavigateCreateBackToHome(this);
         }

@@ -37,7 +37,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             Vacation.Status = Status;
             Vacation.Type = Type;
 
-            await _vacationsRepository.UpdateVacationAsync(Vacation);
+            await _vacationsRepository.UpsertVacationAsync(Vacation);
             _navigationService.NavigateBackToHome(this);
         }
 

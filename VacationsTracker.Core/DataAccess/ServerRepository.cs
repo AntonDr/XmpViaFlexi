@@ -11,11 +11,11 @@ namespace VacationsTracker.Core.DataAccess
     public class ServerRepository : IVacationsRepository
     {
 
-        private readonly IVacationAPI _vacationApi;
+        private readonly IVacationApi _vacationApi;
 
         private string BaseUrl => "http://localhost:5000/api/vts/workflow";
 
-        public ServerRepository(IVacationAPI vacationApi)
+        public ServerRepository(IVacationApi vacationApi)
         {
             _vacationApi = vacationApi;
         }
