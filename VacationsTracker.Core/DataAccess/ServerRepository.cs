@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using VacationsTracker.Core.DTO;
 using VacationsTracker.Core.Presentation.ViewModels;
 
@@ -12,9 +13,8 @@ namespace VacationsTracker.Core.DataAccess
 
         private readonly IVacationAPI _vacationApi;
 
-        private string GetAllUrl => "http://localhost:5000/api/vts/workflow";
+        private string BaseUrl => "http://localhost:5000/api/vts/workflow";
 
-        private string PostUrl => "http://localhost:5000/api/vts/workflow";
         public ServerRepository(IVacationAPI vacationApi)
         {
             _vacationApi = vacationApi;
@@ -22,25 +22,24 @@ namespace VacationsTracker.Core.DataAccess
 
         public async Task<IEnumerable<VacationCellViewModel>> GetVacationsAsync()
         {
-            var result = await _vacationApi.GetAsync<BaseResultOfVacationRequests>(GetAllUrl);
+            var result = await _vacationApi.GetAsync<BaseResultOfVacationRequests>(BaseUrl);
 
-            var vacations = result.Result;
-
+            return Mapper.Map<IEnumerable<VacationDto>,IEnumerable<VacationCellViewModel>>(result.Result);
+            
         }
 
-        public Task<VacationCellViewModel> GetVacationAsync(string vacationId)
+        public async Task<VacationCellViewModel> GetVacationAsync(string vacationId)
         {
-            throw new NotImplementedException();
+            var result = await _vacationApi.GetAsync<BaseResultOfVacationRequest>(BaseUrl + $@"\{vacationId}");
+
+            return Mapper.Map<VacationDto, VacationCellViewModel>(result.Result);
         }
 
-        public Task UpdateVacationAsync(VacationCellViewModel vacation)
+        public async Task UpsertVacationAsync(VacationCellViewModel vacation)
         {
-            throw new NotImplementedException();
-        }
+            var vacationDto = Mapper.Map<VacationCellViewModel, VacationDto>(vacation);
 
-        public Task CreateVacationAsync(VacationCellViewModel vacation)
-        {
-            throw new NotImplementedException();
+            await _vacationApi.PostAsync(BaseUrl, vacationDto);
         }
     }
 }

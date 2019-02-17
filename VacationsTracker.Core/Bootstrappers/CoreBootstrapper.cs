@@ -5,6 +5,7 @@ using FlexiMvvm.Operations;
 using VacationsTracker.Core.Application.Connectivity;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Infrastructure.Connectivity;
+using VacationsTracker.Core.Mapping;
 using VacationsTracker.Core.Presentation;
 using Connectivity = VacationsTracker.Core.Infrastructure.Connectivity.Connectivity;
 
@@ -28,6 +29,7 @@ namespace VacationsTracker.Core.Bootstrappers
             simpleIoc.Register<IUserRepository>(() => new UserRepository());
             simpleIoc.Register<IErrorHandler>((() => new ErrorHandler()));
             simpleIoc.Register<IOperationFactory>(() => new OperationFactory(simpleIoc,simpleIoc.Get<IErrorHandler>()));
+            simpleIoc.Register(() => new VacationCellViewModelMappingProfile());
         }
 
         private void SetupViewModelLocator(IDependencyProvider dependencyProvider)

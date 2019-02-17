@@ -137,7 +137,18 @@ namespace VacationsTracker.Core.DataAccess
             return Task.FromResult(vacation);
         }
 
-        public async Task UpdateVacationAsync(VacationCellViewModel updatedVacation)
+        public async Task UpsertVacationAsync(VacationCellViewModel vacation)
+        {
+            if (vacation.Id == Guid.Empty.ToString())
+            {
+                await CreateVacationAsync(vacation);
+                return;
+            }
+
+            await UpdateVacationAsync(vacation);
+        }
+
+        private async Task UpdateVacationAsync(VacationCellViewModel updatedVacation)
         {
             var vacation = await GetVacationAsync(updatedVacation.Id);
 
@@ -147,7 +158,6 @@ namespace VacationsTracker.Core.DataAccess
             vacation.End = updatedVacation.End;
             vacation.Status = updatedVacation.Status;
             vacation.Type = updatedVacation.Type;
-
 
             //int index = -1;
             //for (var i = 0; i < _vacations.Count; i++)
@@ -166,13 +176,13 @@ namespace VacationsTracker.Core.DataAccess
 
         }
 
-        public Task CreateVacationAsync(VacationCellViewModel vacation)
+        private Task CreateVacationAsync(VacationCellViewModel vacation)
         {
             vacation.Id = Guid.NewGuid().ToString();
 
             _vacations.Add(vacation);
 
             return Task.CompletedTask;
-        }
+        }   
     }
 }
