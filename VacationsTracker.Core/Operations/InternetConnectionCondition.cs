@@ -1,6 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using FlexiMvvm;
+using FlexiMvvm.Operations;
+using VacationsTracker.Core.Application.Connectivity;
+using VacationsTracker.Core.Domain.Exceptions;
 
 namespace VacationsTracker.Core.Operations
 {
@@ -10,7 +16,7 @@ namespace VacationsTracker.Core.Operations
         {
             var connectivityService = context.DependencyProvider.NotNull().Get<IConnectivityService>();
 
-            if (connectivityService.IsConnected())
+            if (connectivityService.IsConnected)
             {
                 return Task.FromResult(true);
             }

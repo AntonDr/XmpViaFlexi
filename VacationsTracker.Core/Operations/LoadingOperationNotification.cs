@@ -24,9 +24,6 @@ namespace VacationsTracker.Core.Operations
                     viewModel.Loading = true;
                     break;
 
-                case IPageLoading viewModel:
-                    viewModel.IsLoadingNextPage = true;
-                    break;
             }
         }
 
@@ -39,12 +36,8 @@ namespace VacationsTracker.Core.Operations
                     case IViewModelWithOperation viewModel:
                         viewModel.Loading = false;
                         break;
-
-                    case IPageLoading viewModel:
-                        viewModel.IsLoadingNextPage = false;
-                        break;
                 }
             }
         }
     }
-    {}
+}
