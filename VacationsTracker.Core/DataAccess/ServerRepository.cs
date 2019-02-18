@@ -13,8 +13,6 @@ namespace VacationsTracker.Core.DataAccess
 
         private readonly IVacationApi _vacationApi;
 
-        private string BaseUrl => "http://localhost:5000/api/vts/workflow";
-
         public ServerRepository(IVacationApi vacationApi)
         {
             _vacationApi = vacationApi;
@@ -22,24 +20,24 @@ namespace VacationsTracker.Core.DataAccess
 
         public async Task<IEnumerable<VacationCellViewModel>> GetVacationsAsync()
         {
-            var result = await _vacationApi.GetAsync<BaseResultOfVacationRequests>(BaseUrl);
+            var result = await _vacationApi.GetVacationsAsync();
 
-            return Mapper.Map<IEnumerable<VacationDto>,IEnumerable<VacationCellViewModel>>(result.Result);
+            return Mapper.Map<IEnumerable<VacationDto>,IEnumerable<VacationCellViewModel>>(result);
             
         }
 
         public async Task<VacationCellViewModel> GetVacationAsync(string vacationId)
         {
-            var result = await _vacationApi.GetAsync<BaseResultOfVacationRequest>(BaseUrl + $@"\{vacationId}");
+            var result = await _vacationApi.GetVacationAsync(vacationId);
 
-            return Mapper.Map<VacationDto, VacationCellViewModel>(result.Result);
+            return Mapper.Map<VacationDto, VacationCellViewModel>(result);
         }
 
         public async Task UpsertVacationAsync(VacationCellViewModel vacation)
         {
             var vacationDto = Mapper.Map<VacationCellViewModel, VacationDto>(vacation);
 
-            await _vacationApi.PostAsync(BaseUrl, vacationDto);
+            await _vacationApi.UpsertVacationAsync(vacationDto);
         }
     }
 }

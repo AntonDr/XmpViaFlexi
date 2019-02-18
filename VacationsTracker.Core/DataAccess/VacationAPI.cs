@@ -4,41 +4,43 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using VacationsTracker.Core.DTO;
 
 namespace VacationsTracker.Core.DataAccess
 {
-    internal class VacationAPI : IVacationApi
+    internal class VacationApi : IVacationApi
     {
-        private readonly HttpClient _httpClient;
+        private readonly IContext _context;
 
-        public VacationAPI()
+        public VacationApi(IContext context)
         {
-            _httpClient = new HttpClient();
+            _context = context;
         }
 
-        public async Task<T> GetAsync<T>(string url)
+        public async Task<IEnumerable<VacationDto>> GetVacationsAsync()
         {
-            var response = await _httpClient.GetAsync(url);
+            var response = await _context.GetAsync<BaseResultOfVacationRequests>(string.Empty);
 
-            var json = await response.Content.ReadAsStringAsync();
-
-            var obj = JsonConvert.DeserializeObject<T>(json);
-
-            return obj;
+            return response.Result;
         }
 
-        public async Task PostAsync<T>(string url, T obj)
+        public async Task<VacationDto> GetVacationAsync(string id)
         {
-            var json = JsonConvert.SerializeObject(obj);
+            var response = await _context.GetAsync<BaseResultOfVacationRequest>($"/{id}");
 
-            var content = new StringContent(json,Encoding.UTF8, "application/json");
-
-            await _httpClient.PostAsync(url, content);
+            return response.Result;
         }
 
-        public async Task DeleteAsync(string url)
+        public async Task<VacationDto> UpsertVacationAsync(VacationDto vacation)
         {
-            await _httpClient.DeleteAsync(url);
+            if (vacation.Id == Guid.Empty.ToString())
+            {
+                vacation.Created = DateTime.MinValue;
+            }
+
+            var response = await _context.PostAsync<VacationDto, BaseResultOfVacationRequest>(string.Empty, vacation);
+
+            return response.Result;
         }
     }
 }

@@ -6,7 +6,7 @@ using VacationsTracker.Core.Domain;
 
 namespace VacationsTracker.Core.DTO
 {
-    internal class VacationDto
+    public class VacationDto
     {
         [JsonProperty("id")]
         public string Id { get; set; }
