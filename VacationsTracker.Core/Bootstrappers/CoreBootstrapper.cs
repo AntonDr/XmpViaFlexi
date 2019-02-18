@@ -6,6 +6,7 @@ using VacationsTracker.Core.Application.Connectivity;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Infrastructure.Connectivity;
 using VacationsTracker.Core.Mapping;
+using VacationsTracker.Core.Operations;
 using VacationsTracker.Core.Presentation;
 using Connectivity = VacationsTracker.Core.Infrastructure.Connectivity.Connectivity;
 
@@ -28,7 +29,8 @@ namespace VacationsTracker.Core.Bootstrappers
             simpleIoc.Register<IVacationsRepository>(() => new VacationRepository());
             simpleIoc.Register<IUserRepository>(() => new UserRepository());
             simpleIoc.Register<IErrorHandler>((() => new ErrorHandler()));
-            simpleIoc.Register<IOperationFactory>(() => new OperationFactory(simpleIoc,simpleIoc.Get<IErrorHandler>()));
+            simpleIoc.Register<IDependencyProvider>(() => new DependencyProvider(simpleIoc.Get<IConnectivityService>()));
+            simpleIoc.Register<IOperationFactory>(() => new OperationFactory(simpleIoc.Get<IDependencyProvider>(),simpleIoc.Get<IErrorHandler>()));
             simpleIoc.Register(() => new VacationCellViewModelMappingProfile());
         }
 

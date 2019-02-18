@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Security.Authentication;
 using System.Threading.Tasks;
 using FlexiMvvm;
 using FlexiMvvm.Commands;
 using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.Navigation;
+using VacationsTracker.Core.Operations;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Login
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ViewModelBase , IViewModelWithOperation
     {
         private readonly INavigationService _navigationService;
         private readonly IUserRepository _userRepository;
+        private bool _loading;
 
         public bool ValidCredentials { get; set; } = true;
 
@@ -22,28 +25,28 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
             _userRepository = userRepository;
         }
 
+        public bool Loading
+        {
+            get => _loading;
+            set => Set(ref _loading, value);
+        }
+
         public ICommand LoginCommand => CommandProvider.GetForAsync(Login);
 
         public string UserLogin { get; set; }
 
         public string UserPassword { get; set; }
 
-        private async Task Login()
+        private Task Login()
         {
-            await Task.Delay(500);
-
-            await OperationFactory.CreateOperation(OperationContext)
+            return OperationFactory.CreateOperation(OperationContext)
+                .WithLoadingNotification()
+                .WithInternetConnectionCondition()
                 .WithExpressionAsync(cancellationToken => _userRepository.AuthorizeAsync(UserLogin, UserPassword))
-                .OnSuccess(isSuccess =>
-                {
-                    Debug.WriteLine("Trying navigate");
-                    if (isSuccess)
-                    {
-                        _navigationService.NavigateToHome(this);
-                    }
-                })
-                .OnError<Exception>(error => Debug.WriteLine(error.Exception.Message))
+                .OnSuccess(() => _navigationService.NavigateToHome(this))
+                .OnError<AuthenticationException>( _ => ValidCredentials = false)
                 .ExecuteAsync();
         }
+
     }
 }

@@ -1,7 +1,11 @@
-﻿namespace VacationsTracker.Core.Presentation.ViewModels
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace VacationsTracker.Core.Presentation.ViewModels
 {
     public interface IViewModelWithOperation
     {
-        bool Busy { get; }
+        bool Loading { get; set; }
     }
 }
