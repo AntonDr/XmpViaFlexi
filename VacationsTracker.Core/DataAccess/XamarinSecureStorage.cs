@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using VacationsTracker.Core.DataAccess.Interfaces;
 using Xamarin.Essentials;
 
 namespace VacationsTracker.Core.DataAccess

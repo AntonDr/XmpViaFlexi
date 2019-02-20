@@ -4,6 +4,7 @@ using FlexiMvvm;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
 using VacationsTracker.Core.DataAccess;
+using VacationsTracker.Core.DataAccess.Interfaces;
 using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Navigation;
 

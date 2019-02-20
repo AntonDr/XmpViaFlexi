@@ -74,6 +74,7 @@ namespace VacationsTracker.Droid.Views
          private EditText loginEntry;
          private EditText passwordEntry;
          private Button loginButton;
+         private ProgressBar progressBar;
 
         public LoginActivityViewHolder( Activity activity)
         {
@@ -97,6 +98,10 @@ namespace VacationsTracker.Droid.Views
         
         public Button LoginButton =>
             loginButton ?? (loginButton = activity.FindViewById<Button>(Resource.Id.loginButton));
+
+        
+        public ProgressBar ProgressBar =>
+            progressBar ?? (progressBar = activity.FindViewById<ProgressBar>(Resource.Id.progressBar));
     }
 
 
@@ -297,6 +302,14 @@ namespace VacationsTracker.Droid.Views
         public TextView TextViewVacationName =>
             textViewVacationName ?? (textViewVacationName = rootView.FindViewById<TextView>(Resource.Id.text_view_vacation_name));
     }
+
+
+    /*
+    "LayoutDefinitionOptions" are not specified for "navigation_header" layout file therefore view holder can't be generated for it.
+    public partial class HeaderNavigationViewHolder
+    {
+    }
+    */
 
 
 }

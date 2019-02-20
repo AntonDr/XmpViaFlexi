@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Presentation.ViewModels;
 
-namespace VacationsTracker.Core.DataAccess
+namespace VacationsTracker.Core.DataAccess.Interfaces
 {
     public interface IVacationsRepository
     {

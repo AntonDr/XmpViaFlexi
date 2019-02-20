@@ -124,14 +124,30 @@ namespace VacationsTracker.Droid.Views.Details
 
         private void OnVacationStartDayClick(object sender, EventArgs args)
         {
-            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.Vacation.Start, selectedTime => ViewModel.Vacation.Start = selectedTime);
+            var datePickerFragment = DatePickerFragment.NewInstance(
+                ViewModel.StartDate,
+                date => ViewModel.StartDate = date,
+                date => date > DateTime.Now && date < ViewModel.EndDate,
+                OnInvalidDateHandler);
+
             datePickerFragment.Show(FragmentManager, string.Empty);
         }
 
         private void OnVacationEndDayClick(object sender, EventArgs args)
         {
-            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.Vacation.End, selectedTime => ViewModel.Vacation.End = selectedTime);
+            var datePickerFragment = DatePickerFragment.NewInstance(
+                ViewModel.EndDate,
+                date => ViewModel.EndDate = date,
+                date => date > DateTime.Now && date > ViewModel.StartDate,
+                OnInvalidDateHandler);
+
             datePickerFragment.Show(FragmentManager, string.Empty);
+        }
+
+        private void OnInvalidDateHandler(DateTime date)
+        {
+            var t = Toast.MakeText(this, "Invalid date", ToastLength.Short);
+            t.Show();
         }
     }
 }

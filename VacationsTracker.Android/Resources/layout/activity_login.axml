@@ -4,6 +4,8 @@
 		          xmlns:app="http://schemas.android.com/apk/res-auto"  
 				  style="@style/LoginLayoutStyle">
     
+
+
 	<TextView
 		android:id="@+id/invalidCredentialsText"
 	    android:text="@string/login_page_error"
@@ -23,6 +25,7 @@
 		 android:id="@+id/passwordEntry"
 		 android:hint="@string/login_page_password_placeholder"
 		 style="@style/LoginEntryStyle"
+		 android:inputType="textPassword"
 		 app:layout_constraintLeft_toLeftOf="parent"
 		 app:layout_constraintRight_toRightOf="parent"
 		 app:layout_constraintTop_toBottomOf="@id/loginEntry"/>
@@ -34,5 +37,20 @@
 		 app:layout_constraintLeft_toLeftOf="parent"
 		 app:layout_constraintRight_toRightOf="parent"
 		 app:layout_constraintTop_toBottomOf="@id/passwordEntry"/>
+
+	<ProgressBar
+      style="?android:attr/progressBarStyleLarge"
+      android:id="@+id/progressBar"
+      android:progressDrawable="@drawable/circular_progress_bar"
+		android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		android:visibility="gone"
+	/>
 
 </android.support.constraint.ConstraintLayout>

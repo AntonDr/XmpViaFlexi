@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace VacationsTracker.Core.DataAccess
+namespace VacationsTracker.Core.DataAccess.Interfaces
 {
     public interface ISecureStorage
     {

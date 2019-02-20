@@ -5,6 +5,7 @@ using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
 using FlexiMvvm.Views.V7;
 using System;
+using Android.Widget;
 using VacationsTracker.Core.Presentation.ValueConverters;
 using VacationsTracker.Core.Presentation.ViewModels.Create;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
@@ -122,14 +123,30 @@ namespace VacationsTracker.Droid.Views.CreateVacation
 
         private void OnVacationStartDayClick(object sender, EventArgs args)
         {
-            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.StartDate, selectedTime => ViewModel.StartDate = selectedTime);
+            var datePickerFragment = DatePickerFragment.NewInstance(
+                ViewModel.StartDate,
+                date => ViewModel.StartDate = date,
+                date => date > DateTime.Now && date < ViewModel.EndDate,
+                OnInvalidDateHandler);
+
             datePickerFragment.Show(FragmentManager, string.Empty);
         }
 
         private void OnVacationEndDayClick(object sender, EventArgs args)
         {
-            var datePickerFragment = DatePickerFragment.NewInstance(this.ViewModel.EndDate, selectedTime => ViewModel.EndDate = selectedTime);
+            var datePickerFragment = DatePickerFragment.NewInstance(
+                ViewModel.EndDate,
+                date => ViewModel.EndDate = date,
+                date => date > DateTime.Now && date > ViewModel.StartDate,
+                OnInvalidDateHandler);
+
             datePickerFragment.Show(FragmentManager, string.Empty);
+        }
+
+        private void OnInvalidDateHandler(DateTime date)
+        {
+            var t = Toast.MakeText(this, "Invalid date", ToastLength.Short);
+            t.Show();
         }
     }
 }

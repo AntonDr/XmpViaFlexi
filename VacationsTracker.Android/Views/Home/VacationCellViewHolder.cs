@@ -41,7 +41,7 @@ namespace VacationsTracker.Droid.Views
             bindingSet.Bind(SeparatorView)
                 .For(v => v.Visibility)
                 .To(vm => vm.SeparatorVisible)
-                .WithConvertion<SeparatorVisibilityValueConverter>();
+                .WithConvertion<VisibilityValueConverter>();
         }
     }
 }

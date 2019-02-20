@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using VacationsTracker.Core.DTO;
 
-namespace VacationsTracker.Core.DataAccess
+namespace VacationsTracker.Core.DataAccess.Interfaces
 {
     public interface IVacationApi
     {

@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using VacationsTracker.Core.DataAccess.Interfaces;
 using VacationsTracker.Core.DTO;
 
 namespace VacationsTracker.Core.DataAccess

@@ -3,6 +3,7 @@ using Android.OS;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
+using VacationsTracker.Droid.Views.ValueConverters;
 
 namespace VacationsTracker.Droid.Views.Login
 {
@@ -26,6 +27,11 @@ namespace VacationsTracker.Droid.Views.Login
         {
             base.Bind(bindingSet);
 
+            bindingSet.Bind(ViewHolder.InvalidCredentialsText)
+                .For(v => v.Visibility)
+                .To(vm => vm.InvalidCredentials)
+                .WithConvertion<VisibilityValueConverter>();
+
             bindingSet.Bind(ViewHolder.LoginEntry)
                 .For(v => v.TextAndTextChangedBinding())
                 .To(vm => vm.UserLogin);
@@ -38,7 +44,10 @@ namespace VacationsTracker.Droid.Views.Login
                 .For(v => v.ClickBinding())
                 .To(vm => vm.LoginCommand);
 
-
+            bindingSet.Bind(ViewHolder.ProgressBar)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loading)
+                .WithConvertion<VisibilityValueConverter>();
         }
     }
 }

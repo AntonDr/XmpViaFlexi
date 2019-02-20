@@ -52,24 +52,6 @@ namespace VacationsTracker.Droid.Views.Home
 
         }
 
-        //private async void NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
-        //{
-        //    switch (e.MenuItem.ItemId)
-        //    {
-        //        case Resource.Id.nav_open:
-        //            await ViewModel.Refresh(VacationStatus.Approved);
-        //            break;
-        //        case Resource.Id.nav_close:
-        //            await ViewModel.Refresh(VacationStatus.Closed);
-        //            break;
-        //        case Resource.Id.nav_main:
-        //            await ViewModel.Refresh();
-        //            break;
-        //    }
-
-        //    ViewHolder.DrawerLayout.CloseDrawers();
-        //}
-
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             switch (item.ItemId)
@@ -105,9 +87,6 @@ namespace VacationsTracker.Droid.Views.Home
                 .For(v => v.NavigationItemSelectedBinding())
                 .To(vm => vm.FilterNavigationCommand)
                 .WithConvertion<NavigationMenuItemValueConverter>();
-
-           
-
         }
 
         private async void OnRefresh(object sender, EventArgs args)

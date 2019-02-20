@@ -14,7 +14,7 @@ using FlexiMvvm.ValueConverters;
 
 namespace VacationsTracker.Droid.Views.ValueConverters
 {
-    class SeparatorVisibilityValueConverter : ValueConverter<bool, ViewStates>
+    class VisibilityValueConverter : ValueConverter<bool, ViewStates>
     {
         protected override ConversionResult<ViewStates> Convert(bool isVisible, Type targetType, object parameter, CultureInfo culture)
         {

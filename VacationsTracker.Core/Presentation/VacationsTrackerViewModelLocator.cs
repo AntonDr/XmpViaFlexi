@@ -2,6 +2,7 @@
 using FlexiMvvm.Ioc;
 using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess;
+using VacationsTracker.Core.DataAccess.Interfaces;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Presentation.ViewModels;
 using VacationsTracker.Core.Presentation.ViewModels.Create;
@@ -32,7 +33,8 @@ namespace VacationsTracker.Core.Presentation
 
             factory.Register(() => new HomeViewModel(
                 _dependencyProvider.Get<INavigationService>(),
-                _dependencyProvider.Get<IVacationsRepository>()));
+                _dependencyProvider.Get<IVacationsRepository>(),
+                _dependencyProvider.Get<IOperationFactory>()));
 
             factory.Register(() =>
             {

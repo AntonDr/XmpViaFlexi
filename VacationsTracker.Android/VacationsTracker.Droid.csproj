@@ -74,11 +74,13 @@
     <Compile Include="Views\Home\VacationHeaderCellViewHolder.cs" />
     <Compile Include="Views\Home\VacationsAdapter.cs" />
     <Compile Include="Views\Home\VacationCellViewHolder.cs" />
+    <Compile Include="Views\Login\ActivityIndicator\ActivityIndicatorBallScaleAnimation.cs" />
+    <Compile Include="Views\Login\ActivityIndicator\Class1.cs" />
     <Compile Include="Views\Login\LoginActivity.cs" />
     <Compile Include="Views\SplashScreenActivity.cs" />
     <Compile Include="Views\ValueConverters\NavigationMenuItemValueConverter.cs" />
     <Compile Include="Views\ValueConverters\ImageValueConverter.cs" />
-    <Compile Include="Views\ValueConverters\SeparatorVisibilityValueConverter.cs" />
+    <Compile Include="Views\ValueConverters\VisibilityValueConverter.cs" />
     <Compile Include="Views\ValueConverters\VacationStatusToApprovedRadioValueConverter.cs" />
     <Compile Include="Views\ValueConverters\VacationStatusToClosedRadioValueConverter.cs" />
     <Compile Include="Views\ValueConverters\RadioGroupValueConverter.cs" />
@@ -202,6 +204,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\Avatar_Ark.png" />
+    <AndroidResource Include="Resources\drawable\circular_progress_bar.xml.xml" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>

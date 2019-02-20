@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
+﻿using System.Threading.Tasks;
 
-namespace VacationsTracker.Core.DataAccess
+namespace VacationsTracker.Core.DataAccess.Interfaces
 {
     interface IContext 
     {

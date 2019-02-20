@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FlexiMvvm;
+using VacationsTracker.Core.DataAccess.Interfaces;
 using VacationsTracker.Core.Domain;
 using VacationsTracker.Core.Presentation.ViewModels;
 

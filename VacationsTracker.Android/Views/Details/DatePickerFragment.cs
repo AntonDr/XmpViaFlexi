@@ -19,12 +19,22 @@ namespace VacationsTracker.Droid.Views.Details
 
         private DateTime _initialDate;
 
-        public static DatePickerFragment NewInstance(DateTime initialDate, Action<DateTime> onDateSelected)
+        private Predicate<DateTime> _validator;
+
+        private Action<DateTime> _onErrorHandler;
+
+        public static DatePickerFragment NewInstance(
+            DateTime initialDate,
+            Action<DateTime> onDateSelected,
+            Predicate<DateTime> validator,
+            Action<DateTime> onErrorHandler)
         {
             var fragment = new DatePickerFragment
             {
                 _dateSelectedHandler = onDateSelected,
-                _initialDate = initialDate
+                _initialDate = initialDate,
+                _validator = validator,
+                _onErrorHandler = onErrorHandler
             };
 
             return fragment;
@@ -45,7 +55,13 @@ namespace VacationsTracker.Droid.Views.Details
         public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
         {
             var selectedDate = new DateTime(year, monthOfYear + 1, dayOfMonth);
-            _dateSelectedHandler?.Invoke(selectedDate);
+            if (_validator == null || _validator(selectedDate))
+            {
+                _dateSelectedHandler?.Invoke(selectedDate);
+                return;
+            }
+
+            _onErrorHandler?.Invoke(selectedDate);
         }
     }
 }
