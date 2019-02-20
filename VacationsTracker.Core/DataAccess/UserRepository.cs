@@ -21,10 +21,10 @@ namespace VacationsTracker.Core.DataAccess
 
         public async Task AuthorizeAsync(UserModel userModel, CancellationToken cancellationToken)
         {
-            //var identityServer = await DiscoveryClient.GetAsync(Info.LocalIdentityServiceUrl);
+            var identityServer = await DiscoveryClient.GetAsync(Info.IdentityServiceUrl);
 
-            var discoveryClient = new DiscoveryClient(Info.LocalIdentityServiceUrl) {Policy = {RequireHttps = false}};
-            var identityServer = await discoveryClient.GetAsync();
+           // var discoveryClient = new DiscoveryClient(Info.LocalIdentityServiceUrl) {Policy =};
+            //var identityServer = await discoveryClient.GetAsync();
 
             if (identityServer.IsError)
             {

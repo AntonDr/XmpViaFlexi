@@ -56,6 +56,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Create
         {
             var vacation = new VacationCellViewModel
             {
+                Id = Guid.Empty.ToString(),
                 Start = StartDate,
                 End = EndDate,
                 Status = Status,

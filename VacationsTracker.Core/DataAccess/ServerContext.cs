@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using JetBrains.Annotations;
 using RestSharp;
 using RestSharp.Authenticators;
+using RestSharp.Serialization;
 using VacationsTracker.Core.DataAccess.Interfaces;
 
 namespace VacationsTracker.Core.DataAccess
@@ -15,16 +16,14 @@ namespace VacationsTracker.Core.DataAccess
     {
         private readonly RestClient _client;
 
-        private readonly string BaseAzurUrl = Info.LocalServiceUrl;
-
-        private readonly string BaseLocalUrl = Info.LocalServiceUrl;
+        private readonly string BaseUrl = Info.ServiceUrl;
 
         public ServerContext(ISecureStorage storage)
         {
             var token = storage.GetAsync("id_token").Result;
             _client = new RestClient
             {
-                BaseUrl = new Uri(Info.LocalServiceUrl),
+                BaseUrl = new Uri(BaseUrl),
                 Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "Bearer")
             };
         }
@@ -41,9 +40,7 @@ namespace VacationsTracker.Core.DataAccess
         {
             var request = new RestRequest(resource);
 
-            request.AddHeader("Content-type", "application/json");
-
-            request.AddJsonBody(requestBody);
+            request.AddParameter(ContentType.Json,requestBody,ParameterType.RequestBody);
 
             return await _client.PostAsync<TResponse>(request);
         }

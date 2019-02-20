@@ -74,8 +74,6 @@
     <Compile Include="Views\Home\VacationHeaderCellViewHolder.cs" />
     <Compile Include="Views\Home\VacationsAdapter.cs" />
     <Compile Include="Views\Home\VacationCellViewHolder.cs" />
-    <Compile Include="Views\Login\ActivityIndicator\ActivityIndicatorBallScaleAnimation.cs" />
-    <Compile Include="Views\Login\ActivityIndicator\Class1.cs" />
     <Compile Include="Views\Login\LoginActivity.cs" />
     <Compile Include="Views\SplashScreenActivity.cs" />
     <Compile Include="Views\ValueConverters\NavigationMenuItemValueConverter.cs" />
