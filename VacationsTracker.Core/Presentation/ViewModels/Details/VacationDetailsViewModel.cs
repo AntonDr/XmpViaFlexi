@@ -1,12 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
-using FlexiMvvm;
+﻿using FlexiMvvm;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Commands;
-using VacationsTracker.Core.DataAccess;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess.Interfaces;
 using VacationsTracker.Core.Domain;
+using VacationsTracker.Core.Domain.Exceptions;
 using VacationsTracker.Core.Navigation;
+using VacationsTracker.Core.Operations;
 
 namespace VacationsTracker.Core.Presentation.ViewModels.Details
 {
@@ -14,14 +17,17 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
     {
         private readonly INavigationService _navigationService;
         private readonly IVacationsRepository _vacationsRepository;
+        private string _vacationId;
         private DateTime _startDate;
         private DateTime _endDate;
         private VacationType _type;
         private VacationStatus _status;
+        private bool _loaded;
 
         public VacationDetailsViewModel(
             INavigationService navigationService,
-            IVacationsRepository vacationsRepository)
+            IVacationsRepository vacationsRepository,
+            IOperationFactory operationFactory) : base(operationFactory)
         {
             _navigationService = navigationService;
             _vacationsRepository = vacationsRepository;
@@ -29,20 +35,42 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
 
         public VacationCellViewModel Vacation { get; set; }
 
-        public ICommand SaveCommand => CommandProvider.Get(Save);
+        public ICommand SaveCommand => CommandProvider.GetForAsync(Save);
 
-        private async void Save()
+        public ICommand DeleteCommand => CommandProvider.GetForAsync(Delete);
+
+        private Task Save()
         {
             Vacation.Start = StartDate;
             Vacation.End = EndDate;
             Vacation.Status = Status;
             Vacation.Type = Type;
 
-            await _vacationsRepository.UpsertVacationAsync(Vacation);
-            _navigationService.NavigateBackToHome(this);
+            return OperationFactory
+                .CreateOperation(OperationContext)
+                .WithInternetConnectionCondition()
+                .WithLoadingNotification()
+                .WithExpressionAsync(token => _vacationsRepository.UpsertVacationAsync(Vacation))
+                .OnSuccess(() => _navigationService.NavigateBackToHome(this))
+                .OnError<InternetConnectionException>(_ => { })
+                .OnError<Exception>(er => Debug.WriteLine(er.Exception))
+                .ExecuteAsync();
         }
 
-        public RangeObservableCollection<VacationTypePagerParameters> VacationTypes { get; } 
+        private Task Delete()
+        {
+            return OperationFactory
+                .CreateOperation(OperationContext)
+                .WithInternetConnectionCondition()
+                .WithLoadingNotification()
+                .WithExpressionAsync(token => _vacationsRepository.DeleteVacationAsync(_vacationId))
+                .OnSuccess(() => _navigationService.NavigateBackToHome(this))
+                .OnError<InternetConnectionException>(_ => { })
+                .OnError<Exception>(error => Debug.WriteLine(error.Exception))
+                .ExecuteAsync();
+        }
+
+        public RangeObservableCollection<VacationTypePagerParameters> VacationTypes { get; }
             = new RangeObservableCollection<VacationTypePagerParameters>
             {
                 new VacationTypePagerParameters { VacationType = VacationType.Regular },
@@ -76,17 +104,34 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Details
             set => Set(ref _status, value);
         }
 
+        public bool Loaded
+        {
+            get => _loaded;
+            set => Set(ref _loaded, value);
+        }
+
         protected override async Task InitializeAsync(VacationDetailsParameters parameters)
         {
             await base.InitializeAsync(parameters);
 
-            Vacation = await _vacationsRepository.GetVacationAsync(parameters.NotNull().VacationId);
-
-
-            Type = Vacation.Type;
-            Status = Vacation.Status;
-            StartDate = Vacation.Start;
-            EndDate = Vacation.End;
+            await OperationFactory
+                .CreateOperation(OperationContext)
+                .WithInternetConnectionCondition()
+                .WithLoadingNotification()
+                .WithExpressionAsync(token =>
+                {
+                    var id = parameters.NotNull().VacationId;
+                    return _vacationsRepository.GetVacationAsync(id);
+                })
+                .OnSuccess(vacation => (_vacationId, StartDate, EndDate, Status, Type) = vacation)
+                .OnSuccess(vacation =>
+                {
+                    (_vacationId, StartDate, EndDate, Status, Type) = vacation;
+                    Loaded = true;
+                })
+                .OnError<InternetConnectionException>(_ => { })
+                .OnError<Exception>(error => Debug.WriteLine(error.Exception))
+                .ExecuteAsync();
         }
     }
 }

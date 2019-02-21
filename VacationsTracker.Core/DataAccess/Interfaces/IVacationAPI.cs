@@ -12,5 +12,7 @@ namespace VacationsTracker.Core.DataAccess.Interfaces
         Task<VacationDto> GetVacationAsync([NotNull] string id);
 
         Task<VacationDto> UpsertVacationAsync([NotNull] VacationDto vacation);
+
+        Task DeleteVacationAsync([NotNull] string id);
     }
 }

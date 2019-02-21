@@ -36,12 +36,10 @@ namespace VacationsTracker.Core.Presentation
                 _dependencyProvider.Get<IVacationsRepository>(),
                 _dependencyProvider.Get<IOperationFactory>()));
 
-            factory.Register(() =>
-            {
-                return new VacationDetailsViewModel(
-                    _dependencyProvider.Get<INavigationService>(),
-                    _dependencyProvider.Get<IVacationsRepository>());
-            });
+            factory.Register(() => new VacationDetailsViewModel(
+                _dependencyProvider.Get<INavigationService>(),
+                _dependencyProvider.Get<IVacationsRepository>(),
+                _dependencyProvider.Get<IOperationFactory>()));
 
             factory.Register(() => new VacationTypePagerViewModel(_dependencyProvider.Get<INavigationService>()));
 

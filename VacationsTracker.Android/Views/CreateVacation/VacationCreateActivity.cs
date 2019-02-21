@@ -17,7 +17,7 @@ namespace VacationsTracker.Droid.Views.CreateVacation
     [Activity(Label = "VacationCreateActivity")]
     public class VacationCreateActivity : FlxBindableAppCompatActivity<VacationCreateViewModel>
     {
-        private VacationDetailsActivityViewHolder ViewHolder { get; set; }
+        private NewVacationActivityViewHolder ViewHolder { get; set; }
 
         private FragmentPagerObservableAdapter VacationTypesAdapter { get; set; }
 
@@ -25,9 +25,9 @@ namespace VacationsTracker.Droid.Views.CreateVacation
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.activity_vacation_details);
+            SetContentView(Resource.Layout.activity_new_vacation);
 
-            ViewHolder = new VacationDetailsActivityViewHolder(this);
+            ViewHolder = new NewVacationActivityViewHolder(this);
 
             VacationTypesAdapter = new FragmentPagerObservableAdapter(SupportFragmentManager, FragmentsFactory)
             {
@@ -99,7 +99,8 @@ namespace VacationsTracker.Droid.Views.CreateVacation
                 .For(v => v.SetCurrentItemAndPageSelectedBinding())
                 .To(vm => vm.Type)
                 .WithConvertion<VacationTypeToImageNumberValueConverter>();
-        }
+
+            }
 
 
         private Android.Support.V4.App.Fragment FragmentsFactory(object parameters)

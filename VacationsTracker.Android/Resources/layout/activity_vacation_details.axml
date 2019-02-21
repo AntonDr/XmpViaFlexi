@@ -9,12 +9,24 @@
 
 	<android.support.v7.widget.Toolbar
         android:id="@+id/details_toolbar"
-        style="@style/ToolbarTheme">
+        style="@style/ToolbarTheme"
+		
+		>
 
+		<Button
+			android:id="@+id/delete_request_button"
+			android:text="@string/delete_navigation_button_text"
+			android:layout_gravity="center|left"
+			android:minWidth="0dp"
+			
+			style="@style/ToolbarButtonStyle2"/>
+		
 		<TextView
 			android:text="@string/vacation_details_page_title"
+			android:paddingLeft="@dimen/abc_action_bar_content_inset_material"
+			android:paddingRight="@dimen/abc_action_bar_content_inset_material"
             style="@style/ToolbarTitleStyle" />
-
+						
 		<Button
 			android:id="@+id/save_request_button"
 			android:text="@string/save_navigation_button_text"

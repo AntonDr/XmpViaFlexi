@@ -5,6 +5,7 @@ using Android.App;
 using Android.OS;
 using Android.Support.Design.Widget;
 using Android.Support.V7.Widget;
+using Android.Support.V7.Widget.Helper;
 using Android.Views;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views;
@@ -37,7 +38,7 @@ namespace VacationsTracker.Droid.Views.Home
             };
             ViewHolder.RecyclerView.SetAdapter(VacationsAdapter);
             ViewHolder.RecyclerView.SetLayoutManager(new LinearLayoutManager(this, 1, false));
-
+ 
             ViewHolder.Refresher.Refresh += OnRefresh;
 
             ViewHolder.RecyclerView.AddOnScrollListener(new OnScrollListenerFab(ViewHolder.RecyclerView, ViewHolder.Fab));
@@ -46,9 +47,20 @@ namespace VacationsTracker.Droid.Views.Home
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.Title = Resources.GetString(Resource.String.home_page_title);
-            //SupportActionBar.SetHomeAsUpIndicator(Resource.Id.right_icon);
 
             ViewHolder.NavView.NavigationItemSelected += (s,e) => ViewHolder.DrawerLayout.CloseDrawers();
+
+            ViewHolder.HomeToolbar.NavigationClick += (s, e) =>
+            {
+                if (ViewHolder.DrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
+                {
+                    ViewHolder.DrawerLayout.CloseDrawers();
+                }
+                else
+                {
+                    ViewHolder.DrawerLayout.OpenDrawer((int)GravityFlags.Left);
+                }
+            };
 
         }
 

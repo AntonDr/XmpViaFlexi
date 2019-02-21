@@ -7,7 +7,10 @@ namespace VacationsTracker.Core.DataAccess.Interfaces
         Task<TResponse> GetAsync<TResponse>(string resource) 
             where TResponse : new();
 
-        Task<TResponse> PostAsync<TRequest, TResponse>(string resource, TRequest requestBody)  
+        Task<TResponse> PostAsync<TRequest, TResponse>(string id, TRequest requestBody)  
+            where TResponse : new();
+
+        Task<TResponse> DeleteAsync<TResponse>(string id)
             where TResponse : new();
     }
 }

@@ -41,5 +41,10 @@ namespace VacationsTracker.Core.DataAccess
 
             await _vacationApi.UpsertVacationAsync(vacationDto);
         }
+
+        public async Task DeleteVacationAsync(string id)
+        {
+            await _vacationApi.DeleteVacationAsync(id);
+        }
     }
 }

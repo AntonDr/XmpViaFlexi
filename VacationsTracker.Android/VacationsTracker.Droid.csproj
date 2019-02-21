@@ -208,6 +208,9 @@
     <AndroidResource Include="Resources\drawable\Avatar_Ark.png" />
     <AndroidResource Include="Resources\drawable\circular_progress_bar.xml.xml" />
     <AndroidResource Include="Resources\drawable\Login_bg.jpg" />
+    <AndroidResource Include="Resources\layout\activity_new_vacation.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>

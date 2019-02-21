@@ -92,6 +92,10 @@ namespace VacationsTracker.Droid.Views.Details
                 .To(vm => vm.Status)
                 .WithConvertion<RadioGroupValueConverter>();
 
+            bindingSet.Bind(ViewHolder.DeleteRequestButton)
+                .For(v => v.ClickBinding())
+                .To(vm => vm.DeleteCommand);
+
             bindingSet.Bind(ViewHolder.SaveRequestButton)
                 .For(v => v.ClickBinding())
                 .To(vm => vm.SaveCommand);
@@ -100,7 +104,48 @@ namespace VacationsTracker.Droid.Views.Details
                 .For(v => v.SetCurrentItemAndPageSelectedBinding())
                 .To(vm => vm.Type)
                 .WithConvertion<VacationTypeToImageNumberValueConverter>();
-        }
+
+            bindingSet.Bind(ViewHolder.SaveRequestButton)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.DeleteRequestButton)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationStartDay)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationStartMonth)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationStartYear)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationEndDay)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationEndMonth)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.VacationEndYear)
+                .For(v => v.Visibility)
+                .To(vm => vm.Loaded)
+                .WithConvertion<VisibilityValueConverter>();
+
+            }
 
        
         private Android.Support.V4.App.Fragment FragmentsFactory(object parameters)

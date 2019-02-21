@@ -139,11 +139,101 @@ namespace VacationsTracker.Droid.Views
     }
 
 
+    public partial class NewVacationActivityViewHolder
+    {
+         private readonly Activity activity;
+
+         private Android.Support.V7.Widget.Toolbar detailsToolbar;
+         private Button saveRequestButton;
+         private Android.Support.V4.View.ViewPager vacationTypePager;
+         private Android.Support.Design.Widget.TabLayout tabDots;
+         private RelativeLayout dateStart;
+         private TextView vacationStartDay;
+         private TextView vacationStartMonth;
+         private TextView vacationStartYear;
+         private RelativeLayout dateEnd;
+         private TextView vacationEndDay;
+         private TextView vacationEndMonth;
+         private TextView vacationEndYear;
+         private RadioGroup statusRadioGroup;
+         private RadioButton approvedRadio;
+         private RadioButton closedRadio;
+
+        public NewVacationActivityViewHolder( Activity activity)
+        {
+            if (activity == null) throw new ArgumentNullException(nameof(activity));
+
+            this.activity = activity;
+        }
+
+        
+        public Android.Support.V7.Widget.Toolbar DetailsToolbar =>
+            detailsToolbar ?? (detailsToolbar = activity.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.details_toolbar));
+
+        
+        public Button SaveRequestButton =>
+            saveRequestButton ?? (saveRequestButton = activity.FindViewById<Button>(Resource.Id.save_request_button));
+
+        
+        public Android.Support.V4.View.ViewPager VacationTypePager =>
+            vacationTypePager ?? (vacationTypePager = activity.FindViewById<Android.Support.V4.View.ViewPager>(Resource.Id.vacation_type_pager));
+
+        
+        public Android.Support.Design.Widget.TabLayout TabDots =>
+            tabDots ?? (tabDots = activity.FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.tab_dots));
+
+        
+        public RelativeLayout DateStart =>
+            dateStart ?? (dateStart = activity.FindViewById<RelativeLayout>(Resource.Id.date_start));
+
+        
+        public TextView VacationStartDay =>
+            vacationStartDay ?? (vacationStartDay = activity.FindViewById<TextView>(Resource.Id.vacation_start_day));
+
+        
+        public TextView VacationStartMonth =>
+            vacationStartMonth ?? (vacationStartMonth = activity.FindViewById<TextView>(Resource.Id.vacation_start_month));
+
+        
+        public TextView VacationStartYear =>
+            vacationStartYear ?? (vacationStartYear = activity.FindViewById<TextView>(Resource.Id.vacation_start_year));
+
+        
+        public RelativeLayout DateEnd =>
+            dateEnd ?? (dateEnd = activity.FindViewById<RelativeLayout>(Resource.Id.date_end));
+
+        
+        public TextView VacationEndDay =>
+            vacationEndDay ?? (vacationEndDay = activity.FindViewById<TextView>(Resource.Id.vacation_end_day));
+
+        
+        public TextView VacationEndMonth =>
+            vacationEndMonth ?? (vacationEndMonth = activity.FindViewById<TextView>(Resource.Id.vacation_end_month));
+
+        
+        public TextView VacationEndYear =>
+            vacationEndYear ?? (vacationEndYear = activity.FindViewById<TextView>(Resource.Id.vacation_end_year));
+
+        
+        public RadioGroup StatusRadioGroup =>
+            statusRadioGroup ?? (statusRadioGroup = activity.FindViewById<RadioGroup>(Resource.Id.status_radio_group));
+
+        
+        public RadioButton ApprovedRadio =>
+            approvedRadio ?? (approvedRadio = activity.FindViewById<RadioButton>(Resource.Id.approved_radio));
+
+        
+        public RadioButton ClosedRadio =>
+            closedRadio ?? (closedRadio = activity.FindViewById<RadioButton>(Resource.Id.closed_radio));
+    }
+
+
     public partial class VacationDetailsActivityViewHolder
     {
          private readonly Activity activity;
 
          private Android.Support.V7.Widget.Toolbar detailsToolbar;
+         private Button deleteRequestButton;
          private Button saveRequestButton;
          private Android.Support.V4.View.ViewPager vacationTypePager;
          private Android.Support.Design.Widget.TabLayout tabDots;
@@ -169,6 +259,10 @@ namespace VacationsTracker.Droid.Views
         
         public Android.Support.V7.Widget.Toolbar DetailsToolbar =>
             detailsToolbar ?? (detailsToolbar = activity.FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.details_toolbar));
+
+        
+        public Button DeleteRequestButton =>
+            deleteRequestButton ?? (deleteRequestButton = activity.FindViewById<Button>(Resource.Id.delete_request_button));
 
         
         public Button SaveRequestButton =>

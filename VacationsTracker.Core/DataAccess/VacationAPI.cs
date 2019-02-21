@@ -43,5 +43,10 @@ namespace VacationsTracker.Core.DataAccess
 
             return response.Result;
         }
+
+        public async Task DeleteVacationAsync(string id)
+        {
+            await _context.DeleteAsync<BaseResultOfVacationRequest>($"/{id}");
+        }
     }
 }
