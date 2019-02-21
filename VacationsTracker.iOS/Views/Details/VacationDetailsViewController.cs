@@ -135,6 +135,7 @@ namespace VacationsTracker.iOS.Views.Details
             bindingSet.Bind(View.VacationEndDatePicker)
                 .For(v => v.DateAndValueChangedBinding())
                 .To(vm => vm.EndDate);
+            
         }
 
         private void OnStartDayViewTap()

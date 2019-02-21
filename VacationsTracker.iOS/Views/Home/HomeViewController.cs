@@ -43,6 +43,9 @@ namespace VacationsTracker.iOS.Views.Home
 
             View.VacationsTableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
             View.VacationsTableView.Source = VacationsSource;
+            View.VacationsTableView.Delegate = new DeleteElementDelegate();
+           
+            
 
             NavigationItem.Title = Strings.HomePage_Title;
 
@@ -66,6 +69,9 @@ namespace VacationsTracker.iOS.Views.Home
             bindingSet.Bind(VacationsSource)
                 .For(v => v.RowSelectedBinding())
                 .To(vm => vm.VacationSelectedCommand);
+
+            bindingSet.Bind(VacationsSource)
+                .For(v => v.Sw)
 
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.BeginRefreshingBinding())

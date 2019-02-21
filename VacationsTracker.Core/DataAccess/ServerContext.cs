@@ -28,8 +28,7 @@ namespace VacationsTracker.Core.DataAccess
                 Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "Bearer")
             };
         }
-
-
+        
         public async Task<T> GetAsync<T>(string url) where T : new()
         {
             var request = new RestRequest(url,Method.GET);

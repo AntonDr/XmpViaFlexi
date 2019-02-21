@@ -3,6 +3,7 @@ using FlexiMvvm.Views;
 using UIKit;
 using VacationsTracker.Core.Resources;
 using VacationsTracker.iOS.Themes;
+using VacationsTracker.iOS.Views.Login.ActivityIndicator;
 
 namespace VacationsTracker.iOS.Views.Login
 {
@@ -18,6 +19,8 @@ namespace VacationsTracker.iOS.Views.Login
 
         public UIButton LoginButton { get; private set; }
 
+        public ActivityIndicatorView ActivityIndicatorView { get; private set; }
+
         protected override void SetupSubviews()
         {
             base.SetupSubviews();
@@ -30,8 +33,11 @@ namespace VacationsTracker.iOS.Views.Login
             LoginTextField = new UITextField().SetDefaultTextFieldStyle(Strings.LoginPage_LoginPlaceholder);
 
             PasswordTextField = new UITextField().SetDefaultTextFieldStyle(Strings.LoginPage_PasswordPlaceholder);
+            PasswordTextField.SecureTextEntry = true;
 
             LoginButton = new UIButton().SetPrimaryButtonStyle(Strings.LoginPage_SignIn);
+
+            ActivityIndicatorView = new ActivityIndicatorView(80,1);
         }
 
         protected override void SetupLayout()
@@ -42,7 +48,9 @@ namespace VacationsTracker.iOS.Views.Login
                 .AddLayoutSubview(InvalidCredentialsLabel)
                 .AddLayoutSubview(LoginTextField)
                 .AddLayoutSubview(PasswordTextField)
-                .AddLayoutSubview(LoginButton);
+                .AddLayoutSubview(LoginButton)
+                .AddLayoutSubview(ActivityIndicatorView);
+
         }
 
         protected override void SetupLayoutConstraints()
@@ -77,6 +85,11 @@ namespace VacationsTracker.iOS.Views.Login
                 LoginButton.AtRightOf(this, AppDimens.Inset8X),
                 LoginButton.Below(PasswordTextField, AppDimens.Inset2X),
                 LoginButton.Height().EqualTo(AppDimens.DefaultButtonHeight));
+
+            this.AddConstraints(
+                ActivityIndicatorView.Below(LoginButton,AppDimens.Inset2X),
+                ActivityIndicatorView.WithSameCenterX(this)
+              );
         }
     }
 }

@@ -73,6 +73,7 @@
     <Compile Include="Views\Details\VacationDetailsViewController.cs" />
     <Compile Include="Views\Details\VacationsPager\VacationTypePagerView.cs" />
     <Compile Include="Views\Details\VacationsPager\VacationTypePagerViewController.cs" />
+    <Compile Include="Views\Home\DeleteElementDelegate.cs" />
     <Compile Include="Views\Home\HomeView.cs" />
     <Compile Include="Views\Home\HomeViewController.cs" />
     <Compile Include="Views\Home\VacationsTable\VacationTableFooterView.cs" />
@@ -81,6 +82,9 @@
     <Compile Include="Views\Home\VacationsTable\VacationItemViewCell.cs" />
     <Compile Include="Views\Home\VacationsTable\VacationTableHeaderView.cs" />
     <Compile Include="Views\Home\VacationsTable\VacationTableHeaderViewCell.cs" />
+    <Compile Include="Views\Login\ActivityIndicator\ActivityIndicatorBallScaleAnimation.cs" />
+    <Compile Include="Views\Login\ActivityIndicator\ActivityIndicatorView.cs" />
+    <Compile Include="Views\Login\ActivityIndicator\IActivityIndicator.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
     <Compile Include="Views\Login\LoginViewController.cs" />
     <Compile Include="Views\New\NewVacationView.cs" />
@@ -90,6 +94,7 @@
     <Compile Include="Views\ValueConverters\ImageValueConverter.cs" />
     <Compile Include="Views\ValueConverters\StatusToSegmentValueConverter.cs" />
     <Compile Include="Views\ValueConverters\SwitchButtonValueConverter.cs" />
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <Compile Include="Navigation\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,8 +103,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\netstandard2.0\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.FluentLayouts.Touch, Version=2.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cirrious.FluentLayout.2.7.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
+      <HintPath>..\packages\Cirrious.FluentLayout.2.9.0\lib\Xamarin.iOS10\Cirrious.FluentLayouts.Touch.dll</HintPath>
     </Reference>
     <Reference Include="FlexiMvvm.Bindings, Version=0.9.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FlexiMvvm.Bindings.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Bindings.dll</HintPath>
@@ -119,7 +127,20 @@
     <Reference Include="FlexiMvvm.Lifecycle, Version=0.9.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FlexiMvvm.Lifecycle.PreRelease.0.9.7-prerelease\lib\xamarinios10\FlexiMvvm.Lifecycle.dll</HintPath>
     </Reference>
+    <Reference Include="IdentityModel, Version=3.10.6.0, Culture=neutral, PublicKeyToken=e7877f4675df049f, processorArchitecture=MSIL">
+      <HintPath>..\packages\IdentityModel.3.10.6\lib\netstandard2.0\IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.7.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.7\lib\netstandard2.0\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.4.5.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

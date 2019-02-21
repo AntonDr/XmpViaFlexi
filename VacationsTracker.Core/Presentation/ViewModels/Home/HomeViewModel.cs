@@ -12,6 +12,7 @@ using FlexiMvvm.Operations;
 using VacationsTracker.Core.DataAccess;
 using VacationsTracker.Core.DataAccess.Interfaces;
 using VacationsTracker.Core.Domain;
+using VacationsTracker.Core.Domain.Exceptions;
 using VacationsTracker.Core.Navigation;
 using VacationsTracker.Core.Operations;
 using VacationsTracker.Core.Presentation.ViewModels.Details;
@@ -63,6 +64,8 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
         public ICommand RefreshCommand => CommandProvider.GetForAsync(Refresh);
 
+        public ICommand<VacationCellViewModel>  DeleteCommand => CommandProvider.GetForAsync<VacationCellViewModel>(Delete);
+
         public ICommand<NavigationItems> FilterNavigationCommand => CommandProvider.Get<NavigationItems>(FilterNavigation);
 
         private async void FilterNavigation(NavigationItems item)
@@ -90,6 +93,19 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             
         }
 
+        private Task Delete(VacationCellViewModel arg)
+        {
+                return OperationFactory
+                    .CreateOperation(OperationContext)
+                    .WithInternetConnectionCondition()
+                    .WithLoadingNotification()
+                    .WithExpressionAsync(token => _vacationsRepository.DeleteVacationAsync(arg.Id))
+                    .OnSuccess(_ => RefreshCommand.Execute())
+                    .OnError<InternetConnectionException>(_ => { })
+                    .OnError<Exception>(error => Debug.WriteLine(error.Exception))
+                    .ExecuteAsync();
+            
+        }
 
         private void CreateVacation()
         {

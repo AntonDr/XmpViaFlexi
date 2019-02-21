@@ -29,7 +29,7 @@ namespace VacationsTracker.Core.Bootstrappers
             simpleIoc.Register<IConnectivity>(() => Connectivity.Instance);
             simpleIoc.Register<IConnectivityService>(() => new ConnectivityService(simpleIoc.Get<IConnectivity>()), Reuse.Singleton);
             //simpleIoc.Register<IVacationsRepository>(() => new VacationRepository());
-            simpleIoc.Register<ISecureStorage>(() => new XamarinSecureStorage());
+            simpleIoc.Register<ISecureStorage>(() => new VacationSimulatorSecureStorage());
             simpleIoc.Register<IMapper>(() => new MapperConfiguration(cfg => cfg.AddProfile<VacationCellViewModelMappingProfile>()).CreateMapper(), Reuse.Singleton);
             simpleIoc.Register<IContext>(() => new ServerContext(simpleIoc.Get<ISecureStorage>()));
             simpleIoc.Register<IVacationApi>(() => new VacationApi(simpleIoc.Get<IContext>()));

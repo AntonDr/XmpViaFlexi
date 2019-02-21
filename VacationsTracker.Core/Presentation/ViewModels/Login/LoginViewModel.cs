@@ -51,8 +51,6 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
                 .WithExpressionAsync(cancellationToken =>
                 {
                     InvalidCredentials = false;
-                    Loading = true;
-
                     var user = new UserModel
                     {
                         Login = UserLogin,
@@ -64,12 +62,10 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Login
                 .OnSuccess(() =>
                 {
                     _navigationService.NavigateToHome(this);
-                    Loading = false;
                 })
                 .OnError<AuthenticationException>( _ =>
                 {
                     InvalidCredentials = true;
-                    Loading = false;
                 })
                 .ExecuteAsync();
         }
