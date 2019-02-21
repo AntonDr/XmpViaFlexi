@@ -5,6 +5,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
+using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Authenticators;
 using RestSharp.Serialization;
@@ -40,7 +41,9 @@ namespace VacationsTracker.Core.DataAccess
         {
             var request = new RestRequest(resource);
 
-            request.AddParameter(ContentType.Json,requestBody,ParameterType.RequestBody);
+            var json = JsonConvert.SerializeObject(requestBody);
+
+            request.AddParameter(ContentType.Json,json,ParameterType.RequestBody);
 
             return await _client.PostAsync<TResponse>(request);
         }

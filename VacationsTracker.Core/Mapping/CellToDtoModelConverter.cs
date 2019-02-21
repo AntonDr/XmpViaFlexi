@@ -15,7 +15,7 @@ namespace VacationsTracker.Core.Mapping
                 End = source.End,
                 VacationStatus = source.Status,
                 VacationType = source.Type,
-                CreatedBy = string.Empty
+                CreatedBy = "string"
             };
 
             return result;
