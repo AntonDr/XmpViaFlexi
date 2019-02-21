@@ -74,6 +74,7 @@
     <Compile Include="Views\Home\VacationHeaderCellViewHolder.cs" />
     <Compile Include="Views\Home\VacationsAdapter.cs" />
     <Compile Include="Views\Home\VacationCellViewHolder.cs" />
+    <Compile Include="Views\ValueConverters\InvertValueConverter.cs" />
     <Compile Include="Views\Login\LoginActivity.cs" />
     <Compile Include="Views\SplashScreenActivity.cs" />
     <Compile Include="Views\ValueConverters\NavigationMenuItemValueConverter.cs" />
@@ -123,6 +124,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FlexiMvvm.Bindings.PreRelease">
+      <Version>0.9.7-prerelease</Version>
+    </PackageReference>
     <PackageReference Include="FlexiMvvm.Common.PreRelease">
       <Version>0.9.7-prerelease</Version>
     </PackageReference>
@@ -203,6 +207,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\Avatar_Ark.png" />
     <AndroidResource Include="Resources\drawable\circular_progress_bar.xml.xml" />
+    <AndroidResource Include="Resources\drawable\Login_bg.jpg" />
     <Content Include="Views\ViewHolderGenerator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ViewHolderGenerator.cs</LastGenOutput>

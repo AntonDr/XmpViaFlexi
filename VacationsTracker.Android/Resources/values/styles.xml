@@ -21,7 +21,7 @@
   <style name="LoginLayoutStyle">
     <item name="android:layout_width">match_parent</item>
     <item name="android:layout_height">match_parent</item>
-    <item name="android:background">@drawable/splash</item>
+    <item name="android:background">@drawable/Login_bg</item>
     <item name="android:paddingTop">@dimen/LoginScreenTopMargin</item>
     <item name="android:paddingHorizontal">@dimen/Inset1x</item>
   </style>

@@ -1,9 +1,12 @@
-﻿using Android.App;
+﻿using Android.Animation;
+using Android.App;
 using Android.OS;
+using Android.Widget;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Views.V7;
+using Java.Interop;
 using VacationsTracker.Core.Presentation.ViewModels.Login;
-using VacationsTracker.Droid.Views.ValueConverters;
+using VisibilityValueConverter = VacationsTracker.Droid.Views.ValueConverters.VisibilityValueConverter;
 
 namespace VacationsTracker.Droid.Views.Login
 {
@@ -21,6 +24,8 @@ namespace VacationsTracker.Droid.Views.Login
             SetContentView(Resource.Layout.activity_login);
 
             ViewHolder = new LoginActivityViewHolder(this);
+
+            //var projectAnimator = ObjectAnimator.OfInt(ViewHolder.ProgressBar,);
         }
 
         public override void Bind(BindingSet<LoginViewModel> bindingSet)
@@ -37,8 +42,8 @@ namespace VacationsTracker.Droid.Views.Login
                 .To(vm => vm.UserLogin);
 
             bindingSet.Bind(ViewHolder.PasswordEntry)
-                .For(vm => vm.TextAndTextChangedBinding())
-                .To(v => v.UserPassword);
+                .For(v => v.TextAndTextChangedBinding())
+                .To(vm => vm.UserPassword);
 
             bindingSet.Bind(ViewHolder.LoginButton)
                 .For(v => v.ClickBinding())
@@ -48,6 +53,23 @@ namespace VacationsTracker.Droid.Views.Login
                 .For(v => v.Visibility)
                 .To(vm => vm.Loading)
                 .WithConvertion<VisibilityValueConverter>();
+
+            bindingSet.Bind(ViewHolder.LoginButton)
+                .For(v => v.Enabled)
+                .To(vm => vm.Loading)
+                .WithConvertion<InvertValueConverter>();
+
+            bindingSet.Bind(ViewHolder.LoginEntry)
+                .For(v => v.Enabled)
+                .To(vm => vm.Loading)
+                .WithConvertion<InvertValueConverter>();
+
+            bindingSet.Bind(ViewHolder.PasswordEntry)
+                .For(v => v.Enabled)
+                .To(vm => vm.Loading)
+                .WithConvertion<InvertValueConverter>();
+
+            
         }
     }
 }
