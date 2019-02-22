@@ -57,6 +57,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
             set => Set(ref _loading,value);
         }
 
+        public ICommand<int> DeleteVacationCommand => CommandProvider.GetForAsync<int>(Delete);
 
         public ICommand<VacationCellViewModel> VacationSelectedCommand => CommandProvider.Get<VacationCellViewModel>(VacationSelected);
 
@@ -91,6 +92,14 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
 
             Vacations.AddRange(list);
             
+        }
+
+        public async Task Delete(int index)
+        {
+            var vacation = this.Vacations[index];
+
+            await _vacationsRepository.DeleteVacationAsync(vacation.Id);
+            await Refresh();
         }
 
         private Task Delete(VacationCellViewModel arg)
@@ -130,7 +139,7 @@ namespace VacationsTracker.Core.Presentation.ViewModels.Home
                 .ExecuteAsync();
         }
 
-        public IEnumerable<VacationCellViewModel> SeparatorVisibility(
+        private IEnumerable<VacationCellViewModel> SeparatorVisibility(
             IEnumerable<VacationCellViewModel> vacationCellViewModels)
         {
             var list = vacationCellViewModels.ToList();

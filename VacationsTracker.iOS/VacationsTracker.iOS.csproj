@@ -69,6 +69,7 @@
     <Compile Include="Themes\AppDimens.cs" />
     <Compile Include="Themes\AppStyles.cs" />
     <Compile Include="Views\BarButtonFactory.cs" />
+    <Compile Include="Views\CustomBindings.cs" />
     <Compile Include="Views\Details\VacationDetailsView.cs" />
     <Compile Include="Views\Details\VacationDetailsViewController.cs" />
     <Compile Include="Views\Details\VacationsPager\VacationTypePagerView.cs" />

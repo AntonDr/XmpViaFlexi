@@ -34,7 +34,9 @@ namespace VacationsTracker.iOS.Views.Home
 
             VacationsTableView.AllowsSelection = true;
 
+            VacationsTableView.AllowsSelectionDuringEditing = true;
 
+            VacationsTableView.UserInteractionEnabled = true;
         }
 
         protected override void SetupLayout()

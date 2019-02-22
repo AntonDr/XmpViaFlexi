@@ -10,8 +10,10 @@ using VacationsTracker.Core.Resources;
 
 namespace VacationsTracker.iOS.Views.Home
 {
-    class DeleteElementDelegate : UITableViewDelegate
+    public class DeleteElementDelegate : UITableViewDelegate
     {
+        public event EventHandler<NSIndexPath> CellDelete = delegate { };
+
         public override UITableViewRowAction[] EditActionsForRow(UITableView tableView, NSIndexPath indexPath)
         {
             var action = UITableViewRowAction.Create(
@@ -19,12 +21,16 @@ namespace VacationsTracker.iOS.Views.Home
                 Strings.DeleteNavigationButton_Text ,
                 (rowAction, path) =>
                 {
-                    
-                    var item = tableView.CellAt(indexPath);
-
+                    CellDelete(this,path);
                 });
 
             return new UITableViewRowAction[] { action};
         }
+
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            
+        }
     }
+
 }

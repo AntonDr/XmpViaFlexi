@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using FlexiMvvm;
+﻿using FlexiMvvm;
 using FlexiMvvm.Bindings;
 using FlexiMvvm.Collections;
 using FlexiMvvm.Views;
@@ -15,6 +14,8 @@ namespace VacationsTracker.iOS.Views.Home
         private UITableViewObservablePlainSource VacationsSource { get; set; }
 
         private UIBarButtonItem NewButton { get; } = BarButtonFactory.GetCreateButton();
+
+
 
         public new HomeView View
         {
@@ -43,13 +44,12 @@ namespace VacationsTracker.iOS.Views.Home
 
             View.VacationsTableView.SeparatorStyle = UITableViewCellSeparatorStyle.None;
             View.VacationsTableView.Source = VacationsSource;
-            View.VacationsTableView.Delegate = new DeleteElementDelegate();
-           
-            
+
+            var deleteDelegate = new DeleteElementDelegate();
+
+            View.VacationsTableView.Delegate = deleteDelegate;
 
             NavigationItem.Title = Strings.HomePage_Title;
-
-            View.VacationsTableView.ReloadData();
 
         }
 
@@ -67,19 +67,20 @@ namespace VacationsTracker.iOS.Views.Home
             base.Bind(bindingSet);
 
             bindingSet.Bind(VacationsSource)
+                .For(v => v.Items)
+                .To(vm => vm.Vacations);
+
+            bindingSet.Bind(VacationsSource)
                 .For(v => v.RowSelectedBinding())
                 .To(vm => vm.VacationSelectedCommand);
 
-            bindingSet.Bind(VacationsSource)
-                .For(v => v.Sw)
-
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.BeginRefreshingBinding())
-                .To(vm => vm.IsRefreshing);
+                .To(vm => vm.Loading);
 
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.EndRefreshingBinding())
-                .To(vm => vm.IsRefreshing);
+                .To(vm => vm.Loading);
 
             bindingSet.Bind(View.VacationsTableView.RefreshControl)
                 .For(v => v.ValueChangedBinding())
@@ -88,6 +89,10 @@ namespace VacationsTracker.iOS.Views.Home
             bindingSet.Bind(NewButton)
                 .For(v => v.NotNull().ClickedBinding())
                 .To(vm => vm.VacationCreatedCommand);
+
+            bindingSet.Bind(View.VacationsTableView.Delegate)
+                .For(v => v.SwipeButtonBinding())
+                .To(vm => vm.DeleteVacationCommand);
         }
     }
 }
